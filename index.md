@@ -3,16 +3,19 @@ layout: default
 title: Home
 ---
 
-<div class="hero">
-  <img src="/logo.png" alt="Soldietetics Logo" class="logo"/>
-  <h1>Welcome to Soldietetics</h1>
-  <p>Luxury nutrition and wellness designed for you.</p>
-</div>
+<header class="site-header">
+  <div class="container">
+    <img src="/logo.png" alt="Soldietetics Logo" class="logo"/>
+    <nav class="nav-right">
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
 
-<section id="about">
-  <h2>About</h2>
-  <p>We offer personalized nutrition and wellness guidance to help you achieve your best self.</p>
-</section>
+<div class="hero-message">
+  <h1>Turnkey, Dietitian-led meal planning + grocery delivery programs that integrate directly into Gym</h1>
+</div>
 
 <section id="contact">
   <h2>Contact</h2>
