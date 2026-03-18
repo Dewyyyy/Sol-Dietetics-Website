@@ -195,63 +195,92 @@
     .btn-secondary:hover { gap: 0.8rem; }
 
     .hero-right {
-      position: relative;
-      background: var(--sand);
-      overflow: hidden;
+      background: var(--bark);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5rem 3.5rem;
+      gap: 2.5rem;
       opacity: 0;
       animation: fadeIn 1.2s ease 0.5s forwards;
     }
 
-    .hero-visual {
-      position: absolute;
-      inset: 0;
+    .hero-services {
       display: flex;
-      align-items: center;
-      justify-content: center;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid rgba(196, 168, 130, 0.2);
+      border-radius: 6px;
       overflow: hidden;
     }
 
-    .hero-logo-bg {
-      width: 75%;
-      max-width: 400px;
-      opacity: 0.12;
-      filter: saturate(0);
-      user-select: none;
-      pointer-events: none;
+    .hero-svc-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding: 1.5rem 1.75rem;
+      border-bottom: 1px solid rgba(196, 168, 130, 0.15);
+      transition: background 0.2s;
+    }
+
+    .hero-svc-item:last-child { border-bottom: none; }
+    .hero-svc-item:hover { background: rgba(255,255,255,0.04); }
+
+    .hero-svc-icon {
+      width: 38px;
+      height: 38px;
+      background: rgba(196, 168, 130, 0.15);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .hero-svc-item h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-svc-item p {
+      font-size: 0.8rem;
+      font-weight: 300;
+      line-height: 1.55;
+      color: rgba(248, 244, 238, 0.5);
     }
 
     .hero-stat-cards {
-      position: absolute;
-      bottom: 3rem;
-      left: 2.5rem;
-      right: 2.5rem;
       display: flex;
       gap: 1rem;
     }
 
     .stat-card {
       flex: 1;
-      background: rgba(253, 250, 246, 0.9);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(196, 168, 130, 0.35);
-      padding: 1.25rem 1.5rem;
-      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(196, 168, 130, 0.2);
+      padding: 1.25rem 1.25rem;
+      border-radius: 6px;
     }
 
     .stat-number {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 300;
-      color: var(--bark);
+      color: var(--clay);
       line-height: 1;
       margin-bottom: 0.3rem;
     }
 
     .stat-label {
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       font-weight: 500;
       letter-spacing: 0.1em;
-      color: var(--light-text);
+      color: rgba(248, 244, 238, 0.45);
       text-transform: uppercase;
     }
 
@@ -550,30 +579,98 @@
       margin-top: 0.4rem;
     }
 
-    /* LINKEDIN */
-    .linkedin {
+    /* SOCIAL */
+    .social {
       background: var(--cream);
       border-top: 1px solid var(--sand);
     }
 
-    .linkedin-inner {
-      max-width: 760px;
+    .social-inner {
+      max-width: 1160px;
       margin: 0 auto;
       text-align: center;
     }
 
-    .linkedin-inner .section-tag { justify-content: center; }
-    .linkedin-inner .section-tag::before { display: none; }
+    .social-inner .section-tag { justify-content: center; }
+    .social-inner .section-tag::before { display: none; }
 
-    .linkedin-embed-wrap {
-      margin-top: 2.5rem;
-      display: flex;
-      justify-content: center;
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+      text-align: left;
     }
 
-    .linkedin-embed-wrap iframe {
-      border-radius: 4px;
-      max-width: 100%;
+    .social-card {
+      background: var(--warm-white);
+      border: 1px solid var(--sand);
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .social-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.9rem 1.1rem;
+      border-bottom: 1px solid var(--sand);
+    }
+
+    .social-card-header svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    .social-card-header span {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--light-text);
+    }
+
+    .social-card-body {
+      flex: 1;
+      display: flex;
+      align-items: stretch;
+    }
+
+    .social-card-body iframe {
+      width: 100%;
+      min-height: 480px;
+      border: none;
+      display: block;
+    }
+
+    .social-placeholder {
+      width: 100%;
+      min-height: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 2rem;
+      color: var(--light-text);
+    }
+
+    .social-placeholder p {
+      font-size: 0.8rem;
+      font-weight: 300;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 960px) {
+      .social-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 560px) {
+      .social-grid { grid-template-columns: 1fr; }
     }
 
     /* FOOTER */
@@ -604,8 +701,7 @@
       .nav-links { display: none; }
       .hero { grid-template-columns: 1fr; min-height: auto; }
       .hero-left { padding: 4rem 1.5rem 3rem; }
-      .hero-right { min-height: 280px; }
-      .hero-stat-cards { left: 1.5rem; right: 1.5rem; bottom: 1.5rem; }
+      .hero-right { padding: 2.5rem 1.5rem; }
       section { padding: 4.5rem 1.5rem; }
       .how-inner { grid-template-columns: 1fr; gap: 3rem; }
       .partner-grid { grid-template-columns: 1fr; }
@@ -644,8 +740,35 @@
       </div>
     </div>
     <div class="hero-right">
-      <div class="hero-visual">
-        <img class="hero-logo-bg" src="assets/images/SOL.png" alt="" aria-hidden="true" />
+      <div class="hero-services">
+        <div class="hero-svc-item">
+          <div class="hero-svc-icon">🥗</div>
+          <div>
+            <h4>Virtual RD Consultations</h4>
+            <p>Certified dietitians deliver 1-on-1 nutrition coaching entirely online — no clinic, no commute.</p>
+          </div>
+        </div>
+        <div class="hero-svc-item">
+          <div class="hero-svc-icon">📋</div>
+          <div>
+            <h4>Personalized Meal Plans</h4>
+            <p>Evidence-based plans tailored to each client's goals, lifestyle, and health history.</p>
+          </div>
+        </div>
+        <div class="hero-svc-item">
+          <div class="hero-svc-icon">🛒</div>
+          <div>
+            <h4>Grocery Delivery</h4>
+            <p>Dietitian-curated ingredients delivered to your clients' doors — a premium add-on they'll love.</p>
+          </div>
+        </div>
+        <div class="hero-svc-item">
+          <div class="hero-svc-icon">💰</div>
+          <div>
+            <h4>Revenue Share Model</h4>
+            <p>Earn a percentage of every service — zero staffing overhead, consistent monthly payouts.</p>
+          </div>
+        </div>
       </div>
       <div class="hero-stat-cards">
         <div class="stat-card">
@@ -829,13 +952,83 @@
     </div>
   </section>
 
-  <!-- LINKEDIN -->
-  <section class="linkedin">
-    <div class="linkedin-inner">
-      <p class="section-tag">Follow Along</p>
-      <h2 class="section-title">Find us on <em>LinkedIn</em></h2>
-      <div class="linkedin-embed-wrap">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7439836648546213888" height="606" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+  <!-- SOCIAL -->
+  <section class="social">
+    <div class="social-inner">
+      <p class="section-tag">Stay Connected</p>
+      <h2 class="section-title">Follow our <em>journey</em></h2>
+
+      <div class="social-grid">
+
+        <!-- LinkedIn -->
+        <div class="social-card">
+          <div class="social-card-header">
+            <!-- LinkedIn icon -->
+            <svg viewBox="0 0 24 24" fill="#0A66C2" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.45 20.45h-3.554v-5.569c0-1.328-.024-3.037-1.852-3.037-1.854 0-2.137 1.447-2.137 2.942v5.664H9.353V9h3.414v1.561h.047c.476-.9 1.637-1.85 3.37-1.85 3.602 0 4.267 2.37 4.267 5.455v6.284zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            <span>LinkedIn</span>
+          </div>
+          <div class="social-card-body">
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7439836648546213888" frameborder="0" allowfullscreen title="LinkedIn post"></iframe>
+          </div>
+        </div>
+
+        <!-- X / Twitter -->
+        <div class="social-card">
+          <div class="social-card-header">
+            <!-- X icon -->
+            <svg viewBox="0 0 24 24" fill="#000000" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+            <span>X</span>
+          </div>
+          <div class="social-card-body">
+            <div class="social-placeholder">
+              <p>X post coming soon.<br/>Provide a post URL to feature it here.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Instagram -->
+        <div class="social-card">
+          <div class="social-card-header">
+            <!-- Instagram icon -->
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+                  <stop offset="0%" style="stop-color:#F58529"/>
+                  <stop offset="50%" style="stop-color:#DD2A7B"/>
+                  <stop offset="100%" style="stop-color:#8134AF"/>
+                </linearGradient>
+              </defs>
+              <path fill="url(#ig-grad)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+            </svg>
+            <span>Instagram</span>
+          </div>
+          <div class="social-card-body">
+            <div class="social-placeholder">
+              <p>Instagram post coming soon.<br/>Provide a post URL to feature it here.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Facebook -->
+        <div class="social-card">
+          <div class="social-card-header">
+            <!-- Facebook icon -->
+            <svg viewBox="0 0 24 24" fill="#1877F2" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+            <span>Facebook</span>
+          </div>
+          <div class="social-card-body">
+            <div class="social-placeholder">
+              <p>Facebook post coming soon.<br/>Provide a post URL to feature it here.</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
