@@ -550,6 +550,32 @@
       margin-top: 0.4rem;
     }
 
+    /* LINKEDIN */
+    .linkedin {
+      background: var(--cream);
+      border-top: 1px solid var(--sand);
+    }
+
+    .linkedin-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .linkedin-inner .section-tag { justify-content: center; }
+    .linkedin-inner .section-tag::before { display: none; }
+
+    .linkedin-embed-wrap {
+      margin-top: 2.5rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .linkedin-embed-wrap iframe {
+      border-radius: 4px;
+      max-width: 100%;
+    }
+
     /* FOOTER */
     footer {
       background: var(--charcoal);
@@ -798,6 +824,17 @@
       <div class="success-msg" id="successMsg">
         <p>Thank you for reaching out!</p>
         <span>We'll be in touch within 1–2 business days to discuss your partnership.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- LINKEDIN -->
+  <section class="linkedin">
+    <div class="linkedin-inner">
+      <p class="section-tag">Follow Along</p>
+      <h2 class="section-title">Find us on <em>LinkedIn</em></h2>
+      <div class="linkedin-embed-wrap">
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7439836648546213888" height="606" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
       </div>
     </div>
   </section>
