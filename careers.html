@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Careers — Sol Dietetics</title>
+  <meta name="description" content="Join Sol Dietetics. We're expanding our network of Registered Dietitian Nutritionists delivering virtual nutrition care through our partner network." />
+  <link rel="icon" type="image/png" href="https://i.imgur.com/J2BC5rg.png" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EYQ0DSNBD3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-EYQ0DSNBD3');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #F5F0E8;
+      --warm-white: #FDFAF6;
+      --sand: #E2DBD0;
+      --clay: #A8C4B0;
+      --terra: #3D7A52;
+      --bark: #1B5230;
+      --moss: #587A61;
+      --sun: #E8900A;
+      --charcoal: #182820;
+      --text: #2B3D2F;
+      --light-text: #647A69;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 4rem;
+      background: rgba(248, 244, 238, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(196, 168, 130, 0.2);
+    }
+
+    .nav-logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-logo img { height: 48px; width: auto; display: block; }
+
+    .nav-back {
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--light-text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.2s;
+    }
+
+    .nav-back:hover { color: var(--terra); }
+
+    /* ── HERO ── */
+    .careers-hero {
+      background: linear-gradient(160deg, #1e5c36 0%, var(--bark) 55%, #122b1e 100%);
+      padding: 6rem 4rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .careers-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=1600&q=60&auto=format&fit=crop') center/cover no-repeat;
+      opacity: 0.07;
+    }
+
+    .careers-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 30%, rgba(232,144,10,0.1) 0%, transparent 60%);
+    }
+
+    .careers-hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sun);
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 1.25rem;
+      height: 1px;
+      background: var(--sun);
+    }
+
+    .careers-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
+    }
+
+    .careers-hero h1 em {
+      font-style: italic;
+      color: var(--sun);
+    }
+
+    .careers-hero p {
+      font-size: 1.05rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.72);
+      max-width: 600px;
+    }
+
+    /* ── MAIN CONTENT ── */
+    .careers-body {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 4rem 6rem;
+    }
+
+    /* ── SECTION HEADINGS ── */
+    .section-eyebrow {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--moss);
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .section-eyebrow::before {
+      content: '';
+      width: 1.25rem;
+      height: 1px;
+      background: var(--moss);
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.9rem, 3vw, 2.6rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.92rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--light-text);
+      max-width: 640px;
+      margin-bottom: 3rem;
+    }
+
+    .section-divider {
+      width: 3rem;
+      height: 1px;
+      background: var(--clay);
+      margin: 1rem 0 2.5rem;
+    }
+
+    /* ── WHAT WE'RE LOOKING FOR ── */
+    .looking-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+
+    .looking-card {
+      background: var(--warm-white);
+      border: 1px solid var(--sand);
+      border-radius: 10px;
+      padding: 2rem 2rem 2rem 1.75rem;
+      border-left: 3px solid var(--terra);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .looking-card:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      transform: translateY(-2px);
+    }
+
+    .looking-card-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(61, 122, 82, 0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--terra);
+      margin-bottom: 1rem;
+    }
+
+    .looking-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+
+    .looking-card p {
+      font-size: 0.85rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--light-text);
+    }
+
+    /* ── QUALIFICATIONS ── */
+    .quals-section {
+      margin-top: 5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .quals-list {
+      list-style: none;
+      margin-top: 1.5rem;
+    }
+
+    .quals-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--sand);
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--light-text);
+      line-height: 1.6;
+    }
+
+    .quals-list li:last-child { border-bottom: none; }
+
+    .quals-check {
+      width: 20px;
+      height: 20px;
+      background: rgba(61, 122, 82, 0.12);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--terra);
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .perks-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .perk-item {
+      background: var(--warm-white);
+      border: 1px solid var(--sand);
+      border-radius: 8px;
+      padding: 1.25rem;
+      text-align: center;
+    }
+
+    .perk-item .perk-icon {
+      font-size: 0;
+      width: 36px;
+      height: 36px;
+      background: rgba(232,144,10,0.12);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--sun);
+      margin: 0 auto 0.65rem;
+    }
+
+    .perk-item h4 {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+
+    .perk-item p {
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: var(--light-text);
+      line-height: 1.5;
+    }
+
+    /* ── FORM SECTION ── */
+    .careers-form-section {
+      margin-top: 5.5rem;
+      background: linear-gradient(135deg, var(--bark) 0%, #2a6640 50%, #1a4a2e 100%);
+      border-radius: 14px;
+      padding: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .careers-form-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 90% 10%, rgba(232,144,10,0.12) 0%, transparent 55%);
+    }
+
+    .careers-form-section .section-eyebrow { color: rgba(232,144,10,0.9); }
+    .careers-form-section .section-eyebrow::before { background: var(--sun); }
+
+    .careers-form-section .section-title { color: #ffffff; }
+
+    .careers-form-section .section-subtitle {
+      color: rgba(255,255,255,0.65);
+    }
+
+    .careers-form-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .careers-form-left h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+      font-weight: 300;
+      color: #ffffff;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .careers-form-left h2 em {
+      font-style: italic;
+      color: var(--sun);
+    }
+
+    .careers-form-left p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 2rem;
+    }
+
+    .careers-form-left .contact-badges {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .contact-badge-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .contact-badge-item svg {
+      color: var(--sun);
+      flex-shrink: 0;
+    }
+
+    .form-card {
+      background: var(--warm-white);
+      border-radius: 10px;
+      padding: 2.5rem;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .form-group label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--text);
+      background: var(--cream);
+      border: 1px solid var(--sand);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--terra);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .form-submit {
+      width: 100%;
+      background: var(--bark);
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 6px;
+      padding: 1rem 2rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 0.5rem;
+    }
+
+    .form-submit:hover {
+      background: var(--terra);
+      transform: translateY(-1px);
+    }
+
+    .form-note {
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: var(--light-text);
+      text-align: center;
+      margin-top: 1rem;
+      line-height: 1.5;
+    }
+
+    .form-success {
+      display: none;
+      background: rgba(61,122,82,0.1);
+      border: 1px solid rgba(61,122,82,0.3);
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--terra);
+      line-height: 1.6;
+      margin-top: 1rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--charcoal);
+      padding: 2rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 5rem;
+    }
+
+    .footer-copy {
+      font-size: 0.73rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.06em;
+    }
+
+    .footer-back {
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-back:hover { color: var(--cream); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0.75rem 1.25rem; }
+      .nav-logo img { height: 36px; }
+
+      .careers-hero { padding: 4rem 1.5rem 3.5rem; }
+
+      .careers-body { padding: 3rem 1.25rem 4rem; }
+
+      .looking-grid { grid-template-columns: 1fr; }
+
+      .quals-section { grid-template-columns: 1fr; gap: 2.5rem; }
+
+      .perks-grid { grid-template-columns: 1fr 1fr; }
+
+      .careers-form-section { padding: 2.5rem 1.5rem; border-radius: 10px; }
+
+      .careers-form-inner { grid-template-columns: 1fr; gap: 2rem; }
+
+      .form-row { grid-template-columns: 1fr; }
+
+      footer { padding: 1.5rem 1.25rem; flex-direction: column; gap: 0.75rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="/">
+      <img src="assets/images/SOL.png" alt="Sol Dietetics" width="48" height="48" />
+    </a>
+    <a href="/" class="nav-back">← Back to Sol Dietetics</a>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="careers-hero">
+    <div class="careers-hero-inner">
+      <p class="hero-eyebrow">Careers</p>
+      <h1>Grow your practice.<br/><em>Without the overhead.</em></h1>
+      <p>We're building a network of exceptional Registered Dietitian Nutritionists delivering virtual nutrition care to clients across our partner gyms, studios, and health platforms. If you're passionate about evidence-based nutrition and want the flexibility of a fully remote practice, we want to hear from you.</p>
+    </div>
+  </section>
+
+  <div class="careers-body">
+
+    <!-- ── WHAT WE'RE LOOKING FOR ── -->
+    <p class="section-eyebrow">What We're Looking For</p>
+    <h2 class="section-title">The kind of dietitian<br/>who fits our model.</h2>
+    <div class="section-divider"></div>
+    <p class="section-subtitle">We partner with RDNs who want to spend more time on meaningful client work and less time on admin, marketing, and logistics — because we handle all of that.</p>
+
+    <div class="looking-grid">
+      <div class="looking-card">
+        <div class="looking-card-icon">
+          <!-- Stethoscope / RD icon -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"/><circle cx="20" cy="10" r="2"/></svg>
+        </div>
+        <h3>Registered Dietitian Nutritionist (RDN)</h3>
+        <p>Our core role. You'll deliver 1-on-1 virtual consultations, design personalized meal plans, and guide clients through their nutrition journey — all from your own schedule.</p>
+      </div>
+      <div class="looking-card">
+        <div class="looking-card-icon">
+          <!-- Monitor / virtual icon -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Virtual-First Practice</h3>
+        <p>Everything is remote. No clinic, no commute. You work with clients through our secure HIPAA-compliant platform on a schedule that fits your life.</p>
+      </div>
+      <div class="looking-card">
+        <div class="looking-card-icon">
+          <!-- Users icon -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Fitness & Wellness Enthusiast</h3>
+        <p>Our client base comes from gyms, CrossFit affiliates, and wellness studios. A genuine interest in performance nutrition, weight management, or active lifestyles is a strong fit.</p>
+      </div>
+      <div class="looking-card">
+        <div class="looking-card-icon">
+          <!-- Trending up icon -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <h3>Growth-Oriented Mindset</h3>
+        <p>We're early-stage and expanding fast. We're looking for dietitians who are excited to help shape what virtual nutrition care looks like at scale — not just fill a slot.</p>
+      </div>
+    </div>
+
+    <!-- ── QUALIFICATIONS & PERKS ── -->
+    <div class="quals-section">
+      <div>
+        <p class="section-eyebrow">Qualifications</p>
+        <h2 class="section-title">What we require.</h2>
+        <div class="section-divider"></div>
+        <ul class="quals-list">
+          <li>
+            <span class="quals-check">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            Active RDN (Registered Dietitian Nutritionist) credential in good standing
+          </li>
+          <li>
+            <span class="quals-check">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            State licensure where required for telehealth practice
+          </li>
+          <li>
+            <span class="quals-check">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            Comfortable with virtual client sessions (video, messaging)
+          </li>
+          <li>
+            <span class="quals-check">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            Strong written communication for remote client plans and messaging
+          </li>
+          <li>
+            <span class="quals-check">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            Reliable internet connection and a quiet, professional workspace
+          </li>
+          <li>
+            <span class="quals-check">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            Experience with or genuine interest in fitness, sports, or weight-management nutrition
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="section-eyebrow">Why Sol Dietetics</p>
+        <h2 class="section-title">What you get from us.</h2>
+        <div class="section-divider"></div>
+        <div class="perks-grid">
+          <div class="perk-item">
+            <div class="perk-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h4>Flexible Hours</h4>
+            <p>Set your own schedule. Work when it suits you.</p>
+          </div>
+          <div class="perk-item">
+            <div class="perk-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <h4>Steady Clients</h4>
+            <p>We bring you a consistent flow of referred clients.</p>
+          </div>
+          <div class="perk-item">
+            <div class="perk-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <h4>Zero Marketing</h4>
+            <p>We handle all partner outreach and client acquisition.</p>
+          </div>
+          <div class="perk-item">
+            <div class="perk-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <h4>Fully Remote</h4>
+            <p>Work from home — no clinic or commute required.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── INTEREST FORM ── -->
+    <div class="careers-form-section" id="apply">
+      <div class="careers-form-inner">
+        <div class="careers-form-left">
+          <h2>Interested in<br/>working with <em>us?</em></h2>
+          <p>We're always open to connecting with talented RDNs who align with our mission. Fill out the form and we'll reach out when a role that fits your background opens up.</p>
+          <div class="contact-badges">
+            <div class="contact-badge-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              We review every submission personally
+            </div>
+            <div class="contact-badge-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              You can also email us directly at <a href="mailto:careers@soldietetics.com" style="color:var(--sun); text-decoration:none;">careers@soldietetics.com</a>
+            </div>
+            <div class="contact-badge-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Your information is kept confidential
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <form id="careers-form" action="https://formspree.io/f/xwvravyy" method="POST">
+            <input type="hidden" name="_subject" value="Career Interest — Sol Dietetics" />
+            <input type="hidden" name="form_type" value="career_inquiry" />
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="c-first">First Name *</label>
+                <input type="text" id="c-first" name="first_name" required placeholder="Jane" />
+              </div>
+              <div class="form-group">
+                <label for="c-last">Last Name *</label>
+                <input type="text" id="c-last" name="last_name" required placeholder="Smith" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="c-email">Email Address *</label>
+              <input type="email" id="c-email" name="email" required placeholder="jane@example.com" />
+            </div>
+
+            <div class="form-group">
+              <label for="c-credential">Current Credential *</label>
+              <select id="c-credential" name="credential" required>
+                <option value="" disabled selected>Select your credential</option>
+                <option>RDN — Registered Dietitian Nutritionist</option>
+                <option>RD — Registered Dietitian</option>
+                <option>Dietetic Intern (completing credential)</option>
+                <option>Other nutrition credential</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="c-specialty">Area of Specialty</label>
+              <select id="c-specialty" name="specialty">
+                <option value="" disabled selected>Select your focus area</option>
+                <option>Sports &amp; Performance Nutrition</option>
+                <option>Weight Management</option>
+                <option>General Wellness</option>
+                <option>Chronic Disease Management</option>
+                <option>Eating Disorders</option>
+                <option>Pediatric Nutrition</option>
+                <option>Gut Health / GI</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="c-states">Licensed States</label>
+              <input type="text" id="c-states" name="licensed_states" placeholder="e.g. California, Texas, New York" />
+            </div>
+
+            <div class="form-group">
+              <label for="c-message">Tell us about yourself *</label>
+              <textarea id="c-message" name="message" required placeholder="Share a bit about your background, experience, and what excites you about virtual nutrition care..."></textarea>
+            </div>
+
+            <button type="submit" class="form-submit">Submit Your Interest</button>
+            <p class="form-note">We'll be in touch when a role that fits your background becomes available.</p>
+            <div class="form-success" id="careers-success">
+              Thank you for your interest — we've received your submission and will be in touch when a role opens up that's a great fit.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.careers-body -->
+
+  <footer>
+    <span class="footer-copy">&copy; 2026 Sol Dietetics. All rights reserved.</span>
+    <a href="/" class="footer-back">← Back to soldietetics.com</a>
+  </footer>
+
+  <script>
+    // Form success state
+    const careersForm = document.getElementById('careers-form');
+    const careersSuccess = document.getElementById('careers-success');
+
+    if (careersForm) {
+      careersForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = new FormData(careersForm);
+        const res = await fetch(careersForm.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          careersForm.style.display = 'none';
+          careersSuccess.style.display = 'block';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
