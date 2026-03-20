@@ -1721,6 +1721,16 @@
       /* ───────────────────────────────────────────
          WHAT YOU GET: horizontal snap carousel
       ─────────────────────────────────────────── */
+      /* Remove side padding from section so carousel can go full-width */
+      .whatyouget { padding-left: 0; padding-right: 0; }
+
+      /* Re-add side padding to just the heading area */
+      .whatyouget-inner > .section-tag,
+      .whatyouget-inner > .section-title {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+      }
+
       .whatyouget-grid {
         display: flex;
         flex-direction: row;
@@ -1730,9 +1740,6 @@
         scrollbar-width: none;
         gap: 0.75rem;
         margin-top: 1.5rem;
-        /* Negative margin trick: let carousel bleed to screen edge while section padding is preserved */
-        margin-left: -1.25rem;
-        margin-right: -1.25rem;
         padding-left: 1.25rem;
         padding-right: 1.25rem;
       }
@@ -1740,8 +1747,8 @@
       .whatyouget-grid::-webkit-scrollbar { display: none; }
 
       .whatyouget-card {
-        /* Full viewport width minus section padding on both sides, with a peek of next card */
-        min-width: calc(100vw - 3.5rem);
+        /* Card fills screen minus padding, leaving a peek of the next card */
+        min-width: calc(100vw - 3.25rem);
         scroll-snap-align: start;
         flex-shrink: 0;
         opacity: 1 !important;
