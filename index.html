@@ -292,6 +292,54 @@
       text-transform: uppercase;
     }
 
+    /* ── ACCORDION BASE STYLES (desktop: always expanded, buttons invisible) ── */
+
+    /* Reset step-trigger button — invisible on desktop, interactive on mobile */
+    .step-trigger {
+      background: none;
+      border: none;
+      padding: 0;
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      cursor: default;
+      font: inherit;
+      text-align: left;
+    }
+
+    /* Chevron hidden on desktop */
+    .step-chevron { display: none; }
+
+    /* Reset rev-trigger button — invisible on desktop, interactive on mobile */
+    .rev-trigger {
+      background: none;
+      border: none;
+      padding: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: default;
+      font: inherit;
+      text-align: left;
+    }
+
+    /* Chevron hidden on desktop */
+    .rev-chevron { display: none; }
+
+    /* Social tabs nav hidden on desktop — shown only on mobile */
+    .social-tabs { display: none; }
+
+    /* Back-to-top button hidden by default — shown on mobile via media query */
+    .back-to-top { display: none; }
+
+    /* Nav hamburger hidden on desktop */
+    .nav-hamburger { display: none; }
+
+    /* Nav mobile menu hidden on desktop */
+    .nav-mobile-menu { display: none; }
+
     /* SHARED SECTION STYLES */
     section { padding: 7rem 6rem; }
 
@@ -798,20 +846,526 @@
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeIn { to { opacity: 1; } }
 
-    /* MOBILE */
+    /* ── TABLET (≤960px): layout adjustments, desktop nav still visible ── */
     @media (max-width: 960px) {
+      /* Reduce nav padding on tablet */
       nav { padding: 1rem 1.5rem; }
-      .nav-links { display: none; }
+      /* Stack hero columns on tablet */
       .hero { grid-template-columns: 1fr; min-height: auto; }
       .hero-left { padding: 4rem 1.5rem 3rem; }
       .hero-right { padding: 2.5rem 1.5rem; }
+      /* Reduce section padding on tablet */
       section { padding: 4.5rem 1.5rem; }
+      /* Stack how-inner columns on tablet */
       .how-inner { grid-template-columns: 1fr; gap: 3rem; }
-      .partner-grid { grid-template-columns: 1fr; }
+      /* Stack revenue columns on tablet */
       .revenue-inner { grid-template-columns: 1fr; gap: 3rem; }
+      /* Stack contact form on tablet */
       .contact-form { grid-template-columns: 1fr; }
+      /* Stack footer on tablet */
       footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
     }
+
+    /* ── MOBILE (≤768px): full mobile experience ── */
+    @media (max-width: 768px) {
+
+      /* ── GLOBAL: max section padding 32–48px ── */
+      section { padding: 2.5rem 1.25rem; }
+
+      /* ── GLOBAL: smooth 300ms ease on all interactive elements ── */
+      a, button { transition: all 0.3s ease; }
+
+      /* ───────────────────────────────────────────
+         NAV: hamburger menu replaces link list
+      ─────────────────────────────────────────── */
+
+      /* Compact nav padding on mobile */
+      nav { padding: 0.75rem 1.25rem; }
+
+      /* Hide desktop nav links on mobile */
+      .nav-links { display: none; }
+
+      /* Show hamburger button on mobile */
+      .nav-hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+        min-width: 44px; /* ≥44px tap target */
+        min-height: 44px;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Hamburger bar lines */
+      .nav-hamburger span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: var(--bark);
+        border-radius: 1px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+
+      /* Animate top bar into X when open */
+      .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      /* Fade middle bar when open */
+      .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+      /* Animate bottom bar into X when open */
+      .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+      /* Mobile drawer: fixed below nav, slides down on open */
+      .nav-mobile-menu {
+        display: block;
+        position: fixed;
+        top: 58px; /* nav height on mobile */
+        left: 0; right: 0;
+        background: rgba(245, 240, 232, 0.97);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--sand);
+        overflow: hidden;
+        max-height: 0; /* collapsed by default */
+        transition: max-height 0.3s ease;
+        z-index: 99;
+      }
+
+      /* Expanded drawer state */
+      .nav-mobile-menu.open { max-height: 340px; }
+
+      /* Mobile menu list */
+      .nav-mobile-menu ul {
+        list-style: none;
+        padding: 0.75rem 1.25rem 1.25rem;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Each mobile nav link */
+      .nav-mobile-link {
+        display: flex;
+        align-items: center;
+        padding: 0.85rem 0;
+        border-bottom: 1px solid var(--sand);
+        text-decoration: none;
+        font-size: 0.88rem;
+        font-weight: 400;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--text);
+        min-height: 44px; /* ≥44px tap target */
+      }
+
+      /* CTA link styled as button */
+      .nav-mobile-cta {
+        background: var(--bark);
+        color: var(--cream) !important;
+        border-radius: 2px;
+        padding: 0.85rem 1rem;
+        justify-content: center;
+        border-bottom: none;
+        margin-top: 0.75rem;
+      }
+
+      /* ───────────────────────────────────────────
+         HERO: cap height, scale fonts, stack CTAs
+      ─────────────────────────────────────────── */
+
+      /* Cap hero at 85vh on mobile */
+      .hero {
+        max-height: 85vh;
+        overflow: hidden;
+      }
+
+      /* Tighten hero-left padding */
+      .hero-left { padding: 1.75rem 1.25rem 1.25rem; }
+
+      /* Scale down headline ~40% on mobile */
+      .hero-headline { font-size: clamp(1.9rem, 7vw, 2.6rem); margin-bottom: 0.85rem; }
+
+      /* Scale down subtitle font */
+      .hero-sub { font-size: 0.85rem; margin-bottom: 1.25rem; max-width: 100%; }
+
+      /* Stack CTA buttons vertically */
+      .hero-actions { flex-direction: column; gap: 0.6rem; width: 100%; }
+
+      /* Full-width primary CTA, ≥44px tap target */
+      .hero-actions .btn-primary {
+        width: 100%;
+        text-align: center;
+        min-height: 44px;
+        padding: 0.85rem 1rem;
+      }
+
+      /* Full-width secondary CTA, ≥44px tap target */
+      .hero-actions .btn-secondary {
+        width: 100%;
+        justify-content: center;
+        min-height: 44px;
+        padding: 0.85rem 1rem;
+        background: rgba(27,82,48,0.06);
+        border-radius: 2px;
+      }
+
+      /* Compact hero-right on mobile */
+      .hero-right { padding: 1rem 1.25rem 1.25rem; gap: 1rem; }
+
+      /* ───────────────────────────────────────────
+         SERVICE CARDS: horizontal snap carousel
+      ─────────────────────────────────────────── */
+
+      /* Convert vertical service list to horizontal snap carousel */
+      .hero-services {
+        flex-direction: row;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory; /* mandatory snap */
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* hide scrollbar on Firefox */
+        border-radius: 6px;
+      }
+
+      /* Hide scrollbar on Chrome/Safari */
+      .hero-services::-webkit-scrollbar { display: none; }
+
+      /* Each card: 82% width creates peek of next card as scroll hint */
+      .hero-svc-item {
+        min-width: 82%;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+      }
+
+      /* ───────────────────────────────────────────
+         STATS ROW: keep horizontal, reduce ~40%
+      ─────────────────────────────────────────── */
+
+      /* Tighter stat card padding */
+      .stat-card { padding: 0.65rem 0.5rem; }
+
+      /* Reduce stat number font ~40% (2rem → 1.2rem) */
+      .stat-number { font-size: 1.2rem; }
+
+      /* Reduce stat label font */
+      .stat-label { font-size: 0.52rem; letter-spacing: 0.05em; }
+
+      /* ───────────────────────────────────────────
+         HOW IT WORKS: accordion
+      ─────────────────────────────────────────── */
+
+      /* Stack how-inner columns */
+      .how-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+
+      /* Override desktop grid — accordion uses block layout */
+      .step { display: block; padding: 0; }
+
+      /* Step trigger: full-width tap target showing num + title + chevron */
+      .step-trigger {
+        cursor: pointer;
+        padding: 1rem 0;
+        min-height: 44px; /* ≥44px tap target */
+        align-items: center;
+        border-bottom: 1px solid var(--sand);
+      }
+
+      /* Step trigger open state — remove bottom border when expanded */
+      .step-trigger[aria-expanded="true"] { border-bottom: none; }
+
+      /* Show chevron on mobile */
+      .step-chevron {
+        display: block;
+        font-size: 1.1rem;
+        color: var(--clay);
+        transition: transform 0.3s ease;
+        flex-shrink: 0;
+        min-width: 28px;
+        text-align: center;
+        min-height: 28px;
+        line-height: 28px;
+      }
+
+      /* Rotate chevron when step is open */
+      .step-trigger[aria-expanded="true"] .step-chevron { transform: rotate(45deg); }
+
+      /* Hide desktop step-num (it's shown inline in data-num via ::before in trigger) */
+      .step > .step-num { display: none; }
+
+      /* Step body: collapsed by default, 300ms ease animation */
+      .step-body {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      /* Expanded step body */
+      .step-body.open { max-height: 200px; }
+
+      /* Padding inside expanded step body */
+      .step-body p { padding: 0.75rem 0 1rem; }
+
+      /* Slightly smaller h3 on mobile */
+      .step-content h3 { font-size: 1.05rem; }
+
+      /* Show step number before title in mobile trigger */
+      .step-trigger::before {
+        content: attr(data-num);
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 0.95rem;
+        color: var(--clay);
+        flex-shrink: 0;
+        min-width: 2.5rem;
+      }
+
+      /* ───────────────────────────────────────────
+         WHO WE SERVE: horizontal snap carousel
+      ─────────────────────────────────────────── */
+
+      /* Convert grid to horizontal scroll carousel */
+      .partner-grid {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        gap: 0;
+        margin-top: 1.5rem;
+      }
+
+      /* Hide scrollbar */
+      .partner-grid::-webkit-scrollbar { display: none; }
+
+      /* Each card: 82% width for peek effect */
+      .partner-card {
+        min-width: 82%;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+        border: 1px solid var(--sand);
+        border-radius: 4px;
+        margin-right: 0.75rem;
+        opacity: 1 !important; /* override scroll animation defaults */
+        transform: none !important;
+      }
+
+      /* ───────────────────────────────────────────
+         PARTNER MAP: reduce vertical padding
+      ─────────────────────────────────────────── */
+
+      /* Reduce partner map section padding to 32px */
+      .partner-map { padding: 2rem 1.25rem; }
+
+      /* Stack map columns */
+      .partner-map-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+
+      /* Reduce map height on mobile */
+      .map-frame { height: 220px; }
+
+      /* ───────────────────────────────────────────
+         REVENUE MODEL: accordion
+      ─────────────────────────────────────────── */
+
+      /* Stack revenue columns */
+      .revenue-inner { grid-template-columns: 1fr; gap: 2rem; }
+
+      /* Override desktop flex for accordion block layout */
+      .rev-item {
+        display: block;
+        padding: 0 1.25rem;
+        opacity: 1 !important; /* override scroll animation */
+        transform: none !important;
+      }
+
+      /* Rev trigger: full-width tap target showing icon + title + chevron */
+      .rev-trigger {
+        cursor: pointer;
+        padding: 0.9rem 0;
+        min-height: 44px; /* ≥44px tap target */
+        border-bottom: 1px solid rgba(196,168,130,0.2);
+      }
+
+      /* Rev trigger open state */
+      .rev-trigger[aria-expanded="true"] { border-bottom: none; }
+
+      /* Show rev chevron on mobile */
+      .rev-chevron {
+        display: block;
+        font-size: 1.1rem;
+        color: var(--clay);
+        transition: transform 0.3s ease;
+        flex-shrink: 0;
+        min-width: 28px;
+        text-align: center;
+        min-height: 28px;
+        line-height: 28px;
+      }
+
+      /* Rotate chevron when rev item is open */
+      .rev-trigger[aria-expanded="true"] .rev-chevron { transform: rotate(45deg); }
+
+      /* Hide desktop ◆ check icon (title visible in trigger) */
+      .rev-item > .rev-check { display: none; }
+
+      /* Rev body: collapsed by default, 300ms ease animation */
+      .rev-body {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      /* Expanded rev body */
+      .rev-body.open { max-height: 180px; }
+
+      /* Padding inside expanded rev body */
+      .rev-body p { padding: 0.5rem 0 1rem; }
+
+      /* ───────────────────────────────────────────
+         CONTACT FORM: full-width stacked, 32px padding
+      ─────────────────────────────────────────── */
+
+      /* Reduce contact section padding */
+      .contact { padding: 2rem 1.25rem; }
+
+      /* Stack form to single column */
+      .contact-form { grid-template-columns: 1fr; }
+
+      /* ≥44px tap targets for all inputs */
+      .form-group input,
+      .form-group select,
+      .form-group textarea { min-height: 44px; }
+
+      /* Full-width submit button */
+      .form-submit .btn-primary { width: 100%; min-height: 44px; }
+
+      /* ───────────────────────────────────────────
+         SOCIAL: tabbed interface (one platform at a time)
+      ─────────────────────────────────────────── */
+
+      /* Reduce social section padding */
+      .social { padding: 2rem 1.25rem; }
+
+      /* Show tab buttons on mobile */
+      .social-tabs {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+        overflow-x: auto; /* allow tabs to scroll if needed */
+        scrollbar-width: none;
+        padding-bottom: 0.25rem;
+      }
+
+      /* Hide tab scrollbar */
+      .social-tabs::-webkit-scrollbar { display: none; }
+
+      /* Individual tab button */
+      .social-tab {
+        background: none;
+        border: 1px solid var(--sand);
+        border-radius: 20px;
+        padding: 0.5rem 1.1rem;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 0.75rem;
+        font-weight: 400;
+        letter-spacing: 0.06em;
+        color: var(--light-text);
+        cursor: pointer;
+        white-space: nowrap;
+        min-height: 44px; /* ≥44px tap target */
+        flex-shrink: 0;
+        transition: all 0.3s ease;
+      }
+
+      /* Active tab state */
+      .social-tab.active {
+        background: var(--bark);
+        border-color: var(--bark);
+        color: var(--cream);
+      }
+
+      /* Override social grid to block on mobile (tabs control visibility) */
+      .social-grid {
+        display: block;
+        margin-top: 1rem;
+      }
+
+      /* Hide all social cards by default on mobile */
+      .social-card { display: none; }
+
+      /* Show only the active tab's card */
+      .social-card.tab-active { display: flex; }
+
+      /* Hide "coming soon" placeholder cards entirely */
+      .social-placeholder { display: none !important; }
+
+      /* ───────────────────────────────────────────
+         CAROUSEL DOT INDICATORS
+      ─────────────────────────────────────────── */
+
+      /* Dot row below each carousel */
+      .carousel-dots {
+        display: flex;
+        justify-content: center;
+        gap: 0.4rem;
+        margin-top: 0.6rem;
+      }
+
+      /* Individual dot */
+      .carousel-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--sand);
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        min-width: 6px;
+        transition: background 0.3s ease;
+      }
+
+      /* Active dot */
+      .carousel-dot.active { background: var(--bark); }
+
+      /* ───────────────────────────────────────────
+         BACK TO TOP: floating button after 2vh scroll
+      ─────────────────────────────────────────── */
+
+      /* Back-to-top button — fixed bottom right */
+      .back-to-top {
+        display: flex;
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 44px;
+        height: 44px; /* ≥44px tap target */
+        background: var(--bark);
+        color: var(--cream);
+        border: none;
+        border-radius: 50%;
+        font-size: 1.1rem;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        z-index: 200;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+      }
+
+      /* Visible state — triggered by JS after 2vh scroll */
+      .back-to-top.visible {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      /* ───────────────────────────────────────────
+         FOOTER: compact on mobile
+      ─────────────────────────────────────────── */
+      footer { padding: 1.5rem 1.25rem; }
+
+    } /* end @media (max-width: 768px) */
   </style>
 </head>
 <body>
@@ -827,6 +1381,19 @@
       <li><a href="#model">Revenue Model</a></li>
       <li><a href="#contact" class="nav-cta">Partner With Us</a></li>
     </ul>
+    <!-- Mobile hamburger button — hidden on desktop -->
+    <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false" id="navHamburger">
+      <span></span><span></span><span></span>
+    </button>
+    <!-- Mobile slide-down menu drawer — hidden on desktop -->
+    <div class="nav-mobile-menu" id="navMobileMenu" aria-hidden="true">
+      <ul>
+        <li><a href="#how" class="nav-mobile-link">How It Works</a></li>
+        <li><a href="#partners" class="nav-mobile-link">Partners</a></li>
+        <li><a href="#model" class="nav-mobile-link">Revenue Model</a></li>
+        <li><a href="#contact" class="nav-mobile-link nav-mobile-cta">Partner With Us</a></li>
+      </ul>
+    </div>
   </nav>
 
   <!-- HERO -->
@@ -903,36 +1470,61 @@
         <div class="step">
           <span class="step-num">01</span>
           <div class="step-content">
-            <h3>Partner Agreement</h3>
-            <p>We establish a simple revenue share agreement tailored to your client base and business model. No overhead, no risk.</p>
+            <button class="step-trigger" aria-expanded="false" aria-controls="step-body-0" data-num="01">
+              <h3>Partner Agreement</h3>
+              <span class="step-chevron" aria-hidden="true">+</span>
+            </button>
+            <div class="step-body" id="step-body-0">
+              <p>We establish a simple revenue share agreement tailored to your client base and business model. No overhead, no risk.</p>
+            </div>
           </div>
         </div>
         <div class="step">
           <span class="step-num">02</span>
           <div class="step-content">
-            <h3>Client Referral</h3>
-            <p>You refer clients who want nutrition coaching. We take it from there — intake, assessment, and ongoing guidance.</p>
+            <button class="step-trigger" aria-expanded="false" aria-controls="step-body-1" data-num="02">
+              <h3>Client Referral</h3>
+              <span class="step-chevron" aria-hidden="true">+</span>
+            </button>
+            <div class="step-body" id="step-body-1">
+              <p>You refer clients who want nutrition coaching. We take it from there — intake, assessment, and ongoing guidance.</p>
+            </div>
           </div>
         </div>
         <div class="step">
           <span class="step-num">03</span>
           <div class="step-content">
-            <h3>Virtual RD Services</h3>
-            <p>Our registered dietitians deliver expert, personalized nutrition plans and 1-on-1 coaching — fully virtual, fully managed by us.</p>
+            <button class="step-trigger" aria-expanded="false" aria-controls="step-body-2" data-num="03">
+              <h3>Virtual RD Services</h3>
+              <span class="step-chevron" aria-hidden="true">+</span>
+            </button>
+            <div class="step-body" id="step-body-2">
+              <p>Our registered dietitians deliver expert, personalized nutrition plans and 1-on-1 coaching — fully virtual, fully managed by us.</p>
+            </div>
           </div>
         </div>
         <div class="step">
           <span class="step-num">04</span>
           <div class="step-content">
-            <h3>Grocery Delivery</h3>
-            <p>Clients receive curated, dietitian-approved grocery deliveries matched to their nutrition plan — a premium add-on they'll love.</p>
+            <button class="step-trigger" aria-expanded="false" aria-controls="step-body-3" data-num="04">
+              <h3>Grocery Delivery</h3>
+              <span class="step-chevron" aria-hidden="true">+</span>
+            </button>
+            <div class="step-body" id="step-body-3">
+              <p>Clients receive curated, dietitian-approved grocery deliveries matched to their nutrition plan — a premium add-on they'll love.</p>
+            </div>
           </div>
         </div>
         <div class="step">
           <span class="step-num">05</span>
           <div class="step-content">
-            <h3>Revenue Share Payout</h3>
-            <p>You earn a percentage of every client's spend. Transparent reporting, consistent payouts, zero administrative burden.</p>
+            <button class="step-trigger" aria-expanded="false" aria-controls="step-body-4" data-num="05">
+              <h3>Revenue Share Payout</h3>
+              <span class="step-chevron" aria-hidden="true">+</span>
+            </button>
+            <div class="step-body" id="step-body-4">
+              <p>You earn a percentage of every client's spend. Transparent reporting, consistent payouts, zero administrative burden.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -1006,29 +1598,49 @@
         <div class="rev-item">
           <span class="rev-check">◆</span>
           <div>
-            <h4>No Staffing Overhead</h4>
-            <p>Registered Dietitians are expensive to hire full-time. We staff them for you — you take the upside without the payroll.</p>
+            <button class="rev-trigger" aria-expanded="false" aria-controls="rev-body-0">
+              <h4>No Staffing Overhead</h4>
+              <span class="rev-chevron" aria-hidden="true">+</span>
+            </button>
+            <div class="rev-body" id="rev-body-0">
+              <p>Registered Dietitians are expensive to hire full-time. We staff them for you — you take the upside without the payroll.</p>
+            </div>
           </div>
         </div>
         <div class="rev-item">
           <span class="rev-check">◆</span>
           <div>
-            <h4>Shared Revenue on All Services</h4>
-            <p>Earn a percentage of every consultation, nutrition plan, and grocery delivery purchased by your referred clients.</p>
+            <button class="rev-trigger" aria-expanded="false" aria-controls="rev-body-1">
+              <h4>Shared Revenue on All Services</h4>
+              <span class="rev-chevron" aria-hidden="true">+</span>
+            </button>
+            <div class="rev-body" id="rev-body-1">
+              <p>Earn a percentage of every consultation, nutrition plan, and grocery delivery purchased by your referred clients.</p>
+            </div>
           </div>
         </div>
         <div class="rev-item">
           <span class="rev-check">◆</span>
           <div>
-            <h4>Highest-Educated Professionals</h4>
-            <p>Our RDs hold advanced degrees and clinical credentials — your clients receive care that reflects your commitment to quality.</p>
+            <button class="rev-trigger" aria-expanded="false" aria-controls="rev-body-2">
+              <h4>Highest-Educated Professionals</h4>
+              <span class="rev-chevron" aria-hidden="true">+</span>
+            </button>
+            <div class="rev-body" id="rev-body-2">
+              <p>Our RDs hold advanced degrees and clinical credentials — your clients receive care that reflects your commitment to quality.</p>
+            </div>
           </div>
         </div>
         <div class="rev-item">
           <span class="rev-check">◆</span>
           <div>
-            <h4>Turnkey Client Experience</h4>
-            <p>From intake forms to delivery tracking, we manage the entire client journey so your team spends zero time on administration.</p>
+            <button class="rev-trigger" aria-expanded="false" aria-controls="rev-body-3">
+              <h4>Turnkey Client Experience</h4>
+              <span class="rev-chevron" aria-hidden="true">+</span>
+            </button>
+            <div class="rev-body" id="rev-body-3">
+              <p>From intake forms to delivery tracking, we manage the entire client journey so your team spends zero time on administration.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -1091,10 +1703,18 @@
       <p class="section-tag">Stay Connected</p>
       <h2 class="section-title">Follow our <em>journey</em></h2>
 
+      <!-- Mobile tab buttons — hidden on desktop, shown on mobile via CSS -->
+      <div class="social-tabs" role="tablist" aria-label="Social media platforms">
+        <button class="social-tab active" role="tab" aria-selected="true" data-target="social-linkedin">LinkedIn</button>
+        <button class="social-tab" role="tab" aria-selected="false" data-target="social-x">X</button>
+        <button class="social-tab" role="tab" aria-selected="false" data-target="social-instagram">Instagram</button>
+        <button class="social-tab" role="tab" aria-selected="false" data-target="social-facebook">Facebook</button>
+      </div>
+
       <div class="social-grid">
 
         <!-- LinkedIn -->
-        <div class="social-card">
+        <div class="social-card" id="social-linkedin">
           <div class="social-card-header">
             <!-- LinkedIn icon -->
             <svg viewBox="0 0 24 24" fill="#0A66C2" xmlns="http://www.w3.org/2000/svg">
@@ -1108,7 +1728,7 @@
         </div>
 
         <!-- X / Twitter -->
-        <div class="social-card">
+        <div class="social-card" id="social-x">
           <div class="social-card-header">
             <!-- X icon -->
             <svg viewBox="0 0 24 24" fill="#000000" xmlns="http://www.w3.org/2000/svg">
@@ -1122,7 +1742,7 @@
         </div>
 
         <!-- Instagram -->
-        <div class="social-card">
+        <div class="social-card" id="social-instagram">
           <div class="social-card-header">
             <!-- Instagram icon -->
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -1145,7 +1765,7 @@
         </div>
 
         <!-- Facebook -->
-        <div class="social-card">
+        <div class="social-card" id="social-facebook">
           <div class="social-card-header">
             <!-- Facebook icon -->
             <svg viewBox="0 0 24 24" fill="#1877F2" xmlns="http://www.w3.org/2000/svg">
@@ -1167,13 +1787,14 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-logo">
-      <img src="assets/images/SOL.png" alt="Sol Dietetics" />
+      <img src="assets/images/SOL.png" alt="Sol Dietetics" loading="lazy" />
     </div>
     <div class="footer-copy">© 2025 Sol Dietetics. All rights reserved.</div>
   </footer>
 
   <script>
-    // Scroll animations
+    // ── SCROLL ANIMATIONS (desktop) ──
+    // IntersectionObserver adds 'visible' class when elements enter viewport
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
@@ -1184,7 +1805,8 @@
 
     document.querySelectorAll('.step, .partner-card, .rev-item').forEach(el => observer.observe(el));
 
-    // Form submit
+    // ── FORM SUBMIT ──
+    // Sends form data to Formspree and shows success message on response
     async function handleSubmit(e) {
       e.preventDefault();
       const form = e.target;
@@ -1213,7 +1835,177 @@
         alert('Something went wrong. Please try again or email us directly at sales@soldietetics.com.');
       }
     }
+
+    // ── Only run mobile JS on ≤768px screens ──
+    if (window.matchMedia('(max-width: 768px)').matches) {
+
+      // ── HAMBURGER MENU ──
+      // Toggles the mobile nav drawer open/closed with slide animation
+      const hamburger = document.getElementById('navHamburger');
+      const mobileMenu = document.getElementById('navMobileMenu');
+
+      if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', () => {
+          const isOpen = mobileMenu.classList.toggle('open');
+          hamburger.classList.toggle('open', isOpen);
+          hamburger.setAttribute('aria-expanded', isOpen);
+          mobileMenu.setAttribute('aria-hidden', !isOpen);
+        });
+
+        // Close menu when any mobile nav link is tapped
+        mobileMenu.querySelectorAll('.nav-mobile-link').forEach(link => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            hamburger.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+            mobileMenu.setAttribute('aria-hidden', 'true');
+          });
+        });
+      }
+
+      // ── STEP ACCORDION ──
+      // One step open at a time; tapping header toggles expand/collapse
+      const stepTriggers = document.querySelectorAll('.step-trigger');
+
+      stepTriggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+          const bodyId = trigger.getAttribute('aria-controls');
+          const body = document.getElementById(bodyId);
+          const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+
+          // Close all steps first (one open at a time)
+          stepTriggers.forEach(t => {
+            t.setAttribute('aria-expanded', 'false');
+            const b = document.getElementById(t.getAttribute('aria-controls'));
+            if (b) b.classList.remove('open');
+          });
+
+          // If it was closed, open it
+          if (!isOpen && body) {
+            trigger.setAttribute('aria-expanded', 'true');
+            body.classList.add('open');
+          }
+        });
+      });
+
+      // ── REVENUE MODEL ACCORDION ──
+      // One rev item open at a time; same pattern as step accordion
+      const revTriggers = document.querySelectorAll('.rev-trigger');
+
+      revTriggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+          const bodyId = trigger.getAttribute('aria-controls');
+          const body = document.getElementById(bodyId);
+          const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+
+          // Close all rev items first
+          revTriggers.forEach(t => {
+            t.setAttribute('aria-expanded', 'false');
+            const b = document.getElementById(t.getAttribute('aria-controls'));
+            if (b) b.classList.remove('open');
+          });
+
+          // If it was closed, open it
+          if (!isOpen && body) {
+            trigger.setAttribute('aria-expanded', 'true');
+            body.classList.add('open');
+          }
+        });
+      });
+
+      // ── SOCIAL TABS ──
+      // Shows one social card at a time based on active tab
+      const socialTabs = document.querySelectorAll('.social-tab');
+
+      // Initialize: activate LinkedIn tab and card by default
+      const firstCard = document.getElementById('social-linkedin');
+      if (firstCard) firstCard.classList.add('tab-active');
+
+      socialTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const targetId = tab.getAttribute('data-target');
+          const targetCard = document.getElementById(targetId);
+
+          // Deactivate all tabs and hide all cards
+          socialTabs.forEach(t => {
+            t.classList.remove('active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          document.querySelectorAll('.social-card').forEach(c => c.classList.remove('tab-active'));
+
+          // Activate selected tab and show its card
+          tab.classList.add('active');
+          tab.setAttribute('aria-selected', 'true');
+          if (targetCard) targetCard.classList.add('tab-active');
+        });
+      });
+
+      // ── CAROUSEL DOT INDICATORS ──
+      // Generates dot nav below each horizontal snap carousel and syncs on scroll
+      function initCarousel(scrollEl, dotsContainer) {
+        const items = scrollEl.children;
+        const count = items.length;
+
+        // Create one dot per item
+        for (let i = 0; i < count; i++) {
+          const dot = document.createElement('button');
+          dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+          dot.setAttribute('aria-label', 'Go to item ' + (i + 1));
+          dot.addEventListener('click', () => {
+            // Scroll carousel to corresponding item on dot click
+            items[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+          });
+          dotsContainer.appendChild(dot);
+        }
+
+        // Update active dot on scroll
+        scrollEl.addEventListener('scroll', () => {
+          const itemWidth = items[0].offsetWidth;
+          const activeIndex = Math.round(scrollEl.scrollLeft / itemWidth);
+          dotsContainer.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+            dot.classList.toggle('active', i === activeIndex);
+          });
+        }, { passive: true });
+      }
+
+      // Init service cards carousel (hero-services)
+      const servicesCarousel = document.querySelector('.hero-services');
+      if (servicesCarousel) {
+        const servicesDots = document.createElement('div');
+        servicesDots.className = 'carousel-dots';
+        servicesCarousel.parentNode.insertBefore(servicesDots, servicesCarousel.nextSibling);
+        initCarousel(servicesCarousel, servicesDots);
+      }
+
+      // Init partner cards carousel (partner-grid)
+      const partnerCarousel = document.querySelector('.partner-grid');
+      if (partnerCarousel) {
+        const partnerDots = document.createElement('div');
+        partnerDots.className = 'carousel-dots';
+        partnerCarousel.parentNode.insertBefore(partnerDots, partnerCarousel.nextSibling);
+        initCarousel(partnerCarousel, partnerDots);
+      }
+
+      // ── BACK TO TOP ──
+      // Shows floating button after user scrolls past 2vh; scrolls to top on click
+      const backToTopBtn = document.getElementById('backToTop');
+      const twoVH = window.innerHeight * 0.02;
+
+      if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+          backToTopBtn.classList.toggle('visible', window.scrollY > twoVH);
+        }, { passive: true });
+
+        backToTopBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+    } // end mobile-only JS
   </script>
+  <!-- Floating back-to-top button — visible on mobile after scrolling 2vh -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
 </html>
