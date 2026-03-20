@@ -4,10 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sol Dietetics — Expert Nutrition, Seamlessly Integrated</title>
-  <meta name="description" content="Sol Dietetics partners with gyms and online health companies to provide virtual registered dietitian services and grocery delivery through a revenue share model." />
+  <meta name="description" content="Sol Dietetics partners with gyms and health platforms to provide virtual Registered Dietitian services through a zero-cost revenue-share model. Add expert nutrition to your business today." />
   <meta property="og:title" content="Sol Dietetics — Expert Nutrition, Seamlessly Integrated" />
-  <meta property="og:description" content="Add a virtual dietitian to your gym or health platform with zero staffing cost. Revenue share model. Highest-educated RD professionals." />
+  <meta property="og:description" content="Sol Dietetics partners with gyms and health platforms to provide virtual Registered Dietitian services through a zero-cost revenue-share model. Add expert nutrition to your business today." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.soldietetics.com/" />
   <meta property="og:image" content="assets/images/SOL.png" />
   <link rel="icon" type="image/png" href="https://i.imgur.com/J2BC5rg.png" />
   <!-- Google tag (gtag.js) -->
@@ -202,6 +203,31 @@
 
     .btn-secondary:hover { gap: 0.8rem; }
 
+    /* Ghost button style for secondary CTA */
+    .btn-ghost {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--bark);
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      border: 1px solid var(--sand);
+      border-radius: 2px;
+      display: inline-block;
+      transition: all 0.2s ease;
+    }
+    .btn-ghost:hover { border-color: var(--bark); background: rgba(27,82,48,0.04); }
+
+    /* Trust line below hero CTAs */
+    .hero-trust {
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--light-text);
+      margin-top: 2rem;
+    }
+
     .hero-right {
       background: var(--bark);
       display: flex;
@@ -292,6 +318,44 @@
       text-transform: uppercase;
     }
 
+    /* STATS ROW — standalone dark band */
+    .stats-row {
+      background: var(--bark);
+      padding: 3rem 6rem;
+    }
+
+    .stats-row-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+    }
+
+    .stats-row .stat-card {
+      background: transparent;
+      border: none;
+      text-align: center;
+      padding: 0;
+    }
+
+    .stats-row .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stats-row .stat-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(248, 244, 238, 0.5);
+    }
+
     /* ── ACCORDION BASE STYLES (desktop: always expanded, buttons invisible) ── */
 
     /* Reset step-trigger button — invisible on desktop, interactive on mobile */
@@ -310,23 +374,6 @@
 
     /* Chevron hidden on desktop */
     .step-chevron { display: none; }
-
-    /* Reset rev-trigger button — invisible on desktop, interactive on mobile */
-    .rev-trigger {
-      background: none;
-      border: none;
-      padding: 0;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: default;
-      font: inherit;
-      text-align: left;
-    }
-
-    /* Chevron hidden on desktop */
-    .rev-chevron { display: none; }
 
     /* Social tabs nav hidden on desktop — shown only on mobile */
     .social-tabs { display: none; }
@@ -380,58 +427,102 @@
       margin: 2rem 0;
     }
 
-    /* HOW IT WORKS */
-    .how {
-      background: var(--warm-white);
-      border-top: 1px solid var(--sand);
-      border-bottom: 1px solid var(--sand);
-    }
+    /* HOW IT WORKS — horizontal timeline (desktop) */
+    .how { background: var(--warm-white); border-top: 1px solid var(--sand); border-bottom: 1px solid var(--sand); }
 
     .how-inner {
-      max-width: 1160px;
+      max-width: 1200px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1.6fr;
-      gap: 6rem;
-      align-items: start;
+      text-align: center;
     }
 
-    .how-steps { display: flex; flex-direction: column; gap: 0; margin-top: 0.5rem; }
+    .how-intro { margin-bottom: 3.5rem; }
+
+    .how-steps {
+      display: flex;
+      flex-direction: row;
+      position: relative;
+      gap: 0;
+      margin-top: 0;
+    }
+
+    /* Connecting line behind the step circles */
+    .how-steps::before {
+      content: '';
+      position: absolute;
+      top: 24px;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: var(--sand);
+      z-index: 0;
+    }
 
     .step {
-      display: grid;
-      grid-template-columns: 3rem 1fr;
-      gap: 1.5rem;
-      padding: 1.75rem 0;
-      border-bottom: 1px solid var(--sand);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+      border-bottom: none;
+      position: relative;
+      z-index: 1;
       opacity: 0;
-      transform: translateX(20px);
+      transform: translateY(20px);
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
-    .step.visible { opacity: 1; transform: translateX(0); }
+    .step.visible { opacity: 1; transform: translateY(0); }
     .step:last-child { border-bottom: none; }
 
-    .step-num {
+    .step .step-num, .step > .step-num {
+      display: none; /* hide the old step-num span */
+    }
+
+    /* The step-trigger becomes the circle node + title */
+    .step-trigger {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: default;
+    }
+
+    .step-trigger::before {
+      content: attr(data-num);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--bark);
+      color: var(--cream);
       font-family: 'Cormorant Garamond', serif;
       font-size: 1rem;
       font-weight: 400;
-      color: var(--clay);
-      padding-top: 0.15rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
 
     .step-content h3 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.35rem;
+      font-size: 1.1rem;
       font-weight: 400;
       color: var(--charcoal);
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.5rem;
     }
 
+    .step-chevron { display: none; } /* hidden on desktop */
+
+    /* Step body always visible on desktop */
+    .step-body { max-height: none; overflow: visible; }
+
     .step-content p {
-      font-size: 0.87rem;
+      font-size: 0.82rem;
       font-weight: 300;
-      line-height: 1.72;
+      line-height: 1.65;
+      max-width: 200px;
+      margin: 0 auto;
       color: var(--light-text);
     }
 
@@ -487,62 +578,342 @@
       color: var(--light-text);
     }
 
-    /* REVENUE MODEL */
-    .revenue { background: var(--bark); color: var(--cream); }
+    /* WHAT YOU GET — merged 6-card benefit grid */
+    .whatyouget {
+      background: var(--warm-white);
+      border-top: 1px solid var(--sand);
+      border-bottom: 1px solid var(--sand);
+    }
 
-    .revenue-inner {
-      max-width: 1160px;
+    .whatyouget-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .whatyouget-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .whatyouget-card {
+      background: var(--cream);
+      padding: 2.25rem;
+      border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.2s ease;
+    }
+
+    .whatyouget-card.visible { opacity: 1; transform: translateY(0); }
+    .whatyouget-card:hover { transform: translateY(-3px); box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+
+    .whatyouget-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(232, 144, 10, 0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      color: var(--sun);
+    }
+
+    .whatyouget-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 0.6rem;
+    }
+
+    .whatyouget-card p {
+      font-size: 0.85rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--light-text);
+    }
+
+    /* MID-PAGE CTA BANNER */
+    .mid-cta {
+      background: var(--bark);
+      padding: 4rem 6rem;
+      text-align: center;
+    }
+
+    .mid-cta-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .mid-cta h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 2.5vw, 2.6rem);
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 2rem;
+    }
+
+    .mid-cta .btn-primary {
+      background: var(--cream);
+      color: var(--bark);
+    }
+
+    .mid-cta .btn-primary:hover {
+      background: var(--warm-white);
+      transform: translateY(-2px);
+    }
+
+    /* WHY SOL DIETETICS — social proof */
+    .why-sol { background: var(--cream); }
+
+    .why-sol-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .testimonial-card {
+      max-width: 720px;
+      margin: 3rem auto 2.5rem;
+      padding: 2.5rem 3rem;
+      background: var(--warm-white);
+      border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      border-left: 3px solid var(--sun);
+    }
+
+    .testimonial-card blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.65;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-card cite {
+      font-size: 0.8rem;
+      font-weight: 400;
+      font-style: normal;
+      color: var(--light-text);
+      letter-spacing: 0.04em;
+    }
+
+    .credential-badges {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 3rem;
+    }
+
+    .badge {
+      padding: 0.5rem 1.25rem;
+      background: var(--warm-white);
+      border: 1px solid var(--sand);
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--text);
+    }
+
+    .founder-blurb {
+      max-width: 720px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 6rem;
+      grid-template-columns: 120px 1fr;
+      gap: 2rem;
+      text-align: left;
       align-items: center;
     }
 
-    .revenue .section-tag { color: var(--clay); }
-    .revenue .section-tag::before { background: var(--clay); }
-    .revenue .section-title { color: var(--cream); }
-
-    .revenue-desc {
-      font-size: 0.93rem;
-      font-weight: 300;
-      line-height: 1.82;
-      color: rgba(248,244,238,0.65);
-      margin-top: 1.25rem;
+    .founder-photo {
+      width: 120px;
+      height: 120px;
+      background: var(--sand);
+      border-radius: 50%;
     }
 
-    .revenue-features { display: flex; flex-direction: column; gap: 1.25rem; }
-
-    .rev-item {
-      display: flex;
-      gap: 1.25rem;
-      align-items: flex-start;
-      padding: 1.6rem 1.8rem;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(196,168,130,0.18);
-      border-radius: 4px;
-      opacity: 0;
-      transform: translateX(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .rev-item.visible { opacity: 1; transform: translateX(0); }
-
-    .rev-check { font-size: 0.65rem; color: var(--sun); margin-top: 0.35rem; flex-shrink: 0; }
-
-    .rev-item h4 {
+    .founder-text h3 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 400;
-      color: var(--cream);
-      margin-bottom: 0.3rem;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
     }
 
-    .rev-item p {
-      font-size: 0.82rem;
+    .founder-text p {
+      font-size: 0.88rem;
       font-weight: 300;
-      line-height: 1.65;
-      color: rgba(248,244,238,0.55);
+      line-height: 1.7;
+      color: var(--light-text);
+    }
+
+    /* PARTNER SPOTLIGHT */
+    .partner-spotlight {
+      background: var(--warm-white);
+      border-top: 1px solid var(--sand);
+      border-bottom: 1px solid var(--sand);
+    }
+
+    .spotlight-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .spotlight-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .spotlight-card {
+      padding: 2.25rem;
+      border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      background: var(--cream);
+    }
+
+    .spotlight-card.featured {
+      background: var(--cream);
+      border-left: 3px solid var(--sun);
+    }
+
+    .spotlight-card.placeholder {
+      background: transparent;
+      border: 2px dashed var(--sand);
+      box-shadow: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .spotlight-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(232, 144, 10, 0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      color: var(--sun);
+    }
+
+    .spotlight-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 0.6rem;
+    }
+
+    .spotlight-card p {
+      font-size: 0.85rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--light-text);
+      margin-bottom: 0.75rem;
+    }
+
+    .spotlight-location {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--light-text);
+      display: block;
+      margin-top: 0.5rem;
+    }
+
+    .spotlight-cta {
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--terra);
+      text-decoration: none;
+      margin-top: auto;
+      transition: color 0.2s;
+    }
+
+    .spotlight-cta:hover { color: var(--bark); }
+
+    /* FAQ */
+    .faq { background: var(--cream); }
+
+    .faq-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+
+    .faq-item {
+      background: var(--warm-white);
+      border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      overflow: hidden;
+    }
+
+    .faq-trigger {
+      background: none;
+      border: none;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.5rem;
+      cursor: pointer;
+      text-align: left;
+      font: inherit;
+      transition: background 0.2s;
+      min-height: 44px;
+    }
+
+    .faq-trigger:hover { background: rgba(0,0,0,0.02); }
+
+    .faq-trigger h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--charcoal);
+    }
+
+    .faq-chevron {
+      font-size: 1.2rem;
+      color: var(--clay);
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .faq-trigger[aria-expanded="true"] .faq-chevron { transform: rotate(45deg); }
+
+    .faq-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .faq-body.open { max-height: 200px; }
+
+    .faq-body p {
+      padding: 0 1.5rem 1.25rem;
+      font-size: 0.87rem;
+      font-weight: 300;
+      line-height: 1.72;
+      color: var(--light-text);
     }
 
     /* CONTACT */
@@ -608,6 +979,33 @@
 
     .form-submit { grid-column: 1 / -1; text-align: center; margin-top: 0.75rem; }
     .form-submit .btn-primary { padding: 1rem 3rem; font-size: 0.83rem; }
+
+    /* CONTACT EXTRAS */
+    .contact-extras {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .contact-soft-cta {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--light-text);
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-soft-cta a {
+      color: var(--terra);
+      text-decoration: none;
+      font-weight: 400;
+    }
+
+    .contact-soft-cta a:hover { color: var(--bark); }
+
+    .contact-direct {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--light-text);
+    }
 
     /* SUCCESS MESSAGE */
     .success-msg {
@@ -729,118 +1127,92 @@
       .social-grid { grid-template-columns: 1fr; }
     }
 
-    /* FOOTER */
+    /* FOOTER — expanded */
     footer {
       background: var(--charcoal);
-      padding: 2.5rem 6rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      padding: 4rem 6rem 0;
     }
 
-    .footer-logo img { height: 40px; width: auto; display: block; }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-logo img { height: 40px; width: auto; display: block; margin-bottom: 1rem; }
+
+    .footer-tagline {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.6;
+    }
+
+    .footer-links h4,
+    .footer-contact h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+
+    .footer-links ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .footer-links a {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--cream); }
+
+    .footer-contact p {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.8;
+    }
+
+    .footer-social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .footer-social-icons a {
+      color: rgba(255,255,255,0.4);
+      transition: color 0.2s;
+    }
+
+    .footer-social-icons a:hover { color: var(--cream); }
+
+    .footer-bottom {
+      padding: 1.5rem 0;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
     .footer-copy {
       font-size: 0.73rem;
       font-weight: 300;
-      color: rgba(255,255,255,0.28);
+      color: rgba(255,255,255,0.2);
       letter-spacing: 0.06em;
     }
 
-    /* PARTNER MAP */
-    .partner-map {
-      background: var(--warm-white);
-      border-top: 1px solid var(--sand);
-      border-bottom: 1px solid var(--sand);
-    }
-
-    .partner-map-inner {
-      max-width: 1160px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1.6fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-
-    .map-frame {
-      border-radius: 6px;
-      overflow: hidden;
-      border: 1px solid var(--sand);
-      height: 380px;
-    }
-
-    .map-frame iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: block;
-    }
-
-    .map-partner-card {
-      display: flex;
-      flex-direction: column;
-      gap: 1.75rem;
-    }
-
-    .map-location {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .map-location-item {
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-    }
-
-    .map-location-icon {
-      width: 40px;
-      height: 40px;
-      background: rgba(27, 82, 48, 0.08);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      flex-shrink: 0;
-    }
-
-    .map-location-item h4 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem;
-      font-weight: 400;
-      color: var(--charcoal);
-      margin-bottom: 0.25rem;
-    }
-
-    .map-location-item p {
-      font-size: 0.83rem;
-      font-weight: 300;
-      line-height: 1.65;
-      color: var(--light-text);
-    }
-
-    .map-cta-note {
-      font-size: 0.78rem;
-      font-weight: 300;
-      color: var(--light-text);
-      line-height: 1.6;
-      padding-top: 1rem;
-      border-top: 1px solid var(--sand);
-    }
-
-    .map-cta-note em {
-      font-style: normal;
-      color: var(--terra);
-      font-weight: 400;
-    }
-
-    @media (max-width: 960px) {
-      .partner-map-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-      .map-frame { height: 280px; }
-    }
+    /* Mobile fixed CTA — hidden on desktop, shown on mobile */
+    .nav-mobile-cta-fixed { display: none; }
 
     /* ANIMATIONS */
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
@@ -857,13 +1229,12 @@
       /* Reduce section padding on tablet */
       section { padding: 4.5rem 1.5rem; }
       /* Stack how-inner columns on tablet */
-      .how-inner { grid-template-columns: 1fr; gap: 3rem; }
-      /* Stack revenue columns on tablet */
-      .revenue-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .how-inner { text-align: center; }
       /* Stack contact form on tablet */
       .contact-form { grid-template-columns: 1fr; }
       /* Stack footer on tablet */
-      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+      footer { padding: 2rem 1.5rem; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
     }
 
     /* ── MOBILE (≤768px): full mobile experience ── */
@@ -1165,77 +1536,6 @@
       }
 
       /* ───────────────────────────────────────────
-         PARTNER MAP: reduce vertical padding
-      ─────────────────────────────────────────── */
-
-      /* Reduce partner map section padding to 32px */
-      .partner-map { padding: 2rem 1.25rem; }
-
-      /* Stack map columns */
-      .partner-map-inner { grid-template-columns: 1fr; gap: 1.5rem; }
-
-      /* Reduce map height on mobile */
-      .map-frame { height: 220px; }
-
-      /* ───────────────────────────────────────────
-         REVENUE MODEL: accordion
-      ─────────────────────────────────────────── */
-
-      /* Stack revenue columns */
-      .revenue-inner { grid-template-columns: 1fr; gap: 2rem; }
-
-      /* Override desktop flex for accordion block layout */
-      .rev-item {
-        display: block;
-        padding: 0 1.25rem;
-        opacity: 1 !important; /* override scroll animation */
-        transform: none !important;
-      }
-
-      /* Rev trigger: full-width tap target showing icon + title + chevron */
-      .rev-trigger {
-        cursor: pointer;
-        padding: 0.9rem 0;
-        min-height: 44px; /* ≥44px tap target */
-        border-bottom: 1px solid rgba(196,168,130,0.2);
-      }
-
-      /* Rev trigger open state */
-      .rev-trigger[aria-expanded="true"] { border-bottom: none; }
-
-      /* Show rev chevron on mobile */
-      .rev-chevron {
-        display: block;
-        font-size: 1.1rem;
-        color: var(--clay);
-        transition: transform 0.3s ease;
-        flex-shrink: 0;
-        min-width: 28px;
-        text-align: center;
-        min-height: 28px;
-        line-height: 28px;
-      }
-
-      /* Rotate chevron when rev item is open */
-      .rev-trigger[aria-expanded="true"] .rev-chevron { transform: rotate(45deg); }
-
-      /* Hide desktop ◆ check icon (title visible in trigger) */
-      .rev-item > .rev-check { display: none; }
-
-      /* Rev body: collapsed by default, 300ms ease animation */
-      .rev-body {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
-      }
-
-      /* Expanded rev body */
-      .rev-body.open { max-height: 180px; }
-
-      /* Padding inside expanded rev body */
-      .rev-body p { padding: 0.5rem 0 1rem; }
-
-      /* ───────────────────────────────────────────
          CONTACT FORM: full-width stacked, 32px padding
       ─────────────────────────────────────────── */
 
@@ -1375,9 +1675,130 @@
       }
 
       /* ───────────────────────────────────────────
-         FOOTER: compact on mobile
+         NAV: always-visible mobile CTA pill
       ─────────────────────────────────────────── */
-      footer { padding: 1.5rem 1.25rem; }
+      .nav-mobile-cta-fixed {
+        display: inline-block;
+        background: var(--bark);
+        color: var(--cream);
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 2px;
+        min-height: 36px;
+        line-height: 1.4;
+        margin-right: 0.5rem;
+      }
+
+      /* ───────────────────────────────────────────
+         STATS ROW: compact horizontal on mobile
+      ─────────────────────────────────────────── */
+      .stats-row { padding: 1.5rem 1.25rem; }
+      .stats-row-inner { gap: 1.5rem; }
+      .stats-row .stat-number { font-size: 1.6rem; }
+      .stats-row .stat-label { font-size: 0.58rem; letter-spacing: 0.08em; }
+
+      /* ───────────────────────────────────────────
+         WHAT YOU GET: horizontal snap carousel
+      ─────────────────────────────────────────── */
+      .whatyouget-grid {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 0;
+        margin-top: 1.5rem;
+      }
+
+      .whatyouget-grid::-webkit-scrollbar { display: none; }
+
+      .whatyouget-card {
+        min-width: 82%;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+        margin-right: 0.75rem;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      /* ───────────────────────────────────────────
+         HOW IT WORKS: fix mobile timeline override
+      ─────────────────────────────────────────── */
+      .how-steps { flex-direction: column; gap: 0; }
+      .how-steps::before { display: none; }
+      .step-trigger::before {
+        width: auto;
+        height: auto;
+        border-radius: 0;
+        background: none;
+        font-size: 0.95rem;
+      }
+
+      /* ───────────────────────────────────────────
+         MID-PAGE CTA: compact on mobile
+      ─────────────────────────────────────────── */
+      .mid-cta { padding: 2.5rem 1.25rem; }
+      .mid-cta h2 { font-size: 1.4rem; margin-bottom: 1.25rem; }
+      .mid-cta .btn-primary { width: 100%; min-height: 44px; }
+
+      /* ───────────────────────────────────────────
+         WHY SOL DIETETICS: stack vertically
+      ─────────────────────────────────────────── */
+      .testimonial-card {
+        margin: 2rem auto 1.5rem;
+        padding: 1.75rem 1.5rem;
+        width: 100%;
+      }
+
+      .testimonial-card blockquote { font-size: 1.1rem; }
+
+      .credential-badges {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .founder-blurb {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 1rem;
+      }
+
+      .founder-photo { margin: 0 auto; width: 90px; height: 90px; }
+
+      /* ───────────────────────────────────────────
+         PARTNER SPOTLIGHT: stack vertically
+      ─────────────────────────────────────────── */
+      .spotlight-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .spotlight-card { padding: 1.5rem; }
+
+      /* ───────────────────────────────────────────
+         FAQ: single-column accordion
+      ─────────────────────────────────────────── */
+      .faq-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+      }
+
+      .faq-trigger { min-height: 44px; padding: 1rem 1.25rem; }
+
+      /* ───────────────────────────────────────────
+         FOOTER: compact stacked on mobile
+      ─────────────────────────────────────────── */
+      footer { padding: 1.5rem 1.25rem 0; }
+      .footer-inner { grid-template-columns: 1fr; gap: 1.5rem; }
 
     } /* end @media (max-width: 768px) */
   </style>
@@ -1387,25 +1808,27 @@
   <!-- NAV -->
   <nav>
     <a class="nav-logo" href="#">
-      <img src="assets/images/SOL.png" alt="Sol Dietetics" />
+      <img src="assets/images/SOL.png" alt="Sol Dietetics" width="48" height="48" />
     </a>
     <ul class="nav-links">
       <li><a href="#how">How It Works</a></li>
-      <li><a href="#partners">Partners</a></li>
-      <li><a href="#model">Revenue Model</a></li>
-      <li><a href="#contact" class="nav-cta">Partner With Us</a></li>
+      <li><a href="#whatyouget">What You Get</a></li>
+      <li><a href="#partners">Who We Serve</a></li>
+      <li><a href="#contact" class="nav-cta">Get Started</a></li>
     </ul>
     <!-- Mobile hamburger button — hidden on desktop -->
     <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false" id="navHamburger">
       <span></span><span></span><span></span>
     </button>
+    <!-- NEW: Always-visible mobile CTA -->
+    <a href="#contact" class="nav-mobile-cta-fixed" id="navMobileCta">Get Started</a>
     <!-- Mobile slide-down menu drawer — hidden on desktop -->
     <div class="nav-mobile-menu" id="navMobileMenu" aria-hidden="true">
       <ul>
         <li><a href="#how" class="nav-mobile-link">How It Works</a></li>
-        <li><a href="#partners" class="nav-mobile-link">Partners</a></li>
-        <li><a href="#model" class="nav-mobile-link">Revenue Model</a></li>
-        <li><a href="#contact" class="nav-mobile-link nav-mobile-cta">Partner With Us</a></li>
+        <li><a href="#whatyouget" class="nav-mobile-link">What You Get</a></li>
+        <li><a href="#partners" class="nav-mobile-link">Who We Serve</a></li>
+        <li><a href="#contact" class="nav-mobile-link nav-mobile-cta">Get Started</a></li>
       </ul>
     </div>
   </nav>
@@ -1417,37 +1840,38 @@
       <h1 class="hero-headline">
         Expert nutrition,<br/><em>effortlessly</em><br/>integrated.
       </h1>
-      <p class="hero-sub">Sol Dietetics partners with gyms and online health companies to provide top-tier registered dietitian services — at zero staffing cost, with a shared revenue model.</p>
+      <p class="hero-sub">We embed licensed Registered Dietitians into your gym, studio, or health platform — you earn revenue, your clients get expert care, and it costs you nothing to staff.</p>
       <div class="hero-actions">
-        <a href="#contact" class="btn-primary">Partner With Us</a>
-        <a href="#how" class="btn-secondary">See how it works →</a>
+        <a href="#contact" class="btn-primary">Get Started — It's Free to Partner</a>
+        <a href="#how" class="btn-secondary">See How It Works ↓</a>
       </div>
+      <p class="hero-trust">Board-certified RDNs · HIPAA compliant · Zero cost to you</p>
     </div>
     <div class="hero-right">
       <div class="hero-services">
         <div class="hero-svc-item">
-          <div class="hero-svc-icon">🥗</div>
+          <div class="hero-svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg></div>
           <div>
             <h4>Virtual RD Consultations</h4>
             <p>Certified dietitians deliver 1-on-1 nutrition coaching entirely online — no clinic, no commute.</p>
           </div>
         </div>
         <div class="hero-svc-item">
-          <div class="hero-svc-icon">📋</div>
+          <div class="hero-svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></div>
           <div>
             <h4>Personalized Meal Plans</h4>
             <p>Evidence-based plans tailored to each client's goals, lifestyle, and health history.</p>
           </div>
         </div>
         <div class="hero-svc-item">
-          <div class="hero-svc-icon">🛒</div>
+          <div class="hero-svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
           <div>
             <h4>Grocery Delivery</h4>
             <p>Dietitian-curated ingredients delivered to your clients' doors — a premium add-on they'll love.</p>
           </div>
         </div>
         <div class="hero-svc-item">
-          <div class="hero-svc-icon">💰</div>
+          <div class="hero-svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
           <div>
             <h4>Revenue Share Model</h4>
             <p>Earn a percentage of every service — zero staffing overhead, consistent monthly payouts.</p>
@@ -1464,14 +1888,90 @@
           <div class="stat-label">Certified Dietitians</div>
         </div>
         <div class="stat-card">
-          <div class="stat-number">∞</div>
-          <div class="stat-label">Revenue Potential</div>
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Managed</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
+  <!-- NEW: Stats Row — standalone section for visibility on both desktop and mobile -->
+  <section class="stats-row">
+    <div class="stats-row-inner">
+      <div class="stat-card">
+        <div class="stat-number">$0</div>
+        <div class="stat-label">Staffing Cost</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">RD</div>
+        <div class="stat-label">Certified Dietitians</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Managed</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW: What You Get — 6 merged service/value cards -->
+  <section class="whatyouget" id="whatyouget">
+    <div class="whatyouget-inner">
+      <p class="section-tag">What You Get</p>
+      <h2 class="section-title">Everything your business needs<br/>to offer <em>expert nutrition.</em></h2>
+      <div class="whatyouget-grid">
+        <div class="whatyouget-card">
+          <div class="whatyouget-icon">
+            <!-- Lucide video icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--sun)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
+          </div>
+          <h3>Virtual RD Consultations</h3>
+          <p>Licensed dietitians deliver 1-on-1 coaching to your clients, fully virtual and fully managed.</p>
+        </div>
+        <div class="whatyouget-card">
+          <div class="whatyouget-icon">
+            <!-- Lucide clipboard-list icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--sun)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg>
+          </div>
+          <h3>Personalized Meal Plans</h3>
+          <p>Evidence-based plans tailored to each client's goals, lifestyle, and health history.</p>
+        </div>
+        <div class="whatyouget-card">
+          <div class="whatyouget-icon">
+            <!-- Lucide shopping-cart icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--sun)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          </div>
+          <h3>Grocery Delivery Add-On</h3>
+          <p>Dietitian-curated groceries delivered to your clients' doors — a premium upsell.</p>
+        </div>
+        <div class="whatyouget-card">
+          <div class="whatyouget-icon">
+            <!-- Lucide dollar-sign icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--sun)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3>Zero Staffing Cost</h3>
+          <p>We hire and manage the RDs. You take the upside without the payroll.</p>
+        </div>
+        <div class="whatyouget-card">
+          <div class="whatyouget-icon">
+            <!-- Lucide trending-up icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--sun)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          <h3>Revenue Share on Everything</h3>
+          <p>Earn a percentage of every consultation, plan, and delivery your clients purchase.</p>
+        </div>
+        <div class="whatyouget-card">
+          <div class="whatyouget-icon">
+            <!-- Lucide settings/wrench icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--sun)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h3>Turnkey Client Experience</h3>
+          <p>From intake forms to delivery tracking, we manage the entire journey. Zero admin for your team.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS (moved) -->
   <section class="how" id="how">
     <div class="how-inner">
       <div>
@@ -1545,24 +2045,41 @@
     </div>
   </section>
 
-  <!-- WHO WE SERVE -->
+  <!-- NEW: Mid-page CTA banner — catches visitors already sold after seeing the process -->
+  <section class="mid-cta">
+    <div class="mid-cta-inner">
+      <h2>Ready to add nutrition services to your business?</h2>
+      <a href="#contact" class="btn-primary">Get Started — It's Free to Partner</a>
+    </div>
+  </section>
+
+  <!-- WHO WE SERVE (moved) -->
   <section class="partners" id="partners">
     <div class="partners-inner">
       <p class="section-tag">Who We Serve</p>
       <h2 class="section-title">Built for businesses<br/>that put <em>health first.</em></h2>
       <div class="partner-grid">
         <div class="partner-card">
-          <div class="partner-icon">🏋️</div>
+          <div class="partner-icon">
+            <!-- Lucide dumbbell icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5h11M6.5 17.5h11M2 12h4M18 12h4M3 6.5V8M3 16v1.5M21 6.5V8M21 16v1.5M6.5 6.5v11M17.5 6.5v11"/></svg>
+          </div>
           <h3>Fitness Gyms</h3>
           <p>Add a premium nutrition service to your membership offering without hiring an in-house dietitian. Your clients get expert guidance; you earn a new revenue stream.</p>
         </div>
         <div class="partner-card">
-          <div class="partner-icon">💻</div>
+          <div class="partner-icon">
+            <!-- Lucide monitor icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
           <h3>Online Health Platforms</h3>
           <p>Deepen your digital wellness offering with evidence-based dietetic services. We integrate seamlessly into your client experience — white-label options available.</p>
         </div>
         <div class="partner-card">
-          <div class="partner-icon">🌿</div>
+          <div class="partner-icon">
+            <!-- Lucide leaf icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+          </div>
           <h3>Wellness Studios</h3>
           <p>Yoga studios, pilates centers, and holistic health providers — complement your practice with nutrition services your clientele already want and need.</p>
         </div>
@@ -1570,91 +2087,132 @@
     </div>
   </section>
 
-  <!-- PARTNER MAP -->
-  <section class="partner-map">
-    <div class="partner-map-inner">
-      <div class="map-frame">
-        <iframe
-          src="https://maps.google.com/maps?q=CrossFit+Inner+Chamber,+42247+12th+St+W+Ste+101,+Lancaster,+CA+93534&output=embed&z=8"
-          allowfullscreen
-          loading="lazy"
-          title="Sol Dietetics partner location">
-        </iframe>
+  <!-- NEW: Why Sol Dietetics — social proof and trust signals -->
+  <section class="why-sol" id="why">
+    <div class="why-sol-inner">
+      <p class="section-tag">Why Sol Dietetics</p>
+      <h2 class="section-title">Trusted by businesses<br/>that put <em>health first.</em></h2>
+
+      <!-- Testimonial placeholder -->
+      <div class="testimonial-card">
+        <!-- PLACEHOLDER: Add CrossFit Inner Chamber testimonial — owner name, title, quote about their experience -->
+        <blockquote>"Sol Dietetics has been a game-changer for our members. The nutrition coaching integrates seamlessly with our training programs."</blockquote>
+        <cite><!-- PLACEHOLDER: Owner name, title --> — CrossFit Inner Chamber, Lancaster CA</cite>
       </div>
-      <div class="map-partner-card">
-        <div>
-          <p class="section-tag">Our Partners</p>
-          <h2 class="section-title">Growing <em>together,</em><br/>one partner at a time.</h2>
+
+      <!-- Credential badges -->
+      <div class="credential-badges">
+        <span class="badge">Board-Certified RDNs</span>
+        <span class="badge">HIPAA Compliant</span>
+        <span class="badge">Evidence-Based Practice</span>
+        <span class="badge">Academy of Nutrition and Dietetics</span>
+      </div>
+
+      <!-- Founder blurb -->
+      <div class="founder-blurb">
+        <div class="founder-photo">
+          <!-- PLACEHOLDER: Founder headshot image -->
         </div>
-        <div class="map-location">
-          <div class="map-location-item">
-            <div class="map-location-icon">🏋️</div>
-            <div>
-              <h4>CrossFit Inner Chamber</h4>
-              <p>42247 12th St W, Suite 101<br/>Lancaster, CA 93534</p>
-            </div>
-          </div>
+        <div class="founder-text">
+          <h3><!-- PLACEHOLDER: Founder name, RD/RDN credentials --></h3>
+          <p><!-- PLACEHOLDER: 2-3 sentence founder bio — mission statement, background, why they started Sol Dietetics --></p>
         </div>
-        <p class="map-cta-note">Interested in joining our network? <em><a href="#contact" style="color: var(--terra); text-decoration: none;">Become a partner →</a></em></p>
       </div>
     </div>
   </section>
 
-  <!-- REVENUE MODEL -->
-  <section class="revenue" id="model">
-    <div class="revenue-inner">
-      <div>
-        <p class="section-tag">Revenue Model</p>
-        <h2 class="section-title">You grow your business.<br/>We handle the rest.</h2>
-        <p class="revenue-desc">Sol Dietetics was built to eliminate the barriers between your clients and world-class nutrition care. Our revenue share model means your success is our success — we only win when you do.</p>
+  <!-- NEW: Partner Spotlight — replaces Partner Map -->
+  <section class="partner-spotlight" id="spotlight">
+    <div class="spotlight-inner">
+      <p class="section-tag">Our Partners</p>
+      <h2 class="section-title">Growing <em>together,</em><br/>one partner at a time.</h2>
+
+      <div class="spotlight-grid">
+        <!-- Featured partner card -->
+        <div class="spotlight-card featured">
+          <div class="spotlight-icon">
+            <!-- Lucide dumbbell icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5h11M6.5 17.5h11M2 12h4M18 12h4M3 6.5V8M3 16v1.5M21 6.5V8M21 16v1.5M6.5 6.5v11M17.5 6.5v11"/></svg>
+          </div>
+          <h3>CrossFit Inner Chamber</h3>
+          <p>Our founding partner — providing virtual dietitian services to their members in Lancaster, California.</p>
+          <span class="spotlight-location">42247 12th St W, Suite 101, Lancaster, CA 93534</span>
+        </div>
+
+        <!-- Placeholder partner slots -->
+        <div class="spotlight-card placeholder">
+          <h3>Your Business Here?</h3>
+          <p>Join our growing network of health-focused partners.</p>
+          <a href="#contact" class="spotlight-cta">Start a Partnership →</a>
+        </div>
+        <div class="spotlight-card placeholder">
+          <h3>Your Business Here?</h3>
+          <p>Zero cost to partner. Revenue from day one.</p>
+          <a href="#contact" class="spotlight-cta">Get Started →</a>
+        </div>
       </div>
-      <div class="revenue-features">
-        <div class="rev-item">
-          <span class="rev-check">◆</span>
-          <div>
-            <button class="rev-trigger" aria-expanded="false" aria-controls="rev-body-0">
-              <h4>No Staffing Overhead</h4>
-              <span class="rev-chevron" aria-hidden="true">+</span>
-            </button>
-            <div class="rev-body" id="rev-body-0">
-              <p>Registered Dietitians are expensive to hire full-time. We staff them for you — you take the upside without the payroll.</p>
-            </div>
+    </div>
+  </section>
+
+  <!-- NEW: FAQ — preemptively handles objections -->
+  <section class="faq" id="faq">
+    <div class="faq-inner">
+      <p class="section-tag">Frequently Asked Questions</p>
+      <h2 class="section-title">Everything you need<br/>to <em>know.</em></h2>
+
+      <div class="faq-grid">
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false" aria-controls="faq-body-0">
+            <h3>How much does it cost to partner?</h3>
+            <span class="faq-chevron" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-body" id="faq-body-0">
+            <p>Free. We operate on a revenue-share model — you earn money, never spend it. There are no upfront fees, no contracts, and no hidden costs.</p>
           </div>
         </div>
-        <div class="rev-item">
-          <span class="rev-check">◆</span>
-          <div>
-            <button class="rev-trigger" aria-expanded="false" aria-controls="rev-body-1">
-              <h4>Shared Revenue on All Services</h4>
-              <span class="rev-chevron" aria-hidden="true">+</span>
-            </button>
-            <div class="rev-body" id="rev-body-1">
-              <p>Earn a percentage of every consultation, nutrition plan, and grocery delivery purchased by your referred clients.</p>
-            </div>
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false" aria-controls="faq-body-1">
+            <h3>How long does onboarding take?</h3>
+            <span class="faq-chevron" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-body" id="faq-body-1">
+            <p>Most partners are live within 1–2 weeks. We handle the setup, so your team doesn't need to do anything beyond a quick onboarding call.</p>
           </div>
         </div>
-        <div class="rev-item">
-          <span class="rev-check">◆</span>
-          <div>
-            <button class="rev-trigger" aria-expanded="false" aria-controls="rev-body-2">
-              <h4>Highest-Educated Professionals</h4>
-              <span class="rev-chevron" aria-hidden="true">+</span>
-            </button>
-            <div class="rev-body" id="rev-body-2">
-              <p>Our RDs hold advanced degrees and clinical credentials — your clients receive care that reflects your commitment to quality.</p>
-            </div>
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false" aria-controls="faq-body-2">
+            <h3>What technology do your RDs use?</h3>
+            <span class="faq-chevron" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-body" id="faq-body-2">
+            <p>Secure, HIPAA-compliant video consultations. We integrate with your existing client flow — no new software for your team to learn.</p>
           </div>
         </div>
-        <div class="rev-item">
-          <span class="rev-check">◆</span>
-          <div>
-            <button class="rev-trigger" aria-expanded="false" aria-controls="rev-body-3">
-              <h4>Turnkey Client Experience</h4>
-              <span class="rev-chevron" aria-hidden="true">+</span>
-            </button>
-            <div class="rev-body" id="rev-body-3">
-              <p>From intake forms to delivery tracking, we manage the entire client journey so your team spends zero time on administration.</p>
-            </div>
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false" aria-controls="faq-body-3">
+            <h3>Do you offer white-label services?</h3>
+            <span class="faq-chevron" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-body" id="faq-body-3">
+            <p>Yes. We can operate under your brand so the experience feels native to your clients. Your brand, our expertise.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false" aria-controls="faq-body-4">
+            <h3>What qualifications do your dietitians have?</h3>
+            <span class="faq-chevron" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-body" id="faq-body-4">
+            <p>All providers are Registered Dietitian Nutritionists (RDNs) with advanced degrees and clinical credentials from accredited institutions.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false" aria-controls="faq-body-5">
+            <h3>How do my clients sign up?</h3>
+            <span class="faq-chevron" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-body" id="faq-body-5">
+            <p>We handle everything — intake, scheduling, and onboarding. You just refer your clients and we take it from there.</p>
           </div>
         </div>
       </div>
@@ -1665,8 +2223,8 @@
   <section class="contact" id="contact">
     <div class="contact-inner">
       <p class="section-tag">Get In Touch</p>
-      <h2 class="section-title">Ready to offer expert<br/>nutrition to your clients?</h2>
-      <p class="contact-sub">Tell us about your business and we'll reach out to discuss a partnership that works for you.</p>
+      <h2 class="section-title">Start Your Free<br/>Partnership</h2>
+      <p class="contact-sub">No contracts. No cost. Just a conversation about how we can grow together.</p>
       <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
         <div class="form-group">
           <label>First Name</label>
@@ -1696,8 +2254,25 @@
           </select>
         </div>
         <div class="form-group full">
-          <label>Tell us about your clients</label>
-          <textarea name="message" placeholder="How many members/clients do you have? What are their primary health goals?"></textarea>
+          <label>Approximate Number of Members/Clients</label>
+          <select name="client_count">
+            <option value="">Select range</option>
+            <option>Under 100</option>
+            <option>100–500</option>
+            <option>500–1,000</option>
+            <option>1,000+</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label>How Did You Hear About Us?</label>
+          <select name="referral_source">
+            <option value="">Select one</option>
+            <option>Google Search</option>
+            <option>Social Media</option>
+            <option>Referral</option>
+            <option>Industry Event</option>
+            <option>Other</option>
+          </select>
         </div>
         <input type="hidden" name="_subject" value="New Partnership Inquiry — Sol Dietetics" />
         <div class="form-submit">
@@ -1707,6 +2282,10 @@
       <div class="success-msg" id="successMsg">
         <p>Thank you for reaching out!</p>
         <span>We'll be in touch within 1–2 business days to discuss your partnership.</span>
+      </div>
+      <div class="contact-extras">
+        <p class="contact-soft-cta">Not ready yet? <a href="#">Download our Partnership Overview →</a> <!-- PLACEHOLDER: PDF download link --></p>
+        <p class="contact-direct">Prefer to reach out directly? Email us at <!-- PLACEHOLDER: email address --> or call <!-- PLACEHOLDER: phone number --></p>
       </div>
     </div>
   </section>
@@ -1798,12 +2377,47 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- NEW: Footer — expanded with links, legal, contact, and social icons -->
   <footer>
-    <div class="footer-logo">
-      <img src="assets/images/SOL.png" alt="Sol Dietetics" loading="lazy" />
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/images/SOL.png" alt="Sol Dietetics" width="40" height="40" loading="lazy" />
+        </div>
+        <p class="footer-tagline">Expert nutrition, seamlessly integrated.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#how">How It Works</a></li>
+          <li><a href="#whatyouget">What You Get</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li><!-- PLACEHOLDER: Privacy Policy page -->
+          <li><a href="#">Terms of Service</a></li><!-- PLACEHOLDER: Terms of Service page -->
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p><!-- PLACEHOLDER: email address --></p>
+        <p><!-- PLACEHOLDER: phone number --></p>
+        <div class="footer-social-icons">
+          <a href="https://www.linkedin.com/company/sol-dietetics/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.554v-5.569c0-1.328-.024-3.037-1.852-3.037-1.854 0-2.137 1.447-2.137 2.942v5.664H9.353V9h3.414v1.561h.047c.476-.9 1.637-1.85 3.37-1.85 3.602 0 4.267 2.37 4.267 5.455v6.284zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://twitter.com/SolDietetics" target="_blank" rel="noopener" aria-label="X (Twitter)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+      </div>
     </div>
-    <div class="footer-copy">© 2025 Sol Dietetics. All rights reserved.</div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 Sol Dietetics. All rights reserved.</div>
+    </div>
   </footer>
 
   <script>
@@ -1817,7 +2431,7 @@
       });
     }, { threshold: 0.12 });
 
-    document.querySelectorAll('.step, .partner-card, .rev-item').forEach(el => observer.observe(el));
+    document.querySelectorAll('.step, .partner-card, .whatyouget-card, .spotlight-card, .faq-item').forEach(el => observer.observe(el));
 
     // ── FORM SUBMIT ──
     // Sends form data to Formspree and shows success message on response
@@ -1849,6 +2463,31 @@
         alert('Something went wrong. Please try again or email us directly at sales@soldietetics.com.');
       }
     }
+
+    // ── FAQ ACCORDION (all screen sizes) ──
+    // One FAQ item open at a time; tapping trigger toggles expand/collapse
+    const faqTriggersAll = document.querySelectorAll('.faq-trigger');
+
+    faqTriggersAll.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const bodyId = trigger.getAttribute('aria-controls');
+        const body = document.getElementById(bodyId);
+        const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+
+        // Close all FAQ items first (one open at a time)
+        faqTriggersAll.forEach(t => {
+          t.setAttribute('aria-expanded', 'false');
+          const b = document.getElementById(t.getAttribute('aria-controls'));
+          if (b) b.classList.remove('open');
+        });
+
+        // If it was closed, open it
+        if (!isOpen && body) {
+          trigger.setAttribute('aria-expanded', 'true');
+          body.classList.add('open');
+        }
+      });
+    });
 
     // ── Only run mobile JS on ≤768px screens ──
     if (window.matchMedia('(max-width: 768px)').matches) {
@@ -1889,31 +2528,6 @@
 
           // Close all steps first (one open at a time)
           stepTriggers.forEach(t => {
-            t.setAttribute('aria-expanded', 'false');
-            const b = document.getElementById(t.getAttribute('aria-controls'));
-            if (b) b.classList.remove('open');
-          });
-
-          // If it was closed, open it
-          if (!isOpen && body) {
-            trigger.setAttribute('aria-expanded', 'true');
-            body.classList.add('open');
-          }
-        });
-      });
-
-      // ── REVENUE MODEL ACCORDION ──
-      // One rev item open at a time; same pattern as step accordion
-      const revTriggers = document.querySelectorAll('.rev-trigger');
-
-      revTriggers.forEach(trigger => {
-        trigger.addEventListener('click', () => {
-          const bodyId = trigger.getAttribute('aria-controls');
-          const body = document.getElementById(bodyId);
-          const isOpen = trigger.getAttribute('aria-expanded') === 'true';
-
-          // Close all rev items first
-          revTriggers.forEach(t => {
             t.setAttribute('aria-expanded', 'false');
             const b = document.getElementById(t.getAttribute('aria-controls'));
             if (b) b.classList.remove('open');
@@ -2000,6 +2614,15 @@
         initCarousel(partnerCarousel, partnerDots);
       }
 
+      // Init What You Get carousel (whatyouget-grid)
+      const whatyougetCarousel = document.querySelector('.whatyouget-grid');
+      if (whatyougetCarousel) {
+        const whatyougetDots = document.createElement('div');
+        whatyougetDots.className = 'carousel-dots';
+        whatyougetCarousel.parentNode.insertBefore(whatyougetDots, whatyougetCarousel.nextSibling);
+        initCarousel(whatyougetCarousel, whatyougetDots);
+      }
+
       // ── BACK TO TOP ──
       // Shows floating button after user scrolls past 2vh; scrolls to top on click
       const backToTopBtn = document.getElementById('backToTop');
@@ -2020,6 +2643,6 @@
   <!-- Floating back-to-top button — visible on mobile after scrolling 2vh -->
   <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
-  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <script async defer src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
 </html>
