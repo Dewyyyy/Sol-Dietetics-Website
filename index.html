@@ -1556,70 +1556,90 @@
       .stat-label { font-size: 0.52rem; letter-spacing: 0.05em; }
 
       /* ───────────────────────────────────────────
-         HOW IT WORKS: accordion
+         HOW IT WORKS: card-style accordion on mobile
       ─────────────────────────────────────────── */
 
-      /* Stack how-inner columns */
-      .how-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+      .how-inner { grid-template-columns: 1fr; gap: 0; }
 
-      /* Override desktop grid — accordion uses block layout */
-      .step { display: block; padding: 0; }
-
-      /* Step trigger: full-width tap target showing num + title + chevron */
-      .step-trigger {
-        cursor: pointer;
-        padding: 1rem 0;
-        min-height: 44px; /* ≥44px tap target */
-        align-items: center;
-        border-bottom: 1px solid var(--sand);
+      /* Each step is a card */
+      .step {
+        display: block;
+        padding: 0;
+        background: var(--warm-white);
+        border-radius: 8px;
+        margin-bottom: 0.6rem;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+        overflow: hidden;
+        opacity: 1 !important;
+        transform: none !important;
       }
 
-      /* Step trigger open state — remove bottom border when expanded */
-      .step-trigger[aria-expanded="true"] { border-bottom: none; }
+      /* Trigger: gold circle number + title + chevron */
+      .step-trigger {
+        cursor: pointer;
+        padding: 1rem 1.1rem;
+        min-height: 56px;
+        align-items: center;
+        gap: 0.9rem;
+        border-bottom: none;
+        background: transparent;
+      }
+
+      /* Open card: left gold border accent */
+      .step:has(.step-trigger[aria-expanded="true"]) {
+        border-left: 3px solid var(--sun);
+      }
+
+      /* Gold numbered circle */
+      .step-trigger::before {
+        content: attr(data-num);
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 0.85rem;
+        font-weight: 400;
+        color: var(--bark);
+        background: rgba(232,144,10,0.15);
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        min-width: 32px;
+      }
 
       /* Show chevron on mobile */
       .step-chevron {
         display: block;
-        font-size: 1.1rem;
+        font-size: 1rem;
         color: var(--clay);
         transition: transform 0.3s ease;
         flex-shrink: 0;
-        min-width: 28px;
+        width: 24px;
         text-align: center;
-        min-height: 28px;
-        line-height: 28px;
+        line-height: 24px;
       }
 
-      /* Rotate chevron when step is open */
       .step-trigger[aria-expanded="true"] .step-chevron { transform: rotate(45deg); }
 
-      /* Hide desktop step-num (it's shown inline in data-num via ::before in trigger) */
       .step > .step-num { display: none; }
 
-      /* Step body: collapsed by default, 300ms ease animation */
+      .step-content h3 { font-size: 0.95rem; font-weight: 500; color: var(--charcoal); }
+
+      /* Step body animation */
       .step-body {
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.3s ease;
       }
 
-      /* Expanded step body */
       .step-body.open { max-height: 200px; }
 
-      /* Padding inside expanded step body */
-      .step-body p { padding: 0.75rem 0 1rem; }
-
-      /* Slightly smaller h3 on mobile */
-      .step-content h3 { font-size: 1.05rem; }
-
-      /* Show step number before title in mobile trigger */
-      .step-trigger::before {
-        content: attr(data-num);
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 0.95rem;
-        color: var(--clay);
-        flex-shrink: 0;
-        min-width: 2.5rem;
+      .step-body p {
+        padding: 0 1.1rem 1rem 3.5rem;
+        font-size: 0.84rem;
+        color: var(--light-text);
+        line-height: 1.7;
       }
 
       /* ───────────────────────────────────────────
