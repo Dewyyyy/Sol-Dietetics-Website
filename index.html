@@ -970,33 +970,50 @@
       }
 
       /* ───────────────────────────────────────────
-         HERO: cap height, scale fonts, stack CTAs
+         NAV: smaller logo on mobile
       ─────────────────────────────────────────── */
 
-      /* Cap hero at 85vh on mobile */
+      /* Reduce logo height to fit compact mobile nav */
+      .nav-logo img { height: 36px; }
+
+      /* ───────────────────────────────────────────
+         HERO: clean single-column layout on mobile
+      ─────────────────────────────────────────── */
+
+      /* Override min-height:100vh from base; let content dictate height naturally */
       .hero {
-        max-height: 85vh;
-        overflow: hidden;
+        min-height: unset;
+        max-height: none;
+        overflow: visible;
+        /* Adjust top padding to match mobile nav height (~58px) */
+        padding-top: 58px;
       }
 
-      /* Tighten hero-left padding */
-      .hero-left { padding: 1.75rem 1.25rem 1.25rem; }
+      /* Hero-left fills screen with comfortable padding */
+      .hero-left {
+        min-height: calc(85vh - 58px); /* full visual hero height minus nav */
+        padding: 2.5rem 1.5rem 2.5rem;
+        justify-content: center;
+      }
 
-      /* Scale down headline ~40% on mobile */
-      .hero-headline { font-size: clamp(1.9rem, 7vw, 2.6rem); margin-bottom: 0.85rem; }
+      /* Hide the dark service panel on mobile — keeps hero clean and focused */
+      .hero-right { display: none; }
+
+      /* Scale down headline on mobile */
+      .hero-headline { font-size: clamp(2rem, 8vw, 2.8rem); margin-bottom: 1rem; }
 
       /* Scale down subtitle font */
-      .hero-sub { font-size: 0.85rem; margin-bottom: 1.25rem; max-width: 100%; }
+      .hero-sub { font-size: 0.9rem; margin-bottom: 1.75rem; max-width: 100%; }
 
       /* Stack CTA buttons vertically */
-      .hero-actions { flex-direction: column; gap: 0.6rem; width: 100%; }
+      .hero-actions { flex-direction: column; gap: 0.75rem; width: 100%; }
 
       /* Full-width primary CTA, ≥44px tap target */
       .hero-actions .btn-primary {
         width: 100%;
         text-align: center;
         min-height: 44px;
-        padding: 0.85rem 1rem;
+        padding: 0.9rem 1rem;
       }
 
       /* Full-width secondary CTA, ≥44px tap target */
@@ -1004,13 +1021,10 @@
         width: 100%;
         justify-content: center;
         min-height: 44px;
-        padding: 0.85rem 1rem;
+        padding: 0.9rem 1rem;
         background: rgba(27,82,48,0.06);
         border-radius: 2px;
       }
-
-      /* Compact hero-right on mobile */
-      .hero-right { padding: 1rem 1.25rem 1.25rem; gap: 1rem; }
 
       /* ───────────────────────────────────────────
          SERVICE CARDS: horizontal snap carousel
