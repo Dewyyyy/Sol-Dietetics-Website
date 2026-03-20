@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Partnership Overview — Sol Dietetics</title>
+  <link rel="icon" type="image/png" href="https://i.imgur.com/J2BC5rg.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #F5F0E8;
+      --warm-white: #FDFAF6;
+      --sand: #E2DBD0;
+      --clay: #A8C4B0;
+      --terra: #3D7A52;
+      --bark: #1B5230;
+      --moss: #587A61;
+      --sun: #E8900A;
+      --charcoal: #182820;
+      --text: #2B3D2F;
+      --light-text: #647A69;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #e8e4dc;
+      color: var(--text);
+      padding: 2rem 1rem 4rem;
+    }
+
+    /* ── TOOLBAR (screen only) ── */
+    .toolbar {
+      max-width: 820px;
+      margin: 0 auto 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .toolbar a {
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--light-text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+    }
+
+    .toolbar a:hover { color: var(--terra); }
+
+    .btn-download {
+      background: var(--bark);
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 2px;
+      padding: 0.65rem 1.4rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background 0.2s;
+    }
+
+    .btn-download:hover { background: var(--terra); }
+
+    /* ── DOCUMENT ── */
+    .doc {
+      max-width: 820px;
+      margin: 0 auto;
+      background: var(--warm-white);
+      box-shadow: 0 4px 40px rgba(0,0,0,0.15);
+    }
+
+    /* Cover */
+    .cover {
+      background: var(--bark);
+      padding: 4rem 4rem 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=1200&q=50&auto=format&fit=crop') center/cover no-repeat;
+      opacity: 0.07;
+    }
+
+    .cover-inner { position: relative; z-index: 1; }
+
+    .cover-logo {
+      height: 52px;
+      width: auto;
+      display: block;
+      margin-bottom: 3rem;
+    }
+
+    .cover-eyebrow {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--clay);
+      margin-bottom: 1rem;
+    }
+
+    .cover-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--cream);
+      margin-bottom: 1.25rem;
+    }
+
+    .cover-title em { font-style: italic; color: var(--sun); }
+
+    .cover-sub {
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: rgba(248,244,232,0.65);
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+    }
+
+    .cover-stats {
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    .cover-stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .cover-stat-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(248,244,232,0.45);
+    }
+
+    /* Body content */
+    .doc-body { padding: 3.5rem 4rem; }
+
+    .doc-section { margin-bottom: 3rem; }
+
+    .doc-section:last-child { margin-bottom: 0; }
+
+    .doc-eyebrow {
+      font-size: 0.63rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sun);
+      margin-bottom: 0.6rem;
+    }
+
+    .doc-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.85rem;
+      font-weight: 300;
+      color: var(--charcoal);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .doc-heading em { font-style: italic; color: var(--terra); }
+
+    .doc-body-text {
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--light-text);
+      margin-bottom: 1rem;
+    }
+
+    /* Divider */
+    .doc-rule {
+      border: none;
+      border-top: 1px solid var(--sand);
+      margin: 2.5rem 0;
+    }
+
+    /* Services grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .service-item {
+      background: var(--cream);
+      border-radius: 6px;
+      padding: 1.5rem;
+      border-left: 3px solid var(--sun);
+    }
+
+    .service-item h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 0.4rem;
+    }
+
+    .service-item p {
+      font-size: 0.82rem;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--light-text);
+    }
+
+    /* Steps */
+    .steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 1.5rem;
+      border: 1px solid var(--sand);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .step-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--sand);
+      background: var(--warm-white);
+    }
+
+    .step-row:last-child { border-bottom: none; }
+
+    .step-num-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(232,144,10,0.12);
+      color: var(--bark);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .step-row h4 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 0.25rem;
+    }
+
+    .step-row p {
+      font-size: 0.82rem;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--light-text);
+    }
+
+    /* Revenue model */
+    .revenue-box {
+      background: var(--bark);
+      border-radius: 8px;
+      padding: 2rem 2.5rem;
+      margin-top: 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    .revenue-item-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 0.3rem;
+    }
+
+    .revenue-item-label {
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: rgba(248,244,232,0.5);
+      text-transform: uppercase;
+    }
+
+    /* Why us — credential row */
+    .credentials {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .credential-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.9rem 1rem;
+      background: var(--cream);
+      border-radius: 6px;
+      font-size: 0.83rem;
+      font-weight: 400;
+      color: var(--text);
+    }
+
+    .credential-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--sun);
+      flex-shrink: 0;
+    }
+
+    /* CTA footer */
+    .doc-footer {
+      background: linear-gradient(135deg, var(--bark) 0%, #2a6640 100%);
+      padding: 3rem 4rem;
+      text-align: center;
+    }
+
+    .doc-footer h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 0.75rem;
+    }
+
+    .doc-footer p {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: rgba(248,244,232,0.6);
+      margin-bottom: 1.5rem;
+    }
+
+    .doc-footer a {
+      color: var(--sun);
+      text-decoration: none;
+      font-weight: 400;
+    }
+
+    .doc-footer-meta {
+      margin-top: 2rem;
+      font-size: 0.72rem;
+      color: rgba(248,244,232,0.3);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── PRINT STYLES ── */
+    @media print {
+      body { background: white; padding: 0; }
+      .toolbar { display: none; }
+      .doc { box-shadow: none; max-width: 100%; }
+      .cover { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .revenue-box { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .doc-footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .service-item { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Toolbar (hidden on print) -->
+  <div class="toolbar">
+    <a href="/">← Back to soldietetics.com</a>
+    <button class="btn-download" onclick="window.print()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Save as PDF
+    </button>
+  </div>
+
+  <!-- Document -->
+  <div class="doc">
+
+    <!-- Cover -->
+    <div class="cover">
+      <div class="cover-inner">
+        <img src="assets/images/SOL.png" alt="Sol Dietetics" class="cover-logo" width="52" height="52" />
+        <p class="cover-eyebrow">Partnership Overview</p>
+        <h1 class="cover-title">Add expert nutrition<br/>to your business — <em>free.</em></h1>
+        <p class="cover-sub">Sol Dietetics partners with gyms, studios, and health platforms to deliver virtual Registered Dietitian services to their clients through a zero-cost, revenue-share model.</p>
+        <div class="cover-stats">
+          <div>
+            <div class="cover-stat-num">$0</div>
+            <div class="cover-stat-label">Staffing Cost</div>
+          </div>
+          <div>
+            <div class="cover-stat-num">RD</div>
+            <div class="cover-stat-label">Certified Dietitians</div>
+          </div>
+          <div>
+            <div class="cover-stat-num">100%</div>
+            <div class="cover-stat-label">Fully Managed</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Body -->
+    <div class="doc-body">
+
+      <!-- What We Offer -->
+      <div class="doc-section">
+        <p class="doc-eyebrow">What You Get</p>
+        <h2 class="doc-heading">Everything you need to offer<br/><em>expert nutrition.</em></h2>
+        <p class="doc-body-text">When you partner with Sol Dietetics, we embed licensed Registered Dietitian Nutritionists directly into your client experience. You refer — we handle everything else.</p>
+        <div class="services-grid">
+          <div class="service-item">
+            <h4>Virtual RD Consultations</h4>
+            <p>Licensed dietitians deliver 1-on-1 coaching to your clients, fully virtual and fully managed by us.</p>
+          </div>
+          <div class="service-item">
+            <h4>Personalized Meal Plans</h4>
+            <p>Evidence-based plans tailored to each client's goals, lifestyle, and health history.</p>
+          </div>
+          <div class="service-item">
+            <h4>Grocery Delivery Add-On</h4>
+            <p>Dietitian-curated groceries delivered to your clients' doors — a premium upsell your members will love.</p>
+          </div>
+          <div class="service-item">
+            <h4>Turnkey Client Experience</h4>
+            <p>From intake forms to delivery tracking, we manage the entire journey. Zero admin for your team.</p>
+          </div>
+        </div>
+      </div>
+
+      <hr class="doc-rule" />
+
+      <!-- Revenue Model -->
+      <div class="doc-section">
+        <p class="doc-eyebrow">Revenue Model</p>
+        <h2 class="doc-heading">You earn. We manage.<br/><em>Everyone wins.</em></h2>
+        <p class="doc-body-text">Our model is simple: you refer your clients to Sol Dietetics services and earn a revenue share on every consultation, meal plan, and grocery delivery they purchase. There is no cost to you — ever.</p>
+        <div class="revenue-box">
+          <div>
+            <div class="revenue-item-num">$0</div>
+            <div class="revenue-item-label">Upfront Cost</div>
+          </div>
+          <div>
+            <div class="revenue-item-num">%</div>
+            <div class="revenue-item-label">Revenue Share</div>
+          </div>
+          <div>
+            <div class="revenue-item-num">1–2wk</div>
+            <div class="revenue-item-label">To Go Live</div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="doc-rule" />
+
+      <!-- How It Works -->
+      <div class="doc-section">
+        <p class="doc-eyebrow">The Process</p>
+        <h2 class="doc-heading">Simple to start,<br/><em>powerful</em> in practice.</h2>
+        <div class="steps-list">
+          <div class="step-row">
+            <div class="step-num-badge">01</div>
+            <div>
+              <h4>Partner Agreement</h4>
+              <p>We establish a simple revenue share agreement tailored to your client base. No overhead, no risk.</p>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-num-badge">02</div>
+            <div>
+              <h4>Client Referral</h4>
+              <p>You refer clients who want nutrition coaching. We handle intake, assessment, and ongoing guidance.</p>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-num-badge">03</div>
+            <div>
+              <h4>Virtual RD Services</h4>
+              <p>Our RDs deliver expert, personalized nutrition plans and 1-on-1 coaching — fully virtual, fully managed.</p>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-num-badge">04</div>
+            <div>
+              <h4>Grocery Delivery</h4>
+              <p>Clients receive curated, dietitian-approved grocery deliveries matched to their nutrition plan.</p>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-num-badge">05</div>
+            <div>
+              <h4>Revenue Share Payout</h4>
+              <p>You earn a percentage of every client's spend. Transparent reporting, consistent payouts.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="doc-rule" />
+
+      <!-- Why Sol Dietetics -->
+      <div class="doc-section">
+        <p class="doc-eyebrow">Why Sol Dietetics</p>
+        <h2 class="doc-heading">The standard your clients <em>deserve.</em></h2>
+        <p class="doc-body-text">Every dietitian on our platform is rigorously credentialed. Your clients receive the highest standard of evidence-based nutrition care — and your business earns a new revenue stream without lifting a finger.</p>
+        <div class="credentials">
+          <div class="credential-item"><span class="credential-dot"></span>Board-Certified RDNs</div>
+          <div class="credential-item"><span class="credential-dot"></span>HIPAA Compliant Sessions</div>
+          <div class="credential-item"><span class="credential-dot"></span>Evidence-Based Practice</div>
+          <div class="credential-item"><span class="credential-dot"></span>Academy of Nutrition & Dietetics</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer CTA -->
+    <div class="doc-footer">
+      <h3>Ready to get started?</h3>
+      <p>Reach out today — we'll have you live within 1–2 weeks.</p>
+      <p>
+        <a href="mailto:sales@soldietetics.com">sales@soldietetics.com</a>
+        &nbsp;&nbsp;·&nbsp;&nbsp;
+        <a href="https://www.soldietetics.com">www.soldietetics.com</a>
+      </p>
+      <p class="doc-footer-meta">&copy; 2026 Sol Dietetics. All rights reserved.</p>
+    </div>
+
+  </div>
+
+</body>
+</html>
