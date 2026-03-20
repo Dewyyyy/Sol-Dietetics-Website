@@ -962,11 +962,43 @@
 
     /* CONTACT */
     .contact {
-      background: var(--warm-white);
-      border-top: 1px solid var(--sand);
+      background: linear-gradient(135deg, var(--bark) 0%, #2a6640 50%, #1a4a2e 100%);
+      position: relative;
+      overflow: hidden;
+      border-top: none;
     }
 
-    .contact-inner { max-width: 760px; margin: 0 auto; text-align: center; }
+    /* Subtle food image overlay for warmth */
+    .contact::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=1600&q=60&auto=format&fit=crop') center/cover no-repeat;
+      opacity: 0.08;
+    }
+
+    /* Two-column layout: left warm intro panel + right form */
+    .contact-layout {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: start;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Left panel */
+    .contact-panel { padding-top: 0.5rem; }
+
+    .contact-panel .section-tag { color: var(--clay); }
+    .contact-panel .section-tag::before { background: var(--clay); }
+
+    .contact-panel .section-title { color: var(--cream); }
+    .contact-panel .section-title em { color: var(--sun); }
+
+    .contact-inner { text-align: center; }
 
     .contact-inner .section-tag { justify-content: center; }
     .contact-inner .section-tag::before { display: none; }
@@ -975,9 +1007,54 @@
       font-size: 0.97rem;
       font-weight: 300;
       line-height: 1.78;
+      color: rgba(248,244,232,0.7);
+      max-width: 380px;
+      margin: 1.25rem 0 2.5rem;
+    }
+
+    /* Trust bullets on the left panel */
+    .contact-trust {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-top: 2rem;
+    }
+
+    .contact-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: rgba(248,244,232,0.75);
+    }
+
+    .contact-trust-item svg {
+      flex-shrink: 0;
+      color: var(--sun);
+    }
+
+    /* Form card — white card on dark bg */
+    .contact-form-card {
+      background: var(--warm-white);
+      border-radius: 10px;
+      padding: 2.5rem;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+    }
+
+    .contact-form-card .section-tag {
+      justify-content: flex-start;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-form-card .section-title {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-form-card .contact-sub {
       color: var(--light-text);
-      max-width: 480px;
-      margin: 0 auto 3rem;
+      margin-bottom: 1.75rem;
     }
 
     .contact-form {
@@ -1571,8 +1648,10 @@
          CONTACT FORM: full-width stacked, 32px padding
       ─────────────────────────────────────────── */
 
-      /* Reduce contact section padding */
-      .contact { padding: 2rem 1.25rem; }
+      /* Stack layout to single column on mobile */
+      .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .contact-sub { margin-bottom: 1.25rem; }
+      .contact-form-card { padding: 1.5rem; }
 
       /* Stack form to single column */
       .contact-form { grid-template-columns: 1fr; }
@@ -2272,72 +2351,99 @@
 
   <!-- CONTACT -->
   <section class="contact" id="contact">
-    <div class="contact-inner">
-      <p class="section-tag">Get In Touch</p>
-      <h2 class="section-title">Start Your Free<br/>Partnership</h2>
-      <p class="contact-sub">No cost. Just a conversation about how we can grow together.</p>
-      <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
-        <div class="form-group">
-          <label>First Name</label>
-          <input type="text" name="first_name" placeholder="Jane" required />
+    <div class="contact-layout">
+
+      <!-- Left: warm intro panel -->
+      <div class="contact-panel">
+        <p class="section-tag">Get In Touch</p>
+        <h2 class="section-title">Start your free<br/><em>partnership.</em></h2>
+        <p class="contact-sub">No cost. Just a conversation about how we can grow together.</p>
+        <div class="contact-trust">
+          <div class="contact-trust-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Zero upfront cost — revenue share only
+          </div>
+          <div class="contact-trust-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Live within 1–2 weeks
+          </div>
+          <div class="contact-trust-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Board-certified RDNs, fully managed
+          </div>
+          <div class="contact-trust-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            HIPAA-compliant sessions
+          </div>
         </div>
-        <div class="form-group">
-          <label>Last Name</label>
-          <input type="text" name="last_name" placeholder="Smith" required />
-        </div>
-        <div class="form-group">
-          <label>Email Address</label>
-          <input type="email" name="_replyto" placeholder="jane@yourgym.com" required />
-        </div>
-        <div class="form-group">
-          <label>Business Name</label>
-          <input type="text" name="business_name" placeholder="Your Gym or Company" required />
-        </div>
-        <div class="form-group full">
-          <label>Business Type</label>
-          <select name="business_type">
-            <option value="">Select your business type</option>
-            <option>Fitness Gym / Studio</option>
-            <option>Online Health Platform</option>
-            <option>Wellness Studio</option>
-            <option>Corporate Wellness</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="form-group full">
-          <label>Approximate Number of Members/Clients</label>
-          <select name="client_count">
-            <option value="">Select range</option>
-            <option>Under 100</option>
-            <option>100–500</option>
-            <option>500–1,000</option>
-            <option>1,000+</option>
-          </select>
-        </div>
-        <div class="form-group full">
-          <label>How Did You Hear About Us?</label>
-          <select name="referral_source">
-            <option value="">Select one</option>
-            <option>Google Search</option>
-            <option>Social Media</option>
-            <option>Referral</option>
-            <option>Industry Event</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <input type="hidden" name="_subject" value="New Partnership Inquiry — Sol Dietetics" />
-        <div class="form-submit">
-          <button type="submit" class="btn-primary">Send Partnership Inquiry</button>
-        </div>
-      </form>
-      <div class="success-msg" id="successMsg">
-        <p>Thank you for reaching out!</p>
-        <span>We'll be in touch within 1–2 business days to discuss your partnership.</span>
       </div>
-      <div class="contact-extras">
-        <p class="contact-soft-cta">Not ready yet? <a href="#">Download our Partnership Overview →</a> <!-- PLACEHOLDER: PDF download link --></p>
-        <p class="contact-direct">Prefer to reach out directly? Email us at <!-- PLACEHOLDER: email address --> or call <!-- PLACEHOLDER: phone number --></p>
+
+      <!-- Right: form card -->
+      <div class="contact-form-card">
+        <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" name="first_name" placeholder="Jane" required />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" name="last_name" placeholder="Smith" required />
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" name="_replyto" placeholder="jane@yourgym.com" required />
+          </div>
+          <div class="form-group">
+            <label>Business Name</label>
+            <input type="text" name="business_name" placeholder="Your Gym or Company" required />
+          </div>
+          <div class="form-group full">
+            <label>Business Type</label>
+            <select name="business_type">
+              <option value="">Select your business type</option>
+              <option>Fitness Gym / Studio</option>
+              <option>Online Health Platform</option>
+              <option>Wellness Studio</option>
+              <option>Corporate Wellness</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label>Approximate Number of Members/Clients</label>
+            <select name="client_count">
+              <option value="">Select range</option>
+              <option>Under 100</option>
+              <option>100–500</option>
+              <option>500–1,000</option>
+              <option>1,000+</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label>How Did You Hear About Us?</label>
+            <select name="referral_source">
+              <option value="">Select one</option>
+              <option>Google Search</option>
+              <option>Social Media</option>
+              <option>Referral</option>
+              <option>Industry Event</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <input type="hidden" name="_subject" value="New Partnership Inquiry — Sol Dietetics" />
+          <div class="form-submit">
+            <button type="submit" class="btn-primary">Send Partnership Inquiry</button>
+          </div>
+        </form>
+        <div class="success-msg" id="successMsg">
+          <p>Thank you for reaching out!</p>
+          <span>We'll be in touch within 1–2 business days to discuss your partnership.</span>
+        </div>
+        <div class="contact-extras">
+          <p class="contact-soft-cta">Not ready yet? <a href="#">Download our Partnership Overview →</a> <!-- PLACEHOLDER: PDF download link --></p>
+          <p class="contact-direct">Prefer to reach out directly? Email us at <!-- PLACEHOLDER: email address --> or call <!-- PLACEHOLDER: phone number --></p>
+        </div>
       </div>
+
     </div>
   </section>
 
