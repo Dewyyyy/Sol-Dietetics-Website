@@ -1519,36 +1519,24 @@
       }
 
       /* ───────────────────────────────────────────
-         WHO WE SERVE: horizontal snap carousel
+         WHO WE SERVE: single-column stack on mobile
       ─────────────────────────────────────────── */
-
-      /* Convert grid to horizontal scroll carousel */
       .partner-grid {
         display: flex;
-        flex-direction: row;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
+        flex-direction: column;
         background: transparent;
         border: none;
         border-radius: 0;
-        gap: 0;
+        gap: 0.75rem;
         margin-top: 1.5rem;
       }
 
-      /* Hide scrollbar */
-      .partner-grid::-webkit-scrollbar { display: none; }
-
-      /* Each card: 82% width for peek effect */
       .partner-card {
-        min-width: 82%;
-        scroll-snap-align: start;
-        flex-shrink: 0;
+        min-width: unset;
         border: 1px solid var(--sand);
         border-radius: 4px;
-        margin-right: 0.75rem;
-        opacity: 1 !important; /* override scroll animation defaults */
+        padding: 1.5rem;
+        opacity: 1 !important;
         transform: none !important;
       }
 
@@ -1719,41 +1707,28 @@
       .stats-row .stat-label { font-size: 0.58rem; letter-spacing: 0.08em; }
 
       /* ───────────────────────────────────────────
-         WHAT YOU GET: horizontal snap carousel
+         WHAT YOU GET: 2-column grid on mobile
       ─────────────────────────────────────────── */
-      /* Remove side padding from section so carousel can go full-width */
-      .whatyouget { padding-left: 0; padding-right: 0; }
-
-      /* Re-add side padding to just the heading area */
-      .whatyouget-inner > .section-tag,
-      .whatyouget-inner > .section-title {
-        padding-left: 1.25rem;
-        padding-right: 1.25rem;
-      }
+      .whatyouget { padding-left: 1.25rem; padding-right: 1.25rem; }
 
       .whatyouget-grid {
-        display: flex;
-        flex-direction: row;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 0.75rem;
         margin-top: 1.5rem;
-        padding-left: 1.25rem;
-        padding-right: 1.25rem;
+        overflow: visible;
       }
 
-      .whatyouget-grid::-webkit-scrollbar { display: none; }
-
       .whatyouget-card {
-        /* Card fills screen minus padding, leaving a peek of the next card */
-        min-width: calc(100vw - 3.25rem);
-        scroll-snap-align: start;
-        flex-shrink: 0;
+        min-width: unset;
+        padding: 1.25rem;
         opacity: 1 !important;
         transform: none !important;
       }
+
+      .whatyouget-card h3 { font-size: 1rem; }
+      .whatyouget-card p { font-size: 0.78rem; }
+      .whatyouget-icon { width: 36px; height: 36px; margin-bottom: 0.75rem; }
 
       /* ───────────────────────────────────────────
          HOW IT WORKS: fix mobile timeline override
@@ -2637,23 +2612,7 @@
         initCarousel(servicesCarousel, servicesDots);
       }
 
-      // Init partner cards carousel (partner-grid)
-      const partnerCarousel = document.querySelector('.partner-grid');
-      if (partnerCarousel) {
-        const partnerDots = document.createElement('div');
-        partnerDots.className = 'carousel-dots';
-        partnerCarousel.parentNode.insertBefore(partnerDots, partnerCarousel.nextSibling);
-        initCarousel(partnerCarousel, partnerDots);
-      }
-
-      // Init What You Get carousel (whatyouget-grid)
-      const whatyougetCarousel = document.querySelector('.whatyouget-grid');
-      if (whatyougetCarousel) {
-        const whatyougetDots = document.createElement('div');
-        whatyougetDots.className = 'carousel-dots';
-        whatyougetCarousel.parentNode.insertBefore(whatyougetDots, whatyougetCarousel.nextSibling);
-        initCarousel(whatyougetCarousel, whatyougetDots);
-      }
+      // (What You Get and Who We Serve use grid layouts on mobile — no carousel needed)
 
       // ── BACK TO TOP ──
       // Shows floating button after user scrolls past 2vh; scrolls to top on click
