@@ -1876,6 +1876,8 @@
       .spotlight-layout { grid-template-columns: 1fr; gap: 1rem; margin-top: 1.5rem; }
       .spotlight-map iframe { min-height: 260px; }
       .spotlight-grid { gap: 0.75rem; }
+      /* Hide second placeholder card on mobile — keeps layout clean */
+      .spotlight-card.placeholder:last-child { display: none; }
 
       .spotlight-card { padding: 1.5rem; }
 
