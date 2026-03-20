@@ -668,60 +668,87 @@
       transform: translateY(-2px);
     }
 
-    /* WHY SOL DIETETICS — social proof */
-    .why-sol { background: var(--cream); padding: 4rem 6rem; }
+    /* WHY SOL DIETETICS — feature highlights */
+    .why-sol {
+      background: var(--bark);
+      padding: 5rem 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle background texture overlay */
+    .why-sol::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=1600&q=60&auto=format&fit=crop') center/cover no-repeat;
+      opacity: 0.07;
+    }
 
     .why-sol-inner {
       max-width: 1200px;
       margin: 0 auto;
       text-align: center;
+      position: relative;
+      z-index: 1;
     }
 
-    .testimonial-card {
-      max-width: 720px;
-      margin: 3rem auto 2.5rem;
-      padding: 2.5rem 3rem;
-      background: var(--warm-white);
-      border-radius: 6px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-      border-left: 3px solid var(--sun);
+    .why-sol-inner .section-tag { color: var(--clay); }
+    .why-sol-inner .section-tag::before { background: var(--clay); }
+
+    .why-sol-inner .section-title {
+      color: var(--cream);
     }
 
-    .testimonial-card blockquote {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
-      font-weight: 300;
-      font-style: italic;
-      line-height: 1.65;
-      color: var(--charcoal);
-      margin-bottom: 1rem;
+    .why-sol-inner .section-title em { color: var(--sun); }
+
+    /* 4-card feature grid */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin-top: 3rem;
     }
 
-    .testimonial-card cite {
-      font-size: 0.8rem;
-      font-weight: 400;
-      font-style: normal;
-      color: var(--light-text);
-      letter-spacing: 0.04em;
+    .why-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: background 0.2s ease, transform 0.2s ease;
     }
 
-    .credential-badges {
+    .why-card:hover {
+      background: rgba(255,255,255,0.12);
+      transform: translateY(-3px);
+    }
+
+    .why-card-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(232,144,10,0.2);
+      border-radius: 50%;
       display: flex;
+      align-items: center;
       justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 0;
+      margin: 0 auto 1.25rem;
+      color: var(--sun);
     }
 
-    .badge {
-      padding: 0.5rem 1.25rem;
-      background: var(--warm-white);
-      border: 1px solid var(--sand);
-      border-radius: 20px;
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      color: var(--text);
+    .why-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 0.6rem;
+    }
+
+    .why-card p {
+      font-size: 0.82rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(248,244,232,0.6);
     }
 
     .founder-blurb {
@@ -1751,30 +1778,18 @@
       .mid-cta .btn-primary { width: 100%; min-height: 44px; }
 
       /* ───────────────────────────────────────────
-         WHY SOL DIETETICS: stack vertically
+         WHY SOL DIETETICS: 2x2 grid on mobile
       ─────────────────────────────────────────── */
-      .testimonial-card {
-        margin: 2rem auto 1.5rem;
-        padding: 1.75rem 1.5rem;
-        width: 100%;
-      }
-
-      .testimonial-card blockquote { font-size: 1.1rem; }
-
-      .credential-badges {
-        display: grid;
+      .why-sol { padding: 3rem 1.25rem; }
+      .why-grid {
         grid-template-columns: 1fr 1fr;
-        gap: 0.5rem;
-        margin-bottom: 2rem;
+        gap: 0.75rem;
+        margin-top: 2rem;
       }
-
-      .founder-blurb {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 1rem;
-      }
-
-      .founder-photo { margin: 0 auto; width: 90px; height: 90px; }
+      .why-card { padding: 1.25rem 1rem; }
+      .why-card-icon { width: 40px; height: 40px; margin-bottom: 0.75rem; }
+      .why-card h3 { font-size: 1rem; }
+      .why-card p { font-size: 0.76rem; }
 
       /* ───────────────────────────────────────────
          PARTNER SPOTLIGHT: stack map above cards
@@ -2089,27 +2104,55 @@
     </div>
   </section>
 
-  <!-- NEW: Why Sol Dietetics — social proof and trust signals -->
+  <!-- Why Sol Dietetics — credential and feature highlights -->
   <section class="why-sol" id="why">
     <div class="why-sol-inner">
       <p class="section-tag">Why Sol Dietetics</p>
-      <h2 class="section-title">Built on <em>trust.</em></h2>
+      <h2 class="section-title">The standard your clients <em>deserve.</em></h2>
 
-      <!-- Testimonial placeholder -->
-      <div class="testimonial-card">
-        <!-- PLACEHOLDER: Add CrossFit Inner Chamber testimonial — owner name, title, quote about their experience -->
-        <blockquote>"Sol Dietetics has been a game-changer for our members. The nutrition coaching integrates seamlessly with our training programs."</blockquote>
-        <cite><!-- PLACEHOLDER: Owner name, title --> — CrossFit Inner Chamber, Lancaster CA</cite>
+      <div class="why-grid">
+
+        <!-- Board-Certified RDNs -->
+        <div class="why-card">
+          <div class="why-card-icon">
+            <!-- Lucide award icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          </div>
+          <h3>Board-Certified RDNs</h3>
+          <p>Every dietitian on our platform holds a Registered Dietitian Nutritionist credential with an advanced degree from an accredited institution.</p>
+        </div>
+
+        <!-- HIPAA Compliant -->
+        <div class="why-card">
+          <div class="why-card-icon">
+            <!-- Lucide shield-check icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <h3>HIPAA Compliant</h3>
+          <p>Client sessions are conducted over secure, HIPAA-compliant video. Privacy and data protection are built into every step of our process.</p>
+        </div>
+
+        <!-- Evidence-Based Practice -->
+        <div class="why-card">
+          <div class="why-card-icon">
+            <!-- Lucide book-open icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <h3>Evidence-Based Practice</h3>
+          <p>Every recommendation our RDs make is grounded in peer-reviewed research and current clinical guidelines — no fad diets, no guesswork.</p>
+        </div>
+
+        <!-- Academy of Nutrition and Dietetics -->
+        <div class="why-card">
+          <div class="why-card-icon">
+            <!-- Lucide users icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Academy Member</h3>
+          <p>Our dietitians are active members of the Academy of Nutrition and Dietetics — the world's largest organization of food and nutrition professionals.</p>
+        </div>
+
       </div>
-
-      <!-- Credential badges -->
-      <div class="credential-badges">
-        <span class="badge">Board-Certified RDNs</span>
-        <span class="badge">HIPAA Compliant</span>
-        <span class="badge">Evidence-Based Practice</span>
-        <span class="badge">Academy of Nutrition and Dietetics</span>
-      </div>
-
     </div>
   </section>
 
