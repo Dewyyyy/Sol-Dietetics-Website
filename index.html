@@ -768,11 +768,28 @@
       margin: 0 auto;
     }
 
-    .spotlight-grid {
+    /* Two-column layout: map left (larger), cards right */
+    .spotlight-layout {
       display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr;
+      grid-template-columns: 1.6fr 1fr;
       gap: 1.5rem;
       margin-top: 3rem;
+      align-items: stretch;
+    }
+
+    .spotlight-map iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      border: 0;
+      border-radius: 6px;
+      display: block;
+    }
+
+    .spotlight-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
 
     .spotlight-card {
@@ -1773,13 +1790,11 @@
       .founder-photo { margin: 0 auto; width: 90px; height: 90px; }
 
       /* ───────────────────────────────────────────
-         PARTNER SPOTLIGHT: stack vertically
+         PARTNER SPOTLIGHT: stack map above cards
       ─────────────────────────────────────────── */
-      .spotlight-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        margin-top: 1.5rem;
-      }
+      .spotlight-layout { grid-template-columns: 1fr; gap: 1rem; margin-top: 1.5rem; }
+      .spotlight-map iframe { min-height: 260px; }
+      .spotlight-grid { gap: 0.75rem; }
 
       .spotlight-card { padding: 1.5rem; }
 
@@ -2117,43 +2132,45 @@
       <p class="section-tag">Our Partners</p>
       <h2 class="section-title">Growing <em>together,</em><br/>one partner at a time.</h2>
 
-      <div class="spotlight-grid">
-        <!-- Featured partner card -->
-        <div class="spotlight-card featured">
-          <div class="spotlight-icon">
-            <!-- Lucide dumbbell icon -->
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5h11M6.5 17.5h11M2 12h4M18 12h4M3 6.5V8M3 16v1.5M21 6.5V8M21 16v1.5M6.5 6.5v11M17.5 6.5v11"/></svg>
+      <!-- Two-column split: map left, cards right -->
+      <div class="spotlight-layout">
+
+        <!-- Left: Google Map (larger column) -->
+        <div class="spotlight-map">
+          <iframe
+            src="https://maps.google.com/maps?q=CrossFit+Inner+Chamber+42247+12th+St+W+Lancaster+CA&t=&z=9&ie=UTF8&iwloc=&output=embed"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="CrossFit Inner Chamber location map">
+          </iframe>
+        </div>
+
+        <!-- Right: Partner cards stacked vertically -->
+        <div class="spotlight-grid">
+          <!-- Featured partner card -->
+          <div class="spotlight-card featured">
+            <div class="spotlight-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5h11M6.5 17.5h11M2 12h4M18 12h4M3 6.5V8M3 16v1.5M21 6.5V8M21 16v1.5M6.5 6.5v11M17.5 6.5v11"/></svg>
+            </div>
+            <h3>CrossFit Inner Chamber</h3>
+            <p>Our founding partner — providing virtual dietitian services to their members in Lancaster, California.</p>
+            <span class="spotlight-location">42247 12th St W, Suite 101, Lancaster, CA 93534</span>
           </div>
-          <h3>CrossFit Inner Chamber</h3>
-          <p>Our founding partner — providing virtual dietitian services to their members in Lancaster, California.</p>
-          <span class="spotlight-location">42247 12th St W, Suite 101, Lancaster, CA 93534</span>
+
+          <!-- Placeholder partner slots -->
+          <div class="spotlight-card placeholder">
+            <h3>Your Business Here?</h3>
+            <p>Join our growing network of health-focused partners.</p>
+            <a href="#contact" class="spotlight-cta">Start a Partnership →</a>
+          </div>
+          <div class="spotlight-card placeholder">
+            <h3>Your Business Here?</h3>
+            <p>Zero cost to partner. Revenue from day one.</p>
+            <a href="#contact" class="spotlight-cta">Get Started →</a>
+          </div>
         </div>
 
-        <!-- Placeholder partner slots -->
-        <div class="spotlight-card placeholder">
-          <h3>Your Business Here?</h3>
-          <p>Join our growing network of health-focused partners.</p>
-          <a href="#contact" class="spotlight-cta">Start a Partnership →</a>
-        </div>
-        <div class="spotlight-card placeholder">
-          <h3>Your Business Here?</h3>
-          <p>Zero cost to partner. Revenue from day one.</p>
-          <a href="#contact" class="spotlight-cta">Get Started →</a>
-        </div>
-      </div>
-
-      <!-- Google Map — CrossFit Inner Chamber location -->
-      <div class="partner-map">
-        <iframe
-          src="https://maps.google.com/maps?q=CrossFit+Inner+Chamber+42247+12th+St+W+Lancaster+CA&t=&z=12&ie=UTF8&iwloc=&output=embed"
-          width="100%"
-          height="340"
-          style="border:0; border-radius:6px; display:block; margin-top:2rem;"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="CrossFit Inner Chamber location map">
-        </iframe>
       </div>
     </div>
   </section>
