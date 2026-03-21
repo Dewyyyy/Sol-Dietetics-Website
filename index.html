@@ -1415,6 +1415,11 @@
     /* ── MOBILE (≤768px): full mobile experience ── */
     @media (max-width: 768px) {
 
+      /* ── GLOBAL: use overflow-x: clip instead of hidden so child scroll
+         containers (carousels) still work. clip prevents the horizontal
+         scrollbar without creating a scroll container like hidden does. ── */
+      body { overflow-x: clip; }
+
       /* ── GLOBAL: max section padding 32–48px ── */
       section { padding: 2.5rem 1.25rem; }
 
@@ -1621,7 +1626,7 @@
       .how-steps {
         flex-direction: row;
         overflow-x: auto;
-        overflow-y: visible;
+        overflow-y: hidden;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
