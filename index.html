@@ -490,6 +490,7 @@
     }
 
     .how-intro { margin-bottom: 3.5rem; }
+    .how-swipe-hint { display: none; } /* desktop: hidden */
 
     .how-steps {
       display: flex;
@@ -1609,90 +1610,126 @@
       .stat-label { font-size: 0.52rem; letter-spacing: 0.05em; }
 
       /* ───────────────────────────────────────────
-         HOW IT WORKS: card-style accordion on mobile
+         HOW IT WORKS: horizontal swipe carousel on mobile
       ─────────────────────────────────────────── */
 
-      .how-inner { grid-template-columns: 1fr; gap: 0; }
+      .how { padding: 3rem 0; }
+      .how-inner { grid-template-columns: 1fr; gap: 1.25rem; padding: 0 1.25rem; }
+      .how-intro { padding: 0; }
 
-      /* Each step is a card */
+      /* Carousel track — bleeds to screen edges for natural swipe feel */
+      .how-steps {
+        flex-direction: row;
+        overflow-x: auto;
+        overflow-y: visible;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 0.75rem;
+        padding: 0.5rem 1.25rem 1rem;
+        margin: 0 -1.25rem;
+        position: static;
+        align-items: stretch;
+      }
+
+      .how-steps::-webkit-scrollbar { display: none; }
+
+      /* No connecting timeline line on mobile */
+      .how-steps::before { display: none; }
+
+      /* Each step = a dark luxury swipe card */
       .step {
-        display: block;
-        padding: 0;
-        background: var(--warm-white);
-        border-radius: 8px;
-        margin-bottom: 0.6rem;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-        overflow: hidden;
+        scroll-snap-align: start;
+        min-width: 80vw;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: linear-gradient(145deg, #1e5c36 0%, var(--bark) 100%);
+        border-radius: 14px;
+        padding: 1.75rem 1.5rem 1.5rem;
         opacity: 1 !important;
         transform: none !important;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        border: 1px solid rgba(255,255,255,0.07);
+        cursor: default;
       }
 
-      /* Trigger: gold circle number + title + chevron */
-      .step-trigger {
-        cursor: pointer;
-        padding: 1rem 1.1rem;
-        min-height: 56px;
-        align-items: center;
-        gap: 0.9rem;
-        border-bottom: none;
-        background: transparent;
-      }
-
-      /* Open card: left gold border accent */
-      .step:has(.step-trigger[aria-expanded="true"]) {
-        border-left: 3px solid var(--sun);
-      }
-
-      /* Gold numbered circle */
-      .step-trigger::before {
-        content: attr(data-num);
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 0.85rem;
-        font-weight: 400;
-        color: var(--bark);
-        background: rgba(232,144,10,0.15);
-        border-radius: 50%;
-        width: 32px;
-        height: 32px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-        min-width: 32px;
-      }
-
-      /* Show chevron on mobile */
-      .step-chevron {
+      /* Large gold step number — always visible */
+      .step > .step-num {
         display: block;
-        font-size: 1rem;
-        color: var(--clay);
-        transition: transform 0.3s ease;
-        flex-shrink: 0;
-        width: 24px;
-        text-align: center;
-        line-height: 24px;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2.6rem;
+        font-weight: 300;
+        color: var(--sun);
+        line-height: 1;
+        margin-bottom: 1.25rem;
+        opacity: 0.9;
       }
 
-      .step-trigger[aria-expanded="true"] .step-chevron { transform: rotate(45deg); }
+      /* Trigger is non-interactive — just displays the title */
+      .step-trigger {
+        cursor: default;
+        pointer-events: none;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0;
+        gap: 0.6rem;
+        border: none;
+        background: none;
+        width: 100%;
+      }
 
-      .step > .step-num { display: none; }
+      /* Hide the ::before pseudo circle (desktop timeline node) */
+      .step-trigger::before { display: none; }
 
-      .step-content h3 { font-size: 0.95rem; font-weight: 500; color: var(--charcoal); }
+      /* White title */
+      .step-content h3 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.4rem;
+        font-weight: 400;
+        color: #ffffff;
+        line-height: 1.2;
+      }
 
-      /* Step body animation */
+      /* No chevron on carousel */
+      .step-chevron { display: none; }
+
+      /* Description always visible — no collapse */
       .step-body {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
+        max-height: none !important;
+        overflow: visible;
+        margin-top: 0.75rem;
       }
-
-      .step-body.open { max-height: 200px; }
 
       .step-body p {
-        padding: 0 1.1rem 1rem 3.5rem;
+        padding: 0;
         font-size: 0.84rem;
+        font-weight: 300;
+        color: rgba(255,255,255,0.65);
+        line-height: 1.75;
+      }
+
+      /* Swipe hint label below carousel */
+      .how-swipe-hint {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.68rem;
+        font-weight: 400;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
         color: var(--light-text);
-        line-height: 1.7;
+        padding: 0 1.25rem;
+        margin-top: 0.5rem;
+      }
+
+      .how-swipe-hint::before {
+        content: '';
+        display: inline-block;
+        width: 20px;
+        height: 1px;
+        background: var(--clay);
       }
 
       /* ───────────────────────────────────────────
@@ -2266,6 +2303,8 @@
         </div>
       </div>
     </div>
+    <!-- Swipe hint shown only on mobile via CSS -->
+    <p class="how-swipe-hint" aria-hidden="true">Swipe to explore</p>
   </section>
 
   <!-- NEW: Mid-page CTA banner — catches visitors already sold after seeing the process -->
@@ -2800,12 +2839,12 @@
         });
       }
 
-      // ── STEP ACCORDION ──
-      // One step open at a time; tapping header toggles expand/collapse
+      // ── STEP ACCORDION (desktop only — mobile uses swipe carousel) ──
       const stepTriggers = document.querySelectorAll('.step-trigger');
 
       stepTriggers.forEach(trigger => {
         trigger.addEventListener('click', () => {
+          if (window.innerWidth <= 768) return; // carousel on mobile, no accordion
           const bodyId = trigger.getAttribute('aria-controls');
           const body = document.getElementById(bodyId);
           const isOpen = trigger.getAttribute('aria-expanded') === 'true';
