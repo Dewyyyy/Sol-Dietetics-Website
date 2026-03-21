@@ -1619,21 +1619,28 @@
       ─────────────────────────────────────────── */
 
       .how { padding: 3rem 0; }
-      .how-inner { grid-template-columns: 1fr; gap: 1.25rem; padding: 0 1.25rem; }
-      .how-intro { padding: 0; }
+      .how-inner { padding: 0 1.25rem; }
+      .how-intro { padding: 0; margin-bottom: 1.5rem; }
 
       /* Carousel track — bleeds to screen edges for natural swipe feel */
       .how-steps {
-        flex-direction: row;
-        overflow-x: auto;
+        /* Force horizontal layout — override desktop position:relative */
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        position: static !important;
+        /* Horizontal scroll */
+        overflow-x: scroll;
         overflow-y: hidden;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
+        /* Spacing — negative margin bleeds past section padding */
         gap: 0.75rem;
-        padding: 0.5rem 1.25rem 1rem;
-        margin: 0 -1.25rem;
-        position: static;
+        padding: 0.75rem 1.25rem 1.25rem;
+        margin-left: -1.25rem;
+        margin-right: -1.25rem;
+        /* Don't let how-inner clip the track */
         align-items: stretch;
       }
 
@@ -1642,22 +1649,26 @@
       /* No connecting timeline line on mobile */
       .how-steps::before { display: none; }
 
-      /* Each step = a dark luxury swipe card */
+      /* Each step = a dark luxury swipe card.
+         flex: 0 0 80vw resets ALL three flex properties at once,
+         overriding the desktop's flex:1 (flex: 1 1 0%) shorthand. */
       .step {
-        scroll-snap-align: start;
-        min-width: 80vw;
-        flex-shrink: 0;
+        flex: 0 0 80vw !important;
+        width: 80vw;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         background: linear-gradient(145deg, #1e5c36 0%, var(--bark) 100%);
         border-radius: 14px;
         padding: 1.75rem 1.5rem 1.5rem;
+        scroll-snap-align: start;
         opacity: 1 !important;
         transform: none !important;
         box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         border: 1px solid rgba(255,255,255,0.07);
         cursor: default;
+        /* Prevent any inherited alignment from making it block-stack */
+        align-self: auto;
       }
 
       /* Large gold step number — always visible */
