@@ -1635,12 +1635,12 @@
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
-        /* Spacing — negative margin bleeds past section padding */
-        gap: 0.75rem;
-        padding: 0.75rem 1.25rem 1.25rem;
+        /* Cards are 78vw; side padding = (100vw - 78vw) / 2 = 11vw
+           so first and last cards can scroll to true center */
+        gap: 1rem;
+        padding: 0.75rem 11vw 1.5rem;
         margin-left: -1.25rem;
         margin-right: -1.25rem;
-        /* Don't let how-inner clip the track */
         align-items: stretch;
       }
 
@@ -1650,24 +1650,26 @@
       .how-steps::before { display: none; }
 
       /* Each step = a dark luxury swipe card.
-         flex: 0 0 80vw resets ALL three flex properties at once,
-         overriding the desktop's flex:1 (flex: 1 1 0%) shorthand. */
+         flex: 0 0 78vw fully resets all three flex properties,
+         overriding the desktop's flex:1 (flex: 1 1 0%) shorthand.
+         scroll-snap-align: center keeps the active card centered. */
       .step {
-        flex: 0 0 80vw !important;
-        width: 80vw;
+        flex: 0 0 78vw !important;
+        width: 78vw;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        justify-content: flex-start;
         background: linear-gradient(145deg, #1e5c36 0%, var(--bark) 100%);
         border-radius: 14px;
-        padding: 1.75rem 1.5rem 1.5rem;
-        scroll-snap-align: start;
+        padding: 2rem 1.5rem;
+        scroll-snap-align: center;
         opacity: 1 !important;
         transform: none !important;
         box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         border: 1px solid rgba(255,255,255,0.07);
         cursor: default;
-        /* Prevent any inherited alignment from making it block-stack */
         align-self: auto;
       }
 
@@ -1688,7 +1690,7 @@
         cursor: default;
         pointer-events: none;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         padding: 0;
         gap: 0.6rem;
         border: none;
@@ -1722,6 +1724,7 @@
         padding: 0;
         font-size: 0.84rem;
         font-weight: 300;
+        text-align: center;
         color: rgba(255,255,255,0.65);
         line-height: 1.75;
       }
