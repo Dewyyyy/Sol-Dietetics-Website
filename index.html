@@ -2626,7 +2626,7 @@
       {
         "@type": "Question",
         "name": "How does white-labeling work?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Your clients only ever see your gym's brand. We power the dietitian, the programs, and the technology behind the scenes via EatLove and Healthie — you keep the relationship and the identity." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Your clients only ever see your gym's brand. We power the dietitian, the programs, and the technology behind the scenes via Healthie — you keep the relationship and the identity." }
       }
     ]
   }
@@ -2691,7 +2691,7 @@
           <div class="hero-svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></div>
           <div>
             <h4>Expert Nutrition Protocols</h4>
-            <p>Evidence-based programs powered by EatLove and Healthie — not generic meal plans or AI guesses.</p>
+            <p>Evidence-based programs built inside a HIPAA-compliant clinical platform — not generic meal plans or AI guesses.</p>
           </div>
         </div>
         <div class="hero-svc-item">
@@ -2950,14 +2950,14 @@
           <p>Out-of-pocket only — no insurance, no claims, no regulatory headaches. Fully legal, structured for gym-based delivery.</p>
         </div>
 
-        <!-- Powered by Healthie + EatLove -->
+        <!-- Powered by Healthie -->
         <div class="why-card">
           <div class="why-card-icon">
             <!-- Lucide zap icon -->
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
           </div>
-          <h3>EatLove + Healthie</h3>
-          <p>HIPAA-compliant EMR (Healthie) and client-facing meal planning (EatLove) — the industry standard, ready to white-label.</p>
+          <h3>Powered by Healthie</h3>
+          <p>HIPAA-compliant EMR, secure messaging, video visits, and clinical charting — the industry-standard platform, ready to white-label under your gym's brand.</p>
         </div>
 
       </div>
@@ -2985,7 +2985,7 @@
       </div>
       <div class="compliance-item">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-        Powered by EatLove + Healthie
+        Powered by Healthie
       </div>
     </div>
   </section>
@@ -3138,22 +3138,22 @@
 
         <!-- Results -->
         <div class="calc-results">
-          <div class="calc-results-label">Your Monthly Math</div>
+          <div class="calc-results-label" id="calcResultsLabel">Your Annual Math (Prepaid)</div>
           <div class="calc-result-row">
-            <span class="calc-result-label">Gym gross revenue</span>
-            <span class="calc-result-value" id="calcGross">$3,980</span>
+            <span class="calc-result-label" id="calcGrossLabel">Annual gross revenue</span>
+            <span class="calc-result-value" id="calcGross">$47,760</span>
           </div>
           <div class="calc-result-row">
-            <span class="calc-result-label">Sol Dietetics fee</span>
-            <span class="calc-result-value" id="calcFee">$1,600</span>
+            <span class="calc-result-label" id="calcFeeLabel">Annual Sol fee (paid upfront)</span>
+            <span class="calc-result-value" id="calcFee">$19,200</span>
           </div>
           <div class="calc-result-row highlight">
-            <span class="calc-result-label">Your net profit</span>
-            <span class="calc-result-value" id="calcNet">$2,380</span>
+            <span class="calc-result-label" id="calcNetLabel">Annual net profit</span>
+            <span class="calc-result-value" id="calcNet">$28,560</span>
           </div>
           <div class="calc-result-row">
-            <span class="calc-result-label">Annual net profit</span>
-            <span class="calc-result-value" id="calcAnnual">$28,560</span>
+            <span class="calc-result-label" id="calcSecondaryLabel">Monthly net (avg)</span>
+            <span class="calc-result-value" id="calcSecondary">$2,380</span>
           </div>
           <div class="calc-cta">
             <a href="#contact" class="btn-primary">Lock In Your Plan</a>
@@ -3280,7 +3280,7 @@
             <span class="faq-chevron" aria-hidden="true">+</span>
           </button>
           <div class="faq-body" id="faq-body-5">
-            <p>Your clients only see your gym's brand. We power the dietitian, the programs, and the technology (EatLove + Healthie) behind the scenes. You keep the relationship and the identity.</p>
+            <p>Your clients only see your gym's brand. We power the dietitian, the programs, and the technology (Healthie EMR) behind the scenes. You keep the relationship and the identity.</p>
           </div>
         </div>
         <div class="faq-item">
@@ -3289,7 +3289,7 @@
             <span class="faq-chevron" aria-hidden="true">+</span>
           </button>
           <div class="faq-body" id="faq-body-6">
-            <p>We use EatLove for client-facing meal planning and Healthie as our HIPAA-compliant EMR. Both are industry-standard platforms trusted by thousands of RDs.</p>
+            <p>We run every program inside Healthie — the HIPAA-compliant EMR trusted by thousands of practicing RDs for scheduling, charting, secure messaging, and client meal plan delivery.</p>
           </div>
         </div>
         <div class="faq-item">
@@ -3586,22 +3586,30 @@
 
     // ── REVENUE CALCULATOR ──
     // Inputs: clients (slider), retail price (slider), plan (toggle buttons)
-    // Logic: Sol fee = $1,000 base + max(0, clients - 10) × $70
-    //        Plan rate overrides the base (Flex $1,100 / Annual $1,000 / Prepay $900)
+    // Logic: Sol monthly fee = plan base + max(0, clients - 10) × $70
+    //        Flex $1,100/mo, Annual $1,000/mo, Prepay $900/mo
+    // Display: Flex → monthly math. Annual / Prepay → annual math.
     (function initCalculator() {
       const clientsSlider = document.getElementById('calcClients');
       const priceSlider = document.getElementById('calcPrice');
       const planButtons = document.querySelectorAll('.calc-plan-btn');
       const clientsLabel = document.getElementById('calcClientsLabel');
       const priceLabel = document.getElementById('calcPriceLabel');
+
+      const resultsLabel = document.getElementById('calcResultsLabel');
+      const grossLabelEl = document.getElementById('calcGrossLabel');
       const grossEl = document.getElementById('calcGross');
+      const feeLabelEl = document.getElementById('calcFeeLabel');
       const feeEl = document.getElementById('calcFee');
+      const netLabelEl = document.getElementById('calcNetLabel');
       const netEl = document.getElementById('calcNet');
-      const annualEl = document.getElementById('calcAnnual');
+      const secondaryLabelEl = document.getElementById('calcSecondaryLabel');
+      const secondaryEl = document.getElementById('calcSecondary');
 
       if (!clientsSlider) return; // calculator not on page
 
-      let planBase = 900; // default to prepay (featured)
+      let planBase = 900;        // default to prepay (featured)
+      let currentPlan = 'prepay';
 
       function fmt(n) {
         return '$' + Math.round(n).toLocaleString('en-US');
@@ -3611,18 +3619,38 @@
         const clients = parseInt(clientsSlider.value, 10);
         const price = parseInt(priceSlider.value, 10);
 
-        // Sol fee: base covers first 10 clients, $70/each above
-        const solFee = planBase + Math.max(0, clients - 10) * 70;
-        const gross = clients * price;
-        const net = gross - solFee;
-        const annual = net * 12;
+        // Monthly economics
+        const solFeeMonthly = planBase + Math.max(0, clients - 10) * 70;
+        const grossMonthly  = clients * price;
+        const netMonthly    = grossMonthly - solFeeMonthly;
 
         clientsLabel.textContent = clients;
         priceLabel.textContent = price;
-        grossEl.textContent = fmt(gross);
-        feeEl.textContent = fmt(solFee);
-        netEl.textContent = fmt(net);
-        annualEl.textContent = fmt(annual);
+
+        if (currentPlan === 'flex') {
+          // MONTHLY VIEW — Flex is month-to-month, no commitment
+          resultsLabel.textContent = 'Your Monthly Math';
+          grossLabelEl.textContent = 'Monthly gross revenue';
+          grossEl.textContent = fmt(grossMonthly);
+          feeLabelEl.textContent = 'Monthly Sol fee';
+          feeEl.textContent = fmt(solFeeMonthly);
+          netLabelEl.textContent = 'Monthly net profit';
+          netEl.textContent = fmt(netMonthly);
+          secondaryLabelEl.textContent = 'Annual projection';
+          secondaryEl.textContent = fmt(netMonthly * 12);
+        } else {
+          // ANNUAL VIEW — Annual and Prepay both commit for 12 months
+          const isPrepay = currentPlan === 'prepay';
+          resultsLabel.textContent = isPrepay ? 'Your Annual Math (Prepaid)' : 'Your Annual Math';
+          grossLabelEl.textContent = 'Annual gross revenue';
+          grossEl.textContent = fmt(grossMonthly * 12);
+          feeLabelEl.textContent = isPrepay ? 'Annual Sol fee (paid upfront)' : 'Annual Sol fee';
+          feeEl.textContent = fmt(solFeeMonthly * 12);
+          netLabelEl.textContent = 'Annual net profit';
+          netEl.textContent = fmt(netMonthly * 12);
+          secondaryLabelEl.textContent = 'Monthly net (avg)';
+          secondaryEl.textContent = fmt(netMonthly);
+        }
       }
 
       clientsSlider.addEventListener('input', recalc);
@@ -3633,6 +3661,7 @@
           planButtons.forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           planBase = parseInt(btn.dataset.rate, 10);
+          currentPlan = btn.dataset.plan;
           recalc();
         });
       });

@@ -666,7 +666,7 @@
     <div class="roi-inner">
       <p class="section-tag">Run the Numbers</p>
       <h2 class="section-title">Your <em>ROI</em> — in real time.</h2>
-      <p class="section-lead">Adjust the sliders to match your gym. We'll show you exactly what you'd collect, what Sol charges, and what lands in your pocket every month.</p>
+      <p class="section-lead">Adjust the sliders to match your gym. We'll show you exactly what you'd collect, what Sol charges, and what lands in your pocket. Flex shows monthly math; Annual and Prepay show the full-year picture.</p>
       <div class="calc-wrap">
         <div class="calc-controls">
           <h3>Your Gym</h3>
@@ -681,29 +681,29 @@
           <div class="calc-slider">
             <label style="text-transform: uppercase;">Plan</label>
             <div class="plan-toggle">
-              <button type="button" data-plan="1100">Flex</button>
-              <button type="button" data-plan="1000">Annual</button>
-              <button type="button" data-plan="900" class="active">Prepay</button>
+              <button type="button" data-rate="1100" data-plan="flex">Flex</button>
+              <button type="button" data-rate="1000" data-plan="annual">Annual</button>
+              <button type="button" data-rate="900" data-plan="prepay" class="active">Prepay</button>
             </div>
           </div>
         </div>
         <div class="calc-results">
-          <h3>Monthly Math</h3>
+          <h3 id="results-heading">Annual Math (Prepaid)</h3>
           <div class="calc-row">
-            <span class="calc-label">Gross revenue</span>
-            <span class="calc-value" id="gross-val">$3,980</span>
+            <span class="calc-label" id="gross-label">Annual gross revenue</span>
+            <span class="calc-value" id="gross-val">$47,760</span>
           </div>
           <div class="calc-row">
-            <span class="calc-label">Sol Dietetics fee</span>
-            <span class="calc-value" id="fee-val">&minus;$1,600</span>
+            <span class="calc-label" id="fee-label">Annual Sol fee (paid upfront)</span>
+            <span class="calc-value" id="fee-val">&minus;$19,200</span>
           </div>
           <div class="calc-row highlight">
-            <span class="calc-label">Your net profit</span>
-            <span class="calc-value" id="net-val">$2,380</span>
+            <span class="calc-label" id="net-label">Annual net profit</span>
+            <span class="calc-value" id="net-val">$28,560</span>
           </div>
           <div class="calc-row">
-            <span class="calc-label">Annual profit</span>
-            <span class="calc-value" id="annual-val">$28,560</span>
+            <span class="calc-label" id="secondary-label">Monthly net (avg)</span>
+            <span class="calc-value" id="secondary-val">$2,380</span>
           </div>
         </div>
       </div>
@@ -855,18 +855,26 @@
   </footer>
 
   <script>
-    // ROI CALCULATOR
+    // ROI CALCULATOR — Flex shows monthly math; Annual/Prepay show annual math.
     (function initCalculator() {
       const clientsSlider = document.getElementById('clients-slider');
       const priceSlider = document.getElementById('price-slider');
       const clientsVal = document.getElementById('clients-val');
       const priceVal = document.getElementById('price-val');
+
+      const resultsHeading = document.getElementById('results-heading');
+      const grossLabel = document.getElementById('gross-label');
       const grossVal = document.getElementById('gross-val');
+      const feeLabel = document.getElementById('fee-label');
       const feeVal = document.getElementById('fee-val');
+      const netLabel = document.getElementById('net-label');
       const netVal = document.getElementById('net-val');
-      const annualVal = document.getElementById('annual-val');
+      const secondaryLabel = document.getElementById('secondary-label');
+      const secondaryVal = document.getElementById('secondary-val');
+
       const planButtons = document.querySelectorAll('.plan-toggle button');
       let planBase = 900;
+      let currentPlan = 'prepay';
 
       function fmt(n) {
         return '$' + Math.round(n).toLocaleString('en-US');
@@ -875,17 +883,36 @@
       function recalc() {
         const clients = parseInt(clientsSlider.value, 10);
         const price = parseInt(priceSlider.value, 10);
-        const solFee = planBase + Math.max(0, clients - 10) * 70;
-        const gross = clients * price;
-        const net = gross - solFee;
-        const annual = net * 12;
+
+        const solFeeMonthly = planBase + Math.max(0, clients - 10) * 70;
+        const grossMonthly = clients * price;
+        const netMonthly = grossMonthly - solFeeMonthly;
 
         clientsVal.textContent = clients;
         priceVal.textContent = '$' + price;
-        grossVal.textContent = fmt(gross);
-        feeVal.textContent = '\u2212' + fmt(solFee);
-        netVal.textContent = fmt(net);
-        annualVal.textContent = fmt(annual);
+
+        if (currentPlan === 'flex') {
+          resultsHeading.textContent = 'Monthly Math';
+          grossLabel.textContent = 'Monthly gross revenue';
+          grossVal.textContent = fmt(grossMonthly);
+          feeLabel.textContent = 'Monthly Sol fee';
+          feeVal.textContent = '\u2212' + fmt(solFeeMonthly);
+          netLabel.textContent = 'Monthly net profit';
+          netVal.textContent = fmt(netMonthly);
+          secondaryLabel.textContent = 'Annual projection';
+          secondaryVal.textContent = fmt(netMonthly * 12);
+        } else {
+          const isPrepay = currentPlan === 'prepay';
+          resultsHeading.textContent = isPrepay ? 'Annual Math (Prepaid)' : 'Annual Math';
+          grossLabel.textContent = 'Annual gross revenue';
+          grossVal.textContent = fmt(grossMonthly * 12);
+          feeLabel.textContent = isPrepay ? 'Annual Sol fee (paid upfront)' : 'Annual Sol fee';
+          feeVal.textContent = '\u2212' + fmt(solFeeMonthly * 12);
+          netLabel.textContent = 'Annual net profit';
+          netVal.textContent = fmt(netMonthly * 12);
+          secondaryLabel.textContent = 'Monthly net (avg)';
+          secondaryVal.textContent = fmt(netMonthly);
+        }
       }
 
       clientsSlider.addEventListener('input', recalc);
@@ -894,7 +921,8 @@
         btn.addEventListener('click', () => {
           planButtons.forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
-          planBase = parseInt(btn.dataset.plan, 10);
+          planBase = parseInt(btn.dataset.rate, 10);
+          currentPlan = btn.dataset.plan;
           recalc();
         });
       });
