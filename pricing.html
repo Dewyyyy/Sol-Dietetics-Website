@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing — Sol Dietetics</title>
+  <meta name="description" content="Simple flat-rate pricing for gyms. $1,000/month base for 10 clients, $70 per additional client. Three plans: Flex, Annual, and Annual Prepay. First month free on every plan." />
+  <link rel="canonical" href="https://www.soldietetics.com/pricing.html" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.soldietetics.com/pricing.html" />
+  <meta property="og:title" content="Pricing — Sol Dietetics" />
+  <meta property="og:description" content="Simple flat-rate pricing for gyms. $1,000/month base for 10 clients, $70 per additional client. First month free on every plan." />
+  <meta property="og:image" content="https://www.soldietetics.com/assets/images/SOL.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Pricing — Sol Dietetics" />
+  <meta name="twitter:description" content="Simple flat-rate pricing for gyms. Three plans, unlimited revenue upside, first month free." />
+  <meta name="twitter:image" content="https://www.soldietetics.com/assets/images/SOL.png" />
+  <link rel="icon" type="image/png" href="https://i.imgur.com/J2BC5rg.png" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EYQ0DSNBD3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-EYQ0DSNBD3');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #F5F0E8;
+      --warm-white: #FDFAF6;
+      --sand: #E2DBD0;
+      --clay: #A8C4B0;
+      --terra: #3D7A52;
+      --bark: #1B5230;
+      --moss: #587A61;
+      --sun: #E8900A;
+      --charcoal: #182820;
+      --text: #2B3D2F;
+      --light-text: #647A69;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 4rem;
+      background: rgba(248, 244, 238, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(196, 168, 130, 0.2);
+    }
+    .nav-logo img { height: 48px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--light-text);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--terra); }
+    .nav-cta {
+      background: var(--bark) !important;
+      color: var(--cream) !important;
+      padding: 0.6rem 1.4rem !important;
+      border-radius: 2px;
+    }
+    .nav-cta:hover { background: var(--terra) !important; }
+
+    /* HERO */
+    .page-hero {
+      background: linear-gradient(160deg, #1e5c36 0%, var(--bark) 55%, #122b1e 100%);
+      padding: 6rem 4rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 30%, rgba(232,144,10,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .page-hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-eyebrow {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sun);
+      margin-bottom: 1.5rem;
+    }
+    .page-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
+    }
+    .page-hero h1 em { font-style: italic; color: var(--sun); }
+    .page-hero p {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: rgba(245, 240, 232, 0.75);
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    /* SECTIONS */
+    section { padding: 6rem 4rem; }
+
+    .section-tag {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--moss);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+    .section-tag::before {
+      content: '';
+      width: 1.5rem;
+      height: 1px;
+      background: var(--moss);
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 3vw, 3.4rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--charcoal);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .section-title em { font-style: italic; color: var(--terra); }
+
+    /* PRICING CARDS — copied from index */
+    .pricing-inner { max-width: 1200px; margin: 0 auto; }
+    .pricing-intro { max-width: 640px; margin: 0 auto 3rem; text-align: center; }
+    .pricing-intro p { font-size: 0.95rem; font-weight: 300; line-height: 1.75; color: var(--light-text); }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 1rem;
+      align-items: stretch;
+    }
+    .plan-card {
+      background: var(--warm-white);
+      border: 1px solid var(--sand);
+      border-radius: 8px;
+      padding: 2.5rem 2rem;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .plan-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.08); }
+    .plan-card.featured {
+      background: var(--bark);
+      border-color: var(--bark);
+      box-shadow: 0 10px 32px rgba(27,82,48,0.25);
+      transform: translateY(-8px);
+    }
+    .plan-card.featured:hover { transform: translateY(-12px); }
+    .plan-badge {
+      position: absolute;
+      top: -0.9rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--sun);
+      color: var(--charcoal);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+    .plan-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 0.3rem;
+    }
+    .plan-card.featured .plan-name { color: var(--cream); }
+    .plan-tag {
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--moss);
+      margin-bottom: 1.5rem;
+    }
+    .plan-card.featured .plan-tag { color: var(--sun); }
+    .plan-price { display: flex; align-items: baseline; gap: 0.35rem; margin-bottom: 0.4rem; }
+    .plan-price-amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--charcoal);
+      line-height: 1;
+    }
+    .plan-card.featured .plan-price-amount { color: var(--cream); }
+    .plan-price-period { font-size: 0.85rem; font-weight: 400; color: var(--light-text); }
+    .plan-card.featured .plan-price-period { color: rgba(245, 240, 232, 0.6); }
+    .plan-annual-total { font-size: 0.78rem; font-weight: 300; color: var(--light-text); margin-bottom: 0.35rem; }
+    .plan-card.featured .plan-annual-total { color: rgba(245, 240, 232, 0.55); }
+    .plan-savings {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--terra);
+      background: rgba(61, 122, 82, 0.1);
+      padding: 0.25rem 0.65rem;
+      border-radius: 2px;
+      margin-bottom: 1.75rem;
+    }
+    .plan-card.featured .plan-savings { color: var(--sun); background: rgba(232, 144, 10, 0.18); }
+    .plan-divider { height: 1px; background: var(--sand); margin: 0 0 1.5rem; }
+    .plan-card.featured .plan-divider { background: rgba(255, 255, 255, 0.12); }
+    .plan-features { list-style: none; padding: 0; margin: 0 0 2rem; display: flex; flex-direction: column; gap: 0.85rem; flex: 1; }
+    .plan-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      font-size: 0.85rem;
+      font-weight: 300;
+      line-height: 1.5;
+      color: var(--text);
+    }
+    .plan-card.featured .plan-features li { color: rgba(245, 240, 232, 0.82); }
+    .plan-features li svg { flex-shrink: 0; color: var(--terra); margin-top: 0.15rem; }
+    .plan-card.featured .plan-features li svg { color: var(--sun); }
+    .plan-cta {
+      display: block;
+      text-align: center;
+      padding: 0.9rem 1.25rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.2s ease;
+      border: 1px solid var(--bark);
+      background: transparent;
+      color: var(--bark);
+    }
+    .plan-cta:hover { background: var(--bark); color: var(--cream); }
+    .plan-card.featured .plan-cta {
+      background: var(--sun);
+      border-color: var(--sun);
+      color: var(--charcoal);
+    }
+    .plan-card.featured .plan-cta:hover { background: var(--cream); border-color: var(--cream); color: var(--bark); }
+
+    /* COMPARISON TABLE */
+    .comparison { background: var(--warm-white); border-top: 1px solid var(--sand); border-bottom: 1px solid var(--sand); }
+    .comparison-inner { max-width: 1100px; margin: 0 auto; }
+    .comparison-intro { max-width: 640px; margin: 0 auto 3rem; text-align: center; }
+    .comparison-intro p { font-size: 0.95rem; font-weight: 300; line-height: 1.75; color: var(--light-text); }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--cream);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+    .compare-table th, .compare-table td {
+      padding: 1.1rem 1.25rem;
+      text-align: left;
+      border-bottom: 1px solid var(--sand);
+      font-size: 0.87rem;
+      font-weight: 300;
+      color: var(--text);
+    }
+    .compare-table th {
+      background: var(--bark);
+      color: var(--cream);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+    .compare-table th:first-child { text-align: left; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; font-family: 'DM Sans', sans-serif; }
+    .compare-table td:not(:first-child) { text-align: center; }
+    .compare-table td:first-child { font-weight: 400; color: var(--charcoal); }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table .check svg { color: var(--terra); }
+    .compare-table .cross { color: var(--sand); font-size: 1.3rem; }
+
+    /* BASE PRICING EXPLAINER */
+    .base-pricing { background: var(--cream); }
+    .base-pricing-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .base-pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .base-card {
+      background: var(--warm-white);
+      border: 1px solid var(--sand);
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .base-card .base-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: var(--bark);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .base-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+    .base-card p { font-size: 0.85rem; font-weight: 300; line-height: 1.65; color: var(--light-text); }
+
+    /* FAQ */
+    .faq { background: var(--warm-white); border-top: 1px solid var(--sand); }
+    .faq-inner { max-width: 900px; margin: 0 auto; }
+    .faq-grid { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 3rem; }
+    .faq-item {
+      background: var(--cream);
+      border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      overflow: hidden;
+    }
+    .faq-trigger {
+      background: none;
+      border: none;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.5rem;
+      cursor: pointer;
+      text-align: left;
+      font: inherit;
+      transition: background 0.2s;
+      min-height: 44px;
+    }
+    .faq-trigger:hover { background: rgba(0,0,0,0.02); }
+    .faq-trigger h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--charcoal);
+    }
+    .faq-chevron { font-size: 1.2rem; color: var(--clay); transition: transform 0.3s ease; flex-shrink: 0; }
+    .faq-trigger[aria-expanded="true"] .faq-chevron { transform: rotate(45deg); }
+    .faq-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .faq-body.open { max-height: 400px; }
+    .faq-body p {
+      padding: 0 1.5rem 1.25rem;
+      font-size: 0.87rem;
+      font-weight: 300;
+      line-height: 1.72;
+      color: var(--light-text);
+    }
+
+    /* CTA BANNER */
+    .cta-band {
+      background: var(--bark);
+      padding: 5rem 4rem;
+      text-align: center;
+    }
+    .cta-band-inner { max-width: 720px; margin: 0 auto; }
+    .cta-band h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 2.8vw, 2.8rem);
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+    .cta-band h2 em { font-style: italic; color: var(--sun); }
+    .cta-band p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(245, 240, 232, 0.7);
+      margin-bottom: 2rem;
+    }
+    .cta-band .btn-primary {
+      background: var(--sun);
+      color: var(--charcoal);
+      padding: 1rem 2.5rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      display: inline-block;
+      transition: all 0.2s ease;
+    }
+    .cta-band .btn-primary:hover { background: var(--cream); color: var(--bark); transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer {
+      background: var(--charcoal);
+      padding: 3rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-copy { font-size: 0.73rem; font-weight: 300; color: rgba(255,255,255,0.3); letter-spacing: 0.06em; }
+    .footer-back {
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-back:hover { color: var(--cream); }
+
+    /* MOBILE */
+    @media (max-width: 960px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+      section { padding: 4rem 1.5rem; }
+      .page-hero { padding: 4.5rem 1.5rem 4rem; }
+      .pricing-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+      .plan-card.featured { transform: none; }
+      .plan-card.featured:hover { transform: translateY(-4px); }
+      .base-pricing-grid { grid-template-columns: 1fr; }
+      .compare-table { font-size: 0.78rem; }
+      .compare-table th, .compare-table td { padding: 0.85rem 0.75rem; }
+      .cta-band { padding: 3rem 1.5rem; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links li:nth-child(1), .nav-links li:nth-child(3) { display: none; }
+      .page-hero h1 { font-size: clamp(2rem, 8vw, 2.8rem); }
+    }
+  </style>
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Sol Dietetics Dietitian-as-a-Service",
+    "description": "White-labeled nutrition program for gyms with flat monthly subscription pricing.",
+    "brand": { "@type": "Brand", "name": "Sol Dietetics" },
+    "offers": [
+      { "@type": "Offer", "name": "Flex", "price": "1100", "priceCurrency": "USD" },
+      { "@type": "Offer", "name": "Annual", "price": "1000", "priceCurrency": "USD" },
+      { "@type": "Offer", "name": "Annual Prepay", "price": "900", "priceCurrency": "USD" }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="/">
+      <img src="assets/images/SOL.png" alt="Sol Dietetics" width="48" height="48" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="/how-it-works.html">How It Works</a></li>
+      <li><a href="/pricing.html">Pricing</a></li>
+      <li><a href="/for-gyms.html">For Gyms</a></li>
+      <li><a href="/#contact" class="nav-cta">Start Free</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <p class="hero-eyebrow">— Pricing</p>
+      <h1>Flat-rate plans,<br/><em>unlimited upside.</em></h1>
+      <p>$1,000/month covers your first 10 clients. Every additional client is just $70. You set your members' price and keep 100% of the margin.</p>
+    </div>
+  </section>
+
+  <!-- BASE PRICING EXPLAINER -->
+  <section class="base-pricing">
+    <div class="base-pricing-inner">
+      <p class="section-tag">How Pricing Works</p>
+      <h2 class="section-title">Simple math.<br/><em>Predictable</em> cost.</h2>
+      <div class="base-pricing-grid">
+        <div class="base-card">
+          <div class="base-num">$1,000</div>
+          <h3>Monthly Base</h3>
+          <p>Flat floor that covers your first 10 clients on every plan. Never surprised by the bill.</p>
+        </div>
+        <div class="base-card">
+          <div class="base-num">+$70</div>
+          <h3>Per Client Above 10</h3>
+          <p>Each additional client adds just $70/month. A gym with 20 clients pays $1,700/month total.</p>
+        </div>
+        <div class="base-card">
+          <div class="base-num">$0</div>
+          <h3>First Month</h3>
+          <p>Free. No credit card required. Test the program with real clients before you commit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING CARDS -->
+  <section style="padding-top: 7rem;">
+    <div class="pricing-inner">
+      <p class="section-tag">Choose Your Plan</p>
+      <h2 class="section-title">Three plans.<br/>One <em>clear winner.</em></h2>
+      <div class="pricing-intro">
+        <p>All plans include white-labeled client portal, expert RD protocols, physician oversight, and OOP compliance. Pick the commitment level that fits your cashflow.</p>
+      </div>
+
+      <div class="pricing-grid">
+
+        <!-- Flex -->
+        <div class="plan-card">
+          <div class="plan-name">Flex</div>
+          <div class="plan-tag">Month-to-Month</div>
+          <div class="plan-price">
+            <span class="plan-price-amount">$1,100</span>
+            <span class="plan-price-period">/month</span>
+          </div>
+          <div class="plan-annual-total">$13,200/year · no commitment</div>
+          <div style="height: 1.5rem;"></div>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>White-labeled client portal</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>All nutrition program tracks</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Weekly check-in system</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Pause once per year (free)</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>1st month free to start</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Cancel anytime with 30-day notice</li>
+          </ul>
+          <a href="/#contact" class="plan-cta">Start Free Month</a>
+        </div>
+
+        <!-- Annual Prepay (Featured) -->
+        <div class="plan-card featured">
+          <div class="plan-badge">Best Value</div>
+          <div class="plan-name">Annual Prepay</div>
+          <div class="plan-tag">12 Months Paid Upfront</div>
+          <div class="plan-price">
+            <span class="plan-price-amount">$900</span>
+            <span class="plan-price-period">/month</span>
+          </div>
+          <div class="plan-annual-total">$10,800 billed upfront</div>
+          <div class="plan-savings">Save $2,400/yr</div>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Everything in Annual</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Best per-month rate available</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Locked-in pricing for 12 months</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>VIP onboarding concierge</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>1st month free to start</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Early cancellation: 2-month fee</li>
+          </ul>
+          <a href="/#contact" class="plan-cta">Claim Best Rate</a>
+        </div>
+
+        <!-- Annual -->
+        <div class="plan-card">
+          <div class="plan-name">Annual</div>
+          <div class="plan-tag">12-Month Contract</div>
+          <div class="plan-price">
+            <span class="plan-price-amount">$1,000</span>
+            <span class="plan-price-period">/month</span>
+          </div>
+          <div class="plan-annual-total">$12,000/year</div>
+          <div class="plan-savings">Save $1,200/yr</div>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Everything in Flex</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Priority onboarding support</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Dedicated account manager</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Quarterly business reviews</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>1st month free to start</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Early cancellation: 2-month fee</li>
+          </ul>
+          <a href="/#contact" class="plan-cta">Start Annual Plan</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON TABLE -->
+  <section class="comparison">
+    <div class="comparison-inner">
+      <p class="section-tag">Plan Comparison</p>
+      <h2 class="section-title">Feature-by-feature<br/><em>breakdown.</em></h2>
+      <div class="comparison-intro">
+        <p>Every plan includes the full program. The difference is commitment, price, and support level.</p>
+      </div>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Flex</th>
+            <th>Annual</th>
+            <th>Annual Prepay</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Monthly rate</td>
+            <td>$1,100</td>
+            <td>$1,000</td>
+            <td>$900</td>
+          </tr>
+          <tr>
+            <td>Annual total</td>
+            <td>$13,200</td>
+            <td>$12,000</td>
+            <td>$10,800</td>
+          </tr>
+          <tr>
+            <td>Commitment</td>
+            <td>Month-to-month</td>
+            <td>12-month contract</td>
+            <td>12 months upfront</td>
+          </tr>
+          <tr>
+            <td>White-labeled portal</td>
+            <td class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+            <td class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+            <td class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+          </tr>
+          <tr>
+            <td>All nutrition tracks</td>
+            <td class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+            <td class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+            <td class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+          </tr>
+          <tr>
+            <td>First month free</td>
+            <td class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+            <td class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+            <td class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+          </tr>
+          <tr>
+            <td>Free annual pause</td>
+            <td class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+            <td class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+            <td class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+          </tr>
+          <tr>
+            <td>Dedicated account manager</td>
+            <td class="cross">—</td>
+            <td class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+            <td class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+          </tr>
+          <tr>
+            <td>Quarterly business reviews</td>
+            <td class="cross">—</td>
+            <td class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+            <td class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+          </tr>
+          <tr>
+            <td>VIP onboarding concierge</td>
+            <td class="cross">—</td>
+            <td class="cross">—</td>
+            <td class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></td>
+          </tr>
+          <tr>
+            <td>Cancellation</td>
+            <td>30-day notice</td>
+            <td>2-month fee</td>
+            <td>2-month fee</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="faq-inner">
+      <p class="section-tag">Pricing FAQ</p>
+      <h2 class="section-title">Common questions<br/>about <em>pricing.</em></h2>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false" aria-controls="p-faq-0">
+            <h3>What happens if I cancel early?</h3>
+            <span class="faq-chevron" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-body" id="p-faq-0">
+            <p>Flex plans can be canceled anytime with 30 days' written notice — no fees. Annual and Annual Prepay plans carry an early cancellation fee equal to 2 months of the remaining balance.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false" aria-controls="p-faq-1">
+            <h3>Can I pause the program?</h3>
+            <span class="faq-chevron" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-body" id="p-faq-1">
+            <p>Yes. Every plan includes one free pause per year — perfect for slow seasons or off-months. Additional pauses carry a $250 reactivation fee to restart service.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false" aria-controls="p-faq-2">
+            <h3>Is this compliant with insurance laws?</h3>
+            <span class="faq-chevron" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-body" id="p-faq-2">
+            <p>Yes. Our programs are 100% out-of-pocket (OOP) compliant. We do not bill insurance. All programs are overseen by a California-licensed Registered Dietitian and a supervising physician, and our platform is HIPAA compliant via Healthie.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false" aria-controls="p-faq-3">
+            <h3>What states do you operate in?</h3>
+            <span class="faq-chevron" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-body" id="p-faq-3">
+            <p>We are currently licensed in California and actively expanding to additional states. Because every program is delivered under a licensed RD and physician oversight, we match RDs to your state's licensure requirements. Reach out to discuss your location.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false" aria-controls="p-faq-4">
+            <h3>Who are the dietitians?</h3>
+            <span class="faq-chevron" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-body" id="p-faq-4">
+            <p>All providers are Registered Dietitian Nutritionists (RDNs) with advanced degrees and clinical credentials. Every program is overseen by a California-licensed RD and supervising physician.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false" aria-controls="p-faq-5">
+            <h3>What platforms do you use?</h3>
+            <span class="faq-chevron" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-body" id="p-faq-5">
+            <p>We use EatLove for client-facing meal planning and nutrition tracking, and Healthie as our HIPAA-compliant EMR and practice management system. Both are industry-standard platforms trusted by thousands of practicing dietitians.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false" aria-controls="p-faq-6">
+            <h3>How does white-labeling work?</h3>
+            <span class="faq-chevron" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-body" id="p-faq-6">
+            <p>Your clients only see your gym's brand — your logo, your colors, your portal. We power the dietitian, the programs, and the technology behind the curtain. Members think of the nutrition program as yours, because it is.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false" aria-controls="p-faq-7">
+            <h3>What is Fullscript and how do I earn from it?</h3>
+            <span class="faq-chevron" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-body" id="p-faq-7">
+            <p>Fullscript is a professional-grade supplement dispensary used by licensed health practitioners. When your clients order supplements through the dispensary we set up for your gym, you earn passive revenue on every order — on top of your program margin.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band">
+    <div class="cta-band-inner">
+      <h2>Still have <em>questions?</em></h2>
+      <p>Book a quick call or send us a message. We'll walk you through the numbers for your specific gym — zero pressure, zero commitment.</p>
+      <a href="/#contact" class="btn-primary">Start Your First Month Free</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-copy">&copy; 2026 Sol Dietetics. All rights reserved.</span>
+    <a href="/" class="footer-back">← Back to soldietetics.com</a>
+  </footer>
+
+  <script>
+    // FAQ Accordion
+    const faqTriggers = document.querySelectorAll('.faq-trigger');
+    faqTriggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const bodyId = trigger.getAttribute('aria-controls');
+        const body = document.getElementById(bodyId);
+        const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+
+        faqTriggers.forEach(t => {
+          t.setAttribute('aria-expanded', 'false');
+          const b = document.getElementById(t.getAttribute('aria-controls'));
+          if (b) b.classList.remove('open');
+        });
+
+        if (!isOpen && body) {
+          trigger.setAttribute('aria-expanded', 'true');
+          body.classList.add('open');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

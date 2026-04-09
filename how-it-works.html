@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How It Works — Sol Dietetics</title>
+  <meta name="description" content="How Sol Dietetics works: gym onboarding, client enrollment journey, the EatLove and Healthie platforms, and how we keep every program 100% OOP compliant with licensed RD and physician oversight." />
+  <link rel="canonical" href="https://www.soldietetics.com/how-it-works.html" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.soldietetics.com/how-it-works.html" />
+  <meta property="og:title" content="How It Works — Sol Dietetics" />
+  <meta property="og:description" content="From gym onboarding to client enrollment — how the Sol Dietetics Dietitian-as-a-Service program runs end-to-end." />
+  <meta property="og:image" content="https://www.soldietetics.com/assets/images/SOL.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How It Works — Sol Dietetics" />
+  <meta name="twitter:description" content="Inside Sol Dietetics: onboarding, client journey, platforms, and compliance." />
+  <meta name="twitter:image" content="https://www.soldietetics.com/assets/images/SOL.png" />
+  <link rel="icon" type="image/png" href="https://i.imgur.com/J2BC5rg.png" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EYQ0DSNBD3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-EYQ0DSNBD3');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #F5F0E8;
+      --warm-white: #FDFAF6;
+      --sand: #E2DBD0;
+      --clay: #A8C4B0;
+      --terra: #3D7A52;
+      --bark: #1B5230;
+      --moss: #587A61;
+      --sun: #E8900A;
+      --charcoal: #182820;
+      --text: #2B3D2F;
+      --light-text: #647A69;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 4rem;
+      background: rgba(248, 244, 238, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(196, 168, 130, 0.2);
+    }
+    .nav-logo img { height: 48px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--light-text);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--terra); }
+    .nav-cta {
+      background: var(--bark) !important;
+      color: var(--cream) !important;
+      padding: 0.6rem 1.4rem !important;
+      border-radius: 2px;
+    }
+    .nav-cta:hover { background: var(--terra) !important; }
+
+    /* HERO */
+    .page-hero {
+      background: linear-gradient(160deg, #1e5c36 0%, var(--bark) 55%, #122b1e 100%);
+      padding: 6rem 4rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 30%, rgba(232,144,10,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .page-hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-eyebrow {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sun);
+      margin-bottom: 1.5rem;
+    }
+    .page-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
+    }
+    .page-hero h1 em { font-style: italic; color: var(--sun); }
+    .page-hero p {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: rgba(245, 240, 232, 0.75);
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    /* SECTIONS */
+    section { padding: 6rem 4rem; }
+
+    .section-tag {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--moss);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+    .section-tag::before {
+      content: '';
+      width: 1.5rem;
+      height: 1px;
+      background: var(--moss);
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 3vw, 3.4rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--charcoal);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .section-title em { font-style: italic; color: var(--terra); }
+    .section-lead {
+      max-width: 640px;
+      margin: 0 auto 3rem;
+      text-align: center;
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--light-text);
+    }
+
+    /* GYM ONBOARDING TIMELINE */
+    .gym-flow-inner { max-width: 1100px; margin: 0 auto; }
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 2.2rem;
+      left: 8%;
+      right: 8%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--clay), transparent);
+      z-index: 0;
+    }
+    .timeline-step {
+      background: var(--warm-white);
+      border: 1px solid var(--sand);
+      border-radius: 8px;
+      padding: 2.2rem 1.5rem 1.75rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .timeline-num {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background: var(--bark);
+      color: var(--cream);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+      box-shadow: 0 4px 12px rgba(27, 82, 48, 0.2);
+    }
+    .timeline-step h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 0.7rem;
+      line-height: 1.25;
+    }
+    .timeline-step p {
+      font-size: 0.85rem;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--light-text);
+    }
+    .timeline-dur {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--terra);
+      background: rgba(61, 122, 82, 0.1);
+      padding: 0.25rem 0.65rem;
+      border-radius: 2px;
+    }
+
+    /* CLIENT JOURNEY */
+    .journey { background: var(--warm-white); border-top: 1px solid var(--sand); border-bottom: 1px solid var(--sand); }
+    .journey-inner { max-width: 960px; margin: 0 auto; }
+    .journey-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-top: 3rem;
+    }
+    .journey-row {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 1.75rem;
+      align-items: start;
+      background: var(--cream);
+      padding: 1.8rem 2rem;
+      border-radius: 8px;
+      border-left: 3px solid var(--terra);
+    }
+    .journey-phase {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--moss);
+      padding-top: 0.3rem;
+    }
+    .journey-content h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+    .journey-content p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--light-text);
+    }
+
+    /* PLATFORM WALKTHROUGH */
+    .platforms-inner { max-width: 1100px; margin: 0 auto; }
+    .platform-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .platform-card {
+      background: var(--warm-white);
+      border: 1px solid var(--sand);
+      border-radius: 8px;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .platform-badge {
+      display: inline-block;
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sun);
+      background: rgba(232, 144, 10, 0.12);
+      padding: 0.35rem 0.75rem;
+      border-radius: 2px;
+      align-self: flex-start;
+      margin-bottom: 1.5rem;
+    }
+    .platform-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 0.4rem;
+    }
+    .platform-card .platform-tag {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--moss);
+      margin-bottom: 1.5rem;
+    }
+    .platform-card p {
+      font-size: 0.92rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+    .platform-features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .platform-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      font-size: 0.85rem;
+      font-weight: 300;
+      line-height: 1.55;
+      color: var(--text);
+    }
+    .platform-features li svg { flex-shrink: 0; color: var(--terra); margin-top: 0.15rem; }
+
+    /* COMPLIANCE */
+    .compliance { background: var(--charcoal); color: var(--cream); }
+    .compliance-inner { max-width: 1000px; margin: 0 auto; text-align: center; }
+    .compliance .section-tag { color: var(--sun); }
+    .compliance .section-tag::before { background: var(--sun); }
+    .compliance .section-title { color: var(--cream); }
+    .compliance .section-title em { color: var(--sun); }
+    .compliance .section-lead { color: rgba(245, 240, 232, 0.65); }
+    .compliance-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+      text-align: left;
+    }
+    .compliance-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 2rem;
+    }
+    .compliance-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 0.7rem;
+    }
+    .compliance-card p {
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(245, 240, 232, 0.7);
+    }
+    .compliance-card .pill {
+      display: inline-block;
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--sun);
+      background: rgba(232, 144, 10, 0.15);
+      padding: 0.3rem 0.7rem;
+      border-radius: 2px;
+      margin-bottom: 1rem;
+    }
+
+    /* CTA BANNER */
+    .cta-band {
+      background: var(--bark);
+      padding: 5rem 4rem;
+      text-align: center;
+    }
+    .cta-band-inner { max-width: 720px; margin: 0 auto; }
+    .cta-band h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 2.8vw, 2.8rem);
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+    .cta-band h2 em { font-style: italic; color: var(--sun); }
+    .cta-band p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(245, 240, 232, 0.7);
+      margin-bottom: 2rem;
+    }
+    .cta-band .btn-primary {
+      background: var(--sun);
+      color: var(--charcoal);
+      padding: 1rem 2.5rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      display: inline-block;
+      transition: all 0.2s ease;
+    }
+    .cta-band .btn-primary:hover { background: var(--cream); color: var(--bark); transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer {
+      background: var(--charcoal);
+      padding: 3rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .footer-copy { font-size: 0.73rem; font-weight: 300; color: rgba(255,255,255,0.3); letter-spacing: 0.06em; }
+    .footer-back {
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-back:hover { color: var(--cream); }
+
+    /* MOBILE */
+    @media (max-width: 960px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+      section { padding: 4rem 1.5rem; }
+      .page-hero { padding: 4.5rem 1.5rem 4rem; }
+      .timeline { grid-template-columns: 1fr; gap: 1rem; }
+      .timeline::before { display: none; }
+      .platform-grid { grid-template-columns: 1fr; }
+      .compliance-grid { grid-template-columns: 1fr; }
+      .journey-row { grid-template-columns: 1fr; gap: 0.5rem; padding: 1.5rem; }
+      .cta-band { padding: 3rem 1.5rem; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links li:nth-child(1), .nav-links li:nth-child(3) { display: none; }
+      .page-hero h1 { font-size: clamp(2rem, 8vw, 2.8rem); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="/">
+      <img src="assets/images/SOL.png" alt="Sol Dietetics" width="48" height="48" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="/how-it-works.html">How It Works</a></li>
+      <li><a href="/pricing.html">Pricing</a></li>
+      <li><a href="/for-gyms.html">For Gyms</a></li>
+      <li><a href="/#contact" class="nav-cta">Start Free</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <p class="hero-eyebrow">— How It Works</p>
+      <h1>From signed contract<br/>to <em>client #1</em> in days.</h1>
+      <p>Sol Dietetics plugs a full nutrition department into your gym — white-labeled, physician-overseen, and powered by EatLove &amp; Healthie.</p>
+    </div>
+  </section>
+
+  <!-- GYM ONBOARDING -->
+  <section>
+    <div class="gym-flow-inner">
+      <p class="section-tag">Gym Onboarding</p>
+      <h2 class="section-title">Four steps to <em>launch.</em></h2>
+      <p class="section-lead">We handle the clinical side so you can focus on filling the program. Most gyms go from first call to first enrolled client in under two weeks.</p>
+      <div class="timeline">
+        <div class="timeline-step">
+          <div class="timeline-num">1</div>
+          <h3>Sign Up &amp; Brand</h3>
+          <p>Pick your plan, sign the agreement, and send us your logo and brand colors. We set up your white-labeled client portal inside Healthie.</p>
+          <span class="timeline-dur">Days 1–3</span>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-num">2</div>
+          <h3>Set Your Price</h3>
+          <p>Decide what you'll charge your members. We provide pricing guidance, a rate-card template, and ROI projections so you walk in confident.</p>
+          <span class="timeline-dur">Days 3–5</span>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-num">3</div>
+          <h3>Enroll Clients</h3>
+          <p>Launch to your floor. Clients fill out the intake form, get matched with the RD, and start their program — all under your gym's brand.</p>
+          <span class="timeline-dur">Days 5–14</span>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-num">4</div>
+          <h3>Collect Revenue</h3>
+          <p>You bill clients directly and keep 100% of the spread. The first month is free — you don't pay Sol until month two.</p>
+          <span class="timeline-dur">Ongoing</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENT JOURNEY -->
+  <section class="journey">
+    <div class="journey-inner">
+      <p class="section-tag">Client Journey</p>
+      <h2 class="section-title">What your <em>members</em> experience.</h2>
+      <p class="section-lead">Every touchpoint is white-labeled. Your members never see the Sol name — only your gym's brand and their dedicated dietitian.</p>
+      <div class="journey-list">
+        <div class="journey-row">
+          <div class="journey-phase">Phase 1</div>
+          <div class="journey-content">
+            <h3>Enrollment &amp; Intake</h3>
+            <p>Members register through your gym's portal. They complete a comprehensive health history, goals survey, and upload recent labs if available. The intake is clinical-grade — not a generic quiz.</p>
+          </div>
+        </div>
+        <div class="journey-row">
+          <div class="journey-phase">Phase 2</div>
+          <div class="journey-content">
+            <h3>Initial Consult</h3>
+            <p>A 45-minute virtual session with a California-licensed RD. They review the intake, set a baseline, and build a personalized protocol tied to the member's training and goals.</p>
+          </div>
+        </div>
+        <div class="journey-row">
+          <div class="journey-phase">Phase 3</div>
+          <div class="journey-content">
+            <h3>Program Delivery</h3>
+            <p>Members receive their custom meal plan inside EatLove — macros, recipes, grocery lists, and photo logging. Everything adjusts in real time as progress is tracked.</p>
+          </div>
+        </div>
+        <div class="journey-row">
+          <div class="journey-phase">Phase 4</div>
+          <div class="journey-content">
+            <h3>Weekly Check-Ins</h3>
+            <p>Structured weekly reviews via the Healthie portal. The RD reviews adherence, adjusts targets, answers questions, and keeps members accountable between sessions.</p>
+          </div>
+        </div>
+        <div class="journey-row">
+          <div class="journey-phase">Phase 5</div>
+          <div class="journey-content">
+            <h3>Ongoing Optimization</h3>
+            <p>As the member progresses, the RD layers in advanced protocols, supplement recommendations (via Fullscript), and training-aligned nutrition strategies.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLATFORMS -->
+  <section>
+    <div class="platforms-inner">
+      <p class="section-tag">The Platforms</p>
+      <h2 class="section-title">Two best-in-class <em>systems.</em><br/>Zero headaches for you.</h2>
+      <p class="section-lead">We pay for and operate both platforms on your behalf. Your staff never has to learn software — Sol runs the entire clinical stack.</p>
+      <div class="platform-grid">
+        <div class="platform-card">
+          <span class="platform-badge">Client Nutrition App</span>
+          <h3>EatLove</h3>
+          <p class="platform-tag">Powered by registered dietitians</p>
+          <p>EatLove generates personalized meal plans based on the member's goals, preferences, allergies, and training load. It's the daily interface members live in — recipes, grocery lists, macro tracking, photo logging.</p>
+          <ul class="platform-features">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Custom meal plans by the RD, not an algorithm</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Grocery lists and photo food logging</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Macro, micronutrient, and hydration tracking</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Branded for your gym — members see your logo</li>
+          </ul>
+        </div>
+        <div class="platform-card">
+          <span class="platform-badge">Clinical EMR</span>
+          <h3>Healthie</h3>
+          <p class="platform-tag">HIPAA-compliant health record</p>
+          <p>Healthie is the clinical backbone. It houses the intake forms, consult notes, secure messaging, check-ins, and compliance documentation — everything needed to run a real dietitian practice.</p>
+          <ul class="platform-features">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>HIPAA-compliant secure messaging</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Video consult scheduling and delivery</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Clinical charting for every session</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Full white-label — your brand, your domain</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPLIANCE -->
+  <section class="compliance">
+    <div class="compliance-inner">
+      <p class="section-tag">The Compliance Layer</p>
+      <h2 class="section-title">Built <em>right</em> the first time.</h2>
+      <p class="section-lead">Nutrition is a regulated field. Every Sol Dietetics program is designed to meet state licensure law, OOP rules, and HIPAA from day one — so you never carry the clinical liability.</p>
+      <div class="compliance-grid">
+        <div class="compliance-card">
+          <span class="pill">Licensure</span>
+          <h3>California-Licensed RD</h3>
+          <p>All programs are prescribed and supervised by a Registered Dietitian licensed in California. We only operate in states where our RD holds active licensure.</p>
+        </div>
+        <div class="compliance-card">
+          <span class="pill">Oversight</span>
+          <h3>Physician Oversight</h3>
+          <p>A supervising physician reviews clinical protocols and co-signs medically sensitive cases. This is what separates Sol from a coaching app — it's real healthcare.</p>
+        </div>
+        <div class="compliance-card">
+          <span class="pill">Insurance</span>
+          <h3>100% OOP Compliant</h3>
+          <p>The program is delivered entirely on an out-of-pocket basis. No insurance billing, no CPT codes, no Medicare exposure — which means no anti-kickback risk for gyms referring members.</p>
+        </div>
+        <div class="compliance-card">
+          <span class="pill">Data</span>
+          <h3>HIPAA via Healthie</h3>
+          <p>All Protected Health Information lives in Healthie's HIPAA-compliant EMR. Gyms never see clinical data; the RD owns the clinical relationship with the member.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="cta-band-inner">
+      <h2>Ready to see the <em>back office</em> in action?</h2>
+      <p>First month is free on every plan. No credit card required — we'll set up your sandbox so you can walk through the member experience end-to-end before you commit.</p>
+      <a href="/#contact" class="btn-primary">Start Your First Month Free</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-copy">&copy; 2026 Sol Dietetics. All rights reserved.</span>
+    <a href="/" class="footer-back">&larr; Back to soldietetics.com</a>
+  </footer>
+
+</body>
+</html>

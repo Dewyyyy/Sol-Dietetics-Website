@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sol Dietetics — Expert Nutrition, Seamlessly Integrated</title>
-  <meta name="description" content="Sol Dietetics partners with gyms and health platforms to provide virtual Registered Dietitian services through a zero-cost revenue-share model. Add expert nutrition to your business today." />
-  <meta property="og:title" content="Sol Dietetics — Expert Nutrition, Seamlessly Integrated" />
-  <meta property="og:description" content="Sol Dietetics partners with gyms and health platforms to provide virtual Registered Dietitian services through a zero-cost revenue-share model. Add expert nutrition to your business today." />
+  <title>Sol Dietetics — Your Gym. Your Brand. Your Dietitian.</title>
+  <meta name="description" content="White-labeled nutrition programs built for gyms. Flat monthly subscription, zero dietitian salary overhead, unlimited revenue upside. California-licensed RD, physician oversight, 100% OOP compliant." />
+  <meta property="og:title" content="Sol Dietetics — Your Gym. Your Brand. Your Dietitian." />
+  <meta property="og:description" content="White-labeled nutrition programs built for gyms. Flat monthly subscription, zero dietitian salary overhead, unlimited revenue upside." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.soldietetics.com/" />
   <meta property="og:image" content="https://www.soldietetics.com/assets/images/SOL.png" />
@@ -14,8 +14,8 @@
   <meta name="robots" content="index, follow" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@SolDietetics" />
-  <meta name="twitter:title" content="Sol Dietetics — Expert Nutrition, Seamlessly Integrated" />
-  <meta name="twitter:description" content="Sol Dietetics partners with gyms and health platforms to provide virtual Registered Dietitian services through a zero-cost revenue-share model." />
+  <meta name="twitter:title" content="Sol Dietetics — Your Gym. Your Brand. Your Dietitian." />
+  <meta name="twitter:description" content="White-labeled nutrition programs built for gyms. Flat monthly subscription, unlimited revenue upside, zero overhead." />
   <meta name="twitter:image" content="https://www.soldietetics.com/assets/images/SOL.png" />
   <link rel="icon" type="image/png" href="https://i.imgur.com/J2BC5rg.png" />
   <!-- Google tag (gtag.js) -->
@@ -1004,7 +1004,7 @@
       transition: max-height 0.3s ease;
     }
 
-    .faq-body.open { max-height: 200px; }
+    .faq-body.open { max-height: 400px; }
 
     .faq-body p {
       padding: 0 1.5rem 1.25rem;
@@ -1012,6 +1012,509 @@
       font-weight: 300;
       line-height: 1.72;
       color: var(--light-text);
+    }
+
+    /* PRICING SECTION — 3-tier plan cards */
+    .pricing { background: var(--warm-white); border-top: 1px solid var(--sand); border-bottom: 1px solid var(--sand); }
+
+    .pricing-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .pricing-intro {
+      max-width: 640px;
+      margin: 0 auto 3rem;
+    }
+
+    .pricing-intro p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--light-text);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 1rem;
+      align-items: stretch;
+    }
+
+    .plan-card {
+      background: var(--cream);
+      border: 1px solid var(--sand);
+      border-radius: 8px;
+      padding: 2.5rem 2rem;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+    }
+
+    .plan-card.featured {
+      background: var(--bark);
+      border-color: var(--bark);
+      box-shadow: 0 10px 32px rgba(27,82,48,0.25);
+      transform: translateY(-8px);
+    }
+
+    .plan-card.featured:hover { transform: translateY(-12px); }
+
+    .plan-badge {
+      position: absolute;
+      top: -0.9rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--sun);
+      color: var(--charcoal);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+
+    .plan-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 0.3rem;
+    }
+
+    .plan-card.featured .plan-name { color: var(--cream); }
+
+    .plan-tag {
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--moss);
+      margin-bottom: 1.5rem;
+    }
+
+    .plan-card.featured .plan-tag { color: var(--sun); }
+
+    .plan-price {
+      display: flex;
+      align-items: baseline;
+      gap: 0.35rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .plan-price-amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--charcoal);
+      line-height: 1;
+    }
+
+    .plan-card.featured .plan-price-amount { color: var(--cream); }
+
+    .plan-price-period {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--light-text);
+    }
+
+    .plan-card.featured .plan-price-period { color: rgba(245, 240, 232, 0.6); }
+
+    .plan-annual-total {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--light-text);
+      margin-bottom: 0.35rem;
+    }
+
+    .plan-card.featured .plan-annual-total { color: rgba(245, 240, 232, 0.55); }
+
+    .plan-savings {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--terra);
+      background: rgba(61, 122, 82, 0.1);
+      padding: 0.25rem 0.65rem;
+      border-radius: 2px;
+      margin-bottom: 1.75rem;
+    }
+
+    .plan-card.featured .plan-savings {
+      color: var(--sun);
+      background: rgba(232, 144, 10, 0.18);
+    }
+
+    .plan-divider {
+      height: 1px;
+      background: var(--sand);
+      margin: 0 0 1.5rem;
+    }
+
+    .plan-card.featured .plan-divider { background: rgba(255, 255, 255, 0.12); }
+
+    .plan-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      flex: 1;
+    }
+
+    .plan-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      font-size: 0.85rem;
+      font-weight: 300;
+      line-height: 1.5;
+      color: var(--text);
+    }
+
+    .plan-card.featured .plan-features li { color: rgba(245, 240, 232, 0.82); }
+
+    .plan-features li svg {
+      flex-shrink: 0;
+      color: var(--terra);
+      margin-top: 0.15rem;
+    }
+
+    .plan-card.featured .plan-features li svg { color: var(--sun); }
+
+    .plan-cta {
+      display: block;
+      text-align: center;
+      padding: 0.9rem 1.25rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.2s ease;
+      border: 1px solid var(--bark);
+      background: transparent;
+      color: var(--bark);
+    }
+
+    .plan-cta:hover { background: var(--bark); color: var(--cream); }
+
+    .plan-card.featured .plan-cta {
+      background: var(--sun);
+      border-color: var(--sun);
+      color: var(--charcoal);
+    }
+
+    .plan-card.featured .plan-cta:hover {
+      background: var(--cream);
+      border-color: var(--cream);
+      color: var(--bark);
+    }
+
+    .pricing-footnote {
+      margin-top: 2.5rem;
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--light-text);
+      line-height: 1.7;
+    }
+
+    /* REVENUE CALCULATOR */
+    .calculator { background: var(--cream); }
+
+    .calculator-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .calculator-header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 3rem;
+    }
+
+    .calculator-header p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--light-text);
+    }
+
+    .calculator-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      background: var(--warm-white);
+      border: 1px solid var(--sand);
+      border-radius: 10px;
+      padding: 3rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    }
+
+    .calc-inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .calc-field label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--light-text);
+      margin-bottom: 1rem;
+    }
+
+    .calc-field-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.75rem;
+    }
+
+    .calc-field-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--bark);
+      line-height: 1;
+    }
+
+    .calc-field-value-sub {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--light-text);
+    }
+
+    .calc-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 3px;
+      background: var(--sand);
+      border-radius: 2px;
+      outline: none;
+    }
+
+    .calc-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--bark);
+      cursor: pointer;
+      border: 3px solid var(--warm-white);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      transition: transform 0.15s ease;
+    }
+
+    .calc-slider::-webkit-slider-thumb:hover { transform: scale(1.1); }
+
+    .calc-slider::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--bark);
+      cursor: pointer;
+      border: 3px solid var(--warm-white);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .calc-plan-toggle {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .calc-plan-btn {
+      flex: 1;
+      background: var(--cream);
+      border: 1px solid var(--sand);
+      padding: 0.7rem 0.5rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--text);
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.2s ease;
+    }
+
+    .calc-plan-btn:hover { border-color: var(--bark); }
+
+    .calc-plan-btn.active {
+      background: var(--bark);
+      border-color: var(--bark);
+      color: var(--cream);
+    }
+
+    .calc-results {
+      background: linear-gradient(160deg, #1e5c36 0%, var(--bark) 55%, #122b1e 100%);
+      border-radius: 8px;
+      padding: 2.25rem 2rem;
+      color: var(--cream);
+      display: flex;
+      flex-direction: column;
+      gap: 1.3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .calc-results::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 80% 20%, rgba(232,144,10,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .calc-results-label {
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sun);
+      position: relative;
+      z-index: 1;
+    }
+
+    .calc-result-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      z-index: 1;
+    }
+
+    .calc-result-row:last-of-type {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .calc-result-row .calc-result-label {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: rgba(245, 240, 232, 0.7);
+    }
+
+    .calc-result-row .calc-result-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--cream);
+    }
+
+    .calc-result-row.highlight .calc-result-value {
+      font-size: 2rem;
+      color: var(--sun);
+    }
+
+    .calc-result-row.highlight .calc-result-label {
+      color: var(--cream);
+      font-weight: 500;
+    }
+
+    .calc-cta {
+      margin-top: 0.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .calc-cta .btn-primary {
+      background: var(--sun);
+      color: var(--charcoal);
+      width: 100%;
+      text-align: center;
+    }
+
+    .calc-cta .btn-primary:hover { background: var(--cream); color: var(--bark); }
+
+    /* COMPLIANCE STRIP */
+    .compliance-strip {
+      background: var(--charcoal);
+      padding: 3rem 6rem;
+    }
+
+    .compliance-strip-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .compliance-item {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: rgba(245, 240, 232, 0.75);
+      flex: 1;
+      min-width: 180px;
+      justify-content: center;
+    }
+
+    .compliance-item svg { flex-shrink: 0; color: var(--sun); }
+
+    /* GUARANTEE STRIP */
+    .guarantee-strip {
+      background: var(--warm-white);
+      padding: 2.5rem 6rem;
+      border-top: 1px solid var(--sand);
+      border-bottom: 1px solid var(--sand);
+    }
+
+    .guarantee-strip-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .guarantee-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--text);
+    }
+
+    .guarantee-item svg { color: var(--terra); flex-shrink: 0; }
+
+    .guarantee-sep {
+      width: 1px;
+      height: 18px;
+      background: var(--sand);
     }
 
     /* CONTACT */
@@ -1410,6 +1913,14 @@
       /* Stack footer on tablet */
       footer { padding: 2rem 1.5rem; }
       .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      /* Pricing: 1 column on tablet */
+      .pricing-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+      .plan-card.featured { transform: none; }
+      /* Calculator: stack on tablet */
+      .calculator-layout { grid-template-columns: 1fr; padding: 2rem; }
+      /* Compliance strip: tighter */
+      .compliance-strip { padding: 2rem 1.5rem; }
+      .guarantee-strip { padding: 2rem 1.5rem; }
     }
 
     /* ── MOBILE (≤768px): full mobile experience ── */
@@ -2015,6 +2526,46 @@
       .faq-trigger { min-height: 44px; padding: 1rem 1.25rem; }
 
       /* ───────────────────────────────────────────
+         PRICING: stack cards vertically
+      ─────────────────────────────────────────── */
+      .pricing { padding: 3rem 1.25rem; }
+      .pricing-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .plan-card { padding: 2rem 1.5rem; }
+      .plan-card.featured { transform: none; }
+      .plan-card.featured:hover { transform: translateY(-4px); }
+      .plan-price-amount { font-size: 2.5rem; }
+      .pricing-intro { margin-bottom: 2rem; }
+      .pricing-footnote { margin-top: 1.5rem; font-size: 0.75rem; }
+
+      /* ───────────────────────────────────────────
+         CALCULATOR: stack inputs above results
+      ─────────────────────────────────────────── */
+      .calculator { padding: 3rem 1.25rem; }
+      .calculator-layout {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+        gap: 1.5rem;
+      }
+      .calc-results { padding: 1.75rem 1.5rem; }
+      .calc-result-row.highlight .calc-result-value { font-size: 1.75rem; }
+      .calculator-header { margin-bottom: 1.75rem; }
+
+      /* ───────────────────────────────────────────
+         COMPLIANCE STRIP: wrap items, stack on narrow
+      ─────────────────────────────────────────── */
+      .compliance-strip { padding: 1.75rem 1.25rem; }
+      .compliance-strip-inner { gap: 1rem; flex-direction: column; }
+      .compliance-item { min-width: auto; font-size: 0.76rem; }
+
+      /* ───────────────────────────────────────────
+         GUARANTEE STRIP: wrap on narrow screens
+      ─────────────────────────────────────────── */
+      .guarantee-strip { padding: 1.5rem 1.25rem; }
+      .guarantee-strip-inner { gap: 1rem; }
+      .guarantee-sep { display: none; }
+      .guarantee-item { font-size: 0.75rem; width: 100%; justify-content: center; }
+
+      /* ───────────────────────────────────────────
          FOOTER: compact stacked on mobile
       ─────────────────────────────────────────── */
       footer { padding: 1.5rem 1.25rem 0; }
@@ -2049,33 +2600,33 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "How much does it cost to partner with Sol Dietetics?",
-        "acceptedAnswer": { "@type": "Answer", "text": "It's completely free. Sol Dietetics operates on a revenue-share model — you earn money, never spend it." }
+        "name": "How much does Sol Dietetics cost?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Pricing starts at a flat $1,000/month for up to 10 clients, plus $70 per additional client. We offer three plans: Flex ($1,100/mo month-to-month), Annual ($1,000/mo on a 12-month contract), and Annual Prepay ($900/mo billed upfront). Your first month is free on every plan." }
       },
       {
         "@type": "Question",
-        "name": "How long does onboarding take?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Most partners are live within 1–2 weeks." }
+        "name": "Can I set my own price for clients?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. You set whatever retail price you want for your members. You keep 100% of the margin between your price and our flat subscription — unlimited revenue upside." }
       },
       {
         "@type": "Question",
-        "name": "What technology do your RDs use?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Secure, HIPAA-compliant video. We integrate with your existing client flow." }
+        "name": "Is this compliant with insurance and OOP laws?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Our programs are 100% out-of-pocket (OOP) compliant, overseen by a California-licensed Registered Dietitian and a supervising physician. Our platform (Healthie) is HIPAA compliant." }
       },
       {
         "@type": "Question",
-        "name": "What qualifications do your dietitians have?",
-        "acceptedAnswer": { "@type": "Answer", "text": "All providers are Registered Dietitian Nutritionists (RDNs) with advanced degrees and clinical credentials." }
+        "name": "What happens if I want to cancel?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Flex plans can be canceled anytime with 30 days' notice. Annual and Annual Prepay plans carry a 2-month remaining-balance fee for early exit." }
       },
       {
         "@type": "Question",
-        "name": "How do my clients sign up?",
-        "acceptedAnswer": { "@type": "Answer", "text": "We handle everything — intake, scheduling, onboarding. You just refer." }
+        "name": "Can I pause the program?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every plan includes one free pause per year. Additional pauses carry a $250 reactivation fee." }
       },
       {
         "@type": "Question",
-        "name": "Do you offer white-label services?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. We operate under your brand so the experience feels native to your business." }
+        "name": "How does white-labeling work?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Your clients only ever see your gym's brand. We power the dietitian, the programs, and the technology behind the scenes via EatLove and Healthie — you keep the relationship and the identity." }
       }
     ]
   }
@@ -2089,24 +2640,25 @@
       <img src="assets/images/SOL.png" alt="Sol Dietetics" width="48" height="48" />
     </a>
     <ul class="nav-links">
-      <li><a href="#how">How It Works</a></li>
-      <li><a href="#whatyouget">What You Get</a></li>
-      <li><a href="#partners">Who We Serve</a></li>
-      <li><a href="#contact" class="nav-cta">Get Started</a></li>
+      <li><a href="/how-it-works.html">How It Works</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="/for-gyms.html">For Gyms</a></li>
+      <li><a href="#contact" class="nav-cta">Start Free</a></li>
     </ul>
     <!-- Mobile hamburger button — hidden on desktop -->
     <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false" id="navHamburger">
       <span></span><span></span><span></span>
     </button>
     <!-- NEW: Always-visible mobile CTA -->
-    <a href="#contact" class="nav-mobile-cta-fixed" id="navMobileCta">Get Started</a>
+    <a href="#contact" class="nav-mobile-cta-fixed" id="navMobileCta">Start Free</a>
     <!-- Mobile slide-down menu drawer — hidden on desktop -->
     <div class="nav-mobile-menu" id="navMobileMenu" aria-hidden="true">
       <ul>
-        <li><a href="#how" class="nav-mobile-link">How It Works</a></li>
-        <li><a href="#whatyouget" class="nav-mobile-link">What You Get</a></li>
-        <li><a href="#partners" class="nav-mobile-link">Who We Serve</a></li>
-        <li><a href="#contact" class="nav-mobile-link nav-mobile-cta">Get Started</a></li>
+        <li><a href="/how-it-works.html" class="nav-mobile-link">How It Works</a></li>
+        <li><a href="#pricing" class="nav-mobile-link">Pricing</a></li>
+        <li><a href="/for-gyms.html" class="nav-mobile-link">For Gyms</a></li>
+        <li><a href="#faq" class="nav-mobile-link">FAQ</a></li>
+        <li><a href="#contact" class="nav-mobile-link nav-mobile-cta">Start Free</a></li>
       </ul>
     </div>
   </nav>
@@ -2114,61 +2666,61 @@
   <!-- HERO -->
   <section class="hero" style="padding: 0;">
     <div class="hero-left">
-      <p class="hero-eyebrow">Virtual Dietitian Services</p>
+      <p class="hero-eyebrow">Dietitian-as-a-Service for Gyms</p>
       <h1 class="hero-headline">
-        Expert nutrition,<br/><em>effortlessly</em><br/>integrated.
+        Your gym.<br/>Your brand.<br/><em>Your</em> dietitian.
       </h1>
-      <p class="hero-sub">We embed licensed Registered Dietitians into your gym, studio, or health platform — you earn revenue, your clients get expert care, and it costs you nothing to staff.</p>
+      <p class="hero-sub">White-labeled nutrition programs built by top dietitians — no hiring, no salary, no risk. Set your own price, keep the upside.</p>
       <div class="hero-actions">
-        <a href="#contact" class="btn-primary">Get Started — It's Free to Partner</a>
-        <a href="#how" class="btn-secondary">See How It Works ↓</a>
+        <a href="#contact" class="btn-primary">Start Your First Month Free</a>
+        <a href="#calculator" class="btn-secondary">Calculate Your Revenue ↓</a>
       </div>
-      <p class="hero-trust">Board-certified RDNs · HIPAA compliant · Zero cost to you</p>
+      <p class="hero-trust">California-licensed RD · Physician oversight · 100% OOP compliant · First month free</p>
     </div>
     <div class="hero-right">
-      <p class="hero-right-label">What We Offer</p>
+      <p class="hero-right-label">What's Included</p>
       <div class="hero-services">
         <div class="hero-svc-item">
-          <div class="hero-svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg></div>
+          <div class="hero-svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 2v10l6 3"/></svg></div>
           <div>
-            <h4>Virtual RD Consultations</h4>
-            <p>Certified dietitians deliver 1-on-1 nutrition coaching entirely online — no clinic, no commute.</p>
+            <h4>White-Labeled Client Portal</h4>
+            <p>Your clients only see your gym's brand. We power the programs, the RD, and the technology behind the scenes.</p>
           </div>
         </div>
         <div class="hero-svc-item">
           <div class="hero-svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></div>
           <div>
-            <h4>Personalized Meal Plans</h4>
-            <p>Evidence-based plans tailored to each client's goals, lifestyle, and health history.</p>
+            <h4>Expert Nutrition Protocols</h4>
+            <p>Evidence-based programs powered by EatLove and Healthie — not generic meal plans or AI guesses.</p>
           </div>
         </div>
         <div class="hero-svc-item">
-          <div class="hero-svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
+          <div class="hero-svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
           <div>
-            <h4>Grocery Delivery</h4>
-            <p>Dietitian-curated ingredients delivered to your clients' doors — a premium add-on they'll love.</p>
+            <h4>Unlimited Revenue Upside</h4>
+            <p>Flat $1,000/month base — you set your members' price. Every dollar above our fee is yours to keep.</p>
           </div>
         </div>
         <div class="hero-svc-item">
-          <div class="hero-svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+          <div class="hero-svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
           <div>
-            <h4>Revenue Share Model</h4>
-            <p>Earn a percentage of every service — zero staffing overhead, consistent monthly payouts.</p>
+            <h4>100% OOP Compliant</h4>
+            <p>Overseen by a California-licensed RD and supervising physician. HIPAA-compliant platform, fully legal.</p>
           </div>
         </div>
       </div>
       <div class="hero-stat-cards">
         <div class="stat-card">
-          <div class="stat-number">$0</div>
-          <div class="stat-label">Staffing Cost</div>
+          <div class="stat-number">$1K</div>
+          <div class="stat-label">Flat Monthly Base</div>
         </div>
         <div class="stat-card">
-          <div class="stat-number">RD</div>
-          <div class="stat-label">Certified Dietitians</div>
+          <div class="stat-number">$0</div>
+          <div class="stat-label">Dietitian Salary</div>
         </div>
         <div class="stat-card">
           <div class="stat-number">100%</div>
-          <div class="stat-label">Managed</div>
+          <div class="stat-label">White-Labeled</div>
         </div>
       </div>
     </div>
@@ -2178,73 +2730,77 @@
   <section class="stats-row">
     <div class="stats-row-inner">
       <div class="stat-card">
-        <div class="stat-number">$0</div>
-        <div class="stat-label">Staffing Cost</div>
+        <div class="stat-number">$1K</div>
+        <div class="stat-label">Flat Monthly Base</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">RD</div>
-        <div class="stat-label">Certified Dietitians</div>
+        <div class="stat-number">$0</div>
+        <div class="stat-label">Dietitian Salary</div>
       </div>
       <div class="stat-card">
         <div class="stat-number">100%</div>
-        <div class="stat-label">Managed</div>
+        <div class="stat-label">White-Labeled</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">1st</div>
+        <div class="stat-label">Month Free</div>
       </div>
     </div>
   </section>
 
-  <!-- NEW: What You Get — 6 merged service/value cards -->
+  <!-- NEW: What You Get — 6 value pillars of the DaaS model -->
   <section class="whatyouget" id="whatyouget">
     <div class="whatyouget-inner">
-      <p class="section-tag">What You Get</p>
-      <h2 class="section-title">Everything your business needs<br/>to offer <em>expert nutrition.</em></h2>
+      <p class="section-tag">Why Gyms Choose Sol</p>
+      <h2 class="section-title">The revenue your gym<br/>leaves <em>on the table.</em></h2>
       <div class="whatyouget-grid">
-        <div class="whatyouget-card">
-          <div class="whatyouget-icon">
-            <!-- Lucide video icon -->
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--sun)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
-          </div>
-          <h3>Virtual RD Consultations</h3>
-          <p>Licensed dietitians deliver 1-on-1 coaching to your clients, fully virtual and fully managed.</p>
-        </div>
-        <div class="whatyouget-card">
-          <div class="whatyouget-icon">
-            <!-- Lucide clipboard-list icon -->
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--sun)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg>
-          </div>
-          <h3>Personalized Meal Plans</h3>
-          <p>Evidence-based plans tailored to each client's goals, lifestyle, and health history.</p>
-        </div>
-        <div class="whatyouget-card">
-          <div class="whatyouget-icon">
-            <!-- Lucide shopping-cart icon -->
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--sun)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-          </div>
-          <h3>Grocery Delivery Add-On</h3>
-          <p>Dietitian-curated groceries delivered to your clients' doors — a premium upsell.</p>
-        </div>
         <div class="whatyouget-card">
           <div class="whatyouget-icon">
             <!-- Lucide dollar-sign icon -->
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--sun)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           </div>
-          <h3>Zero Staffing Cost</h3>
-          <p>We hire and manage the RDs. You take the upside without the payroll.</p>
+          <h3>No Dietitian Salary</h3>
+          <p>A flat subscription — not a $60–80k hire with benefits, payroll taxes, and vacation days to manage.</p>
         </div>
         <div class="whatyouget-card">
           <div class="whatyouget-icon">
             <!-- Lucide trending-up icon -->
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--sun)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
           </div>
-          <h3>Revenue Share on Everything</h3>
-          <p>Earn a percentage of every consultation, plan, and delivery your clients purchase.</p>
+          <h3>Unlimited Upside</h3>
+          <p>You set the retail price your members pay. Every dollar above our flat fee is pure margin for your gym.</p>
         </div>
         <div class="whatyouget-card">
           <div class="whatyouget-icon">
-            <!-- Lucide settings/wrench icon -->
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--sun)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            <!-- Lucide tag icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--sun)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
           </div>
-          <h3>Turnkey Client Experience</h3>
-          <p>From intake forms to delivery tracking, we manage the entire journey. Zero admin for your team.</p>
+          <h3>100% White-Labeled</h3>
+          <p>Your members only ever see your gym's brand. We are the dietitian behind the curtain — they are your clients.</p>
+        </div>
+        <div class="whatyouget-card">
+          <div class="whatyouget-icon">
+            <!-- Lucide shield-check icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--sun)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <h3>OOP Compliant</h3>
+          <p>Fully legal out-of-pocket model. Licensed RD per state, physician oversight, HIPAA-compliant platform.</p>
+        </div>
+        <div class="whatyouget-card">
+          <div class="whatyouget-icon">
+            <!-- Lucide pause-circle icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--sun)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="10" y1="15" x2="10" y2="9"/><line x1="14" y1="15" x2="14" y2="9"/></svg>
+          </div>
+          <h3>Pause Anytime</h3>
+          <p>Slow season? Pause your plan once per year, free of charge. No lock-in anxiety, no long-term gotchas.</p>
+        </div>
+        <div class="whatyouget-card">
+          <div class="whatyouget-icon">
+            <!-- Lucide gift icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--sun)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+          </div>
+          <h3>First Month Free</h3>
+          <p>Launch your nutrition program with zero risk. No credit card required to start — try it with real clients.</p>
         </div>
       </div>
     </div>
@@ -2255,20 +2811,20 @@
     <div class="how-inner">
       <div>
         <p class="section-tag">The Process</p>
-        <h2 class="section-title">Simple to start,<br/><em>powerful</em> in practice.</h2>
+        <h2 class="section-title">From signed up<br/>to <em>collecting revenue</em>.</h2>
 
-        <p style="font-size:0.9rem; font-weight:300; line-height:1.8; color:var(--light-text);">We handle all aspects of the dietetic experience — from initial client consultations to personalized meal planning and grocery delivery — so you can focus on what you do best.</p>
+        <p style="font-size:0.9rem; font-weight:300; line-height:1.8; color:var(--light-text);">Four steps to a fully managed nutrition program, live under your gym's brand. We handle the dietitian, the compliance, and the technology — you keep the margin.</p>
       </div>
       <div class="how-steps">
         <div class="step">
           <span class="step-num">01</span>
           <div class="step-content">
             <button class="step-trigger" aria-expanded="false" aria-controls="step-body-0" data-num="01">
-              <h3>Partner Agreement</h3>
+              <h3>Sign Up &amp; Brand</h3>
               <span class="step-chevron" aria-hidden="true">+</span>
             </button>
             <div class="step-body" id="step-body-0">
-              <p>We establish a simple revenue share agreement tailored to your client base and business model. No overhead, no risk.</p>
+              <p>Pick your plan, send us your logo and colors, and we build your white-labeled client portal. First month is free.</p>
             </div>
           </div>
         </div>
@@ -2276,11 +2832,11 @@
           <span class="step-num">02</span>
           <div class="step-content">
             <button class="step-trigger" aria-expanded="false" aria-controls="step-body-1" data-num="02">
-              <h3>Client Referral</h3>
+              <h3>Set Your Price</h3>
               <span class="step-chevron" aria-hidden="true">+</span>
             </button>
             <div class="step-body" id="step-body-1">
-              <p>You refer clients who want nutrition coaching. We take it from there — intake, assessment, and ongoing guidance.</p>
+              <p>You decide what to charge your members — $99, $199, $299, anything. Every dollar above our flat fee is yours.</p>
             </div>
           </div>
         </div>
@@ -2288,11 +2844,11 @@
           <span class="step-num">03</span>
           <div class="step-content">
             <button class="step-trigger" aria-expanded="false" aria-controls="step-body-2" data-num="03">
-              <h3>Virtual RD Services</h3>
+              <h3>Enroll Clients</h3>
               <span class="step-chevron" aria-hidden="true">+</span>
             </button>
             <div class="step-body" id="step-body-2">
-              <p>Our registered dietitians deliver expert, personalized nutrition plans and 1-on-1 coaching — fully virtual, fully managed by us.</p>
+              <p>Members sign up through your portal. Our licensed RD handles intake, weekly check-ins, and custom protocols.</p>
             </div>
           </div>
         </div>
@@ -2300,23 +2856,11 @@
           <span class="step-num">04</span>
           <div class="step-content">
             <button class="step-trigger" aria-expanded="false" aria-controls="step-body-3" data-num="04">
-              <h3>Grocery Delivery</h3>
+              <h3>Collect Revenue</h3>
               <span class="step-chevron" aria-hidden="true">+</span>
             </button>
             <div class="step-body" id="step-body-3">
-              <p>Clients receive curated, dietitian-approved grocery deliveries matched to their nutrition plan — a premium add-on they'll love.</p>
-            </div>
-          </div>
-        </div>
-        <div class="step">
-          <span class="step-num">05</span>
-          <div class="step-content">
-            <button class="step-trigger" aria-expanded="false" aria-controls="step-body-4" data-num="05">
-              <h3>Revenue Share Payout</h3>
-              <span class="step-chevron" aria-hidden="true">+</span>
-            </button>
-            <div class="step-body" id="step-body-4">
-              <p>You earn a percentage of every client's spend. Transparent reporting, consistent payouts, zero administrative burden.</p>
+              <p>You bill your members, we bill you a flat monthly rate. Earn passive supplement revenue via Fullscript on top.</p>
             </div>
           </div>
         </div>
@@ -2329,91 +2873,291 @@
   <!-- NEW: Mid-page CTA banner — catches visitors already sold after seeing the process -->
   <section class="mid-cta">
     <div class="mid-cta-inner">
-      <h2>Ready to add nutrition services to your business?</h2>
-      <a href="#contact" class="btn-primary">Get Started — It's Free to Partner</a>
+      <h2>Launch your gym's nutrition program — risk-free.</h2>
+      <a href="#contact" class="btn-primary">Start Your First Month Free</a>
     </div>
   </section>
 
   <!-- WHO WE SERVE (moved) -->
   <section class="partners" id="partners">
     <div class="partners-inner">
-      <p class="section-tag">Who We Serve</p>
-      <h2 class="section-title">Built for businesses<br/>that put <em>health first.</em></h2>
+      <p class="section-tag">Built for Gyms</p>
+      <h2 class="section-title">Every kind of gym,<br/>one <em>plug-and-play</em> program.</h2>
       <div class="partner-grid">
         <div class="partner-card">
           <div class="partner-icon">
             <!-- Lucide dumbbell icon -->
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5h11M6.5 17.5h11M2 12h4M18 12h4M3 6.5V8M3 16v1.5M21 6.5V8M21 16v1.5M6.5 6.5v11M17.5 6.5v11"/></svg>
           </div>
-          <h3>Fitness Gyms</h3>
-          <p>Add a premium nutrition service to your membership offering without hiring an in-house dietitian. Your clients get expert guidance; you earn a new revenue stream.</p>
+          <h3>CrossFit &amp; Functional</h3>
+          <p>Offer nutrition coaching as a premium add-on for members chasing performance goals. Pairs naturally with programming and competition prep.</p>
         </div>
         <div class="partner-card">
           <div class="partner-icon">
-            <!-- Lucide monitor icon -->
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <!-- Lucide activity icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
           </div>
-          <h3>Online Health Platforms</h3>
-          <p>Deepen your digital wellness offering with evidence-based dietetic services. We integrate seamlessly into your existing client experience.</p>
+          <h3>Personal Training Studios</h3>
+          <p>Give your trainers a nutrition program to sell alongside packages. Members get expert RD care without leaving your ecosystem.</p>
         </div>
         <div class="partner-card">
           <div class="partner-icon">
-            <!-- Lucide leaf icon -->
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+            <!-- Lucide users icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
-          <h3>Wellness Studios</h3>
-          <p>Yoga studios, pilates centers, and holistic health providers — complement your practice with nutrition services your clientele already want and need.</p>
+          <h3>Big Box &amp; Health Clubs</h3>
+          <p>Layer a white-labeled nutrition program onto your membership tiers. Upsell existing members without the overhead of hiring an in-house RD.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Why Sol Dietetics — credential and feature highlights -->
+  <!-- Why Sol Dietetics — compliance and credential highlights -->
   <section class="why-sol" id="why">
     <div class="why-sol-inner">
-      <p class="section-tag">Why Sol Dietetics</p>
-      <h2 class="section-title">The standard your clients <em>deserve.</em></h2>
+      <p class="section-tag">Trust &amp; Compliance</p>
+      <h2 class="section-title">Legally sound.<br/>Clinically <em>bulletproof.</em></h2>
 
       <div class="why-grid">
 
-        <!-- Board-Certified RDNs -->
+        <!-- California Licensed RD -->
         <div class="why-card">
           <div class="why-card-icon">
             <!-- Lucide award icon -->
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
           </div>
-          <h3>Board-Certified RDNs</h3>
-          <p>Every dietitian on our platform holds a Registered Dietitian Nutritionist credential with an advanced degree from an accredited institution.</p>
+          <h3>California-Licensed RD</h3>
+          <p>Every program is overseen by a Registered Dietitian licensed to practice in California, with advanced clinical credentials.</p>
         </div>
 
-        <!-- HIPAA Compliant -->
+        <!-- Physician Oversight -->
+        <div class="why-card">
+          <div class="why-card-icon">
+            <!-- Lucide stethoscope icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v6a6 6 0 0 0 12 0V3"/><path d="M8 3H4"/><path d="M16 3h4"/><circle cx="20" cy="15" r="3"/><path d="M12 15v4a4 4 0 0 0 4 4 4 4 0 0 0 4-4v-1"/></svg>
+          </div>
+          <h3>Physician Oversight</h3>
+          <p>A supervising physician oversees all protocols, ensuring every program meets the standard of medical best practice.</p>
+        </div>
+
+        <!-- 100% OOP Compliant -->
         <div class="why-card">
           <div class="why-card-icon">
             <!-- Lucide shield-check icon -->
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
           </div>
-          <h3>HIPAA Compliant</h3>
-          <p>Client sessions are conducted over secure, HIPAA-compliant video. Privacy and data protection are built into every step of our process.</p>
+          <h3>100% OOP Compliant</h3>
+          <p>Out-of-pocket only — no insurance, no claims, no regulatory headaches. Fully legal, structured for gym-based delivery.</p>
         </div>
 
-        <!-- Evidence-Based Practice -->
+        <!-- Powered by Healthie + EatLove -->
         <div class="why-card">
           <div class="why-card-icon">
-            <!-- Lucide book-open icon -->
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            <!-- Lucide zap icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
           </div>
-          <h3>Evidence-Based Practice</h3>
-          <p>Every recommendation our RDs make is grounded in peer-reviewed research and current clinical guidelines — no fad diets, no guesswork.</p>
+          <h3>EatLove + Healthie</h3>
+          <p>HIPAA-compliant EMR (Healthie) and client-facing meal planning (EatLove) — the industry standard, ready to white-label.</p>
         </div>
 
-        <!-- Academy of Nutrition and Dietetics -->
-        <div class="why-card">
-          <div class="why-card-icon">
-            <!-- Lucide users icon -->
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW: Compliance Strip — trust signals band -->
+  <section class="compliance-strip">
+    <div class="compliance-strip-inner">
+      <div class="compliance-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+        Licensed Registered Dietitian
+      </div>
+      <div class="compliance-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v6a6 6 0 0 0 12 0V3"/><circle cx="20" cy="15" r="3"/></svg>
+        Physician Oversight
+      </div>
+      <div class="compliance-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        100% OOP Compliant
+      </div>
+      <div class="compliance-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        HIPAA Compliant
+      </div>
+      <div class="compliance-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Powered by EatLove + Healthie
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW: Pricing — 3-tier plan cards -->
+  <section class="pricing" id="pricing">
+    <div class="pricing-inner">
+      <p class="section-tag" style="justify-content:center;">Simple Pricing</p>
+      <h2 class="section-title">Flat-rate plans,<br/><em>unlimited</em> upside.</h2>
+      <div class="pricing-intro">
+        <p>$1,000/month covers your first 10 clients. Every additional client is just $70/month. You set your own retail price and keep 100% of the margin.</p>
+      </div>
+      <div class="pricing-grid">
+
+        <!-- Flex Plan -->
+        <div class="plan-card">
+          <div class="plan-name">Flex</div>
+          <div class="plan-tag">Month-to-Month</div>
+          <div class="plan-price">
+            <span class="plan-price-amount">$1,100</span>
+            <span class="plan-price-period">/month</span>
           </div>
-          <h3>Academy Member</h3>
-          <p>Our dietitians are active members of the Academy of Nutrition and Dietetics — the world's largest organization of food and nutrition professionals.</p>
+          <div class="plan-annual-total">$13,200/year · no commitment</div>
+          <div style="height: 1.5rem;"></div>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>White-labeled client portal</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>All nutrition program tracks</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Weekly check-in system</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Pause once per year (free)</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>1st month free to start</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Cancel anytime with 30-day notice</li>
+          </ul>
+          <a href="#contact" class="plan-cta">Start Free Month</a>
+        </div>
+
+        <!-- Annual Prepay Plan (Featured) -->
+        <div class="plan-card featured">
+          <div class="plan-badge">Best Value</div>
+          <div class="plan-name">Annual Prepay</div>
+          <div class="plan-tag">12 Months Paid Upfront</div>
+          <div class="plan-price">
+            <span class="plan-price-amount">$900</span>
+            <span class="plan-price-period">/month</span>
+          </div>
+          <div class="plan-annual-total">$10,800 billed upfront</div>
+          <div class="plan-savings">Save $2,400/yr</div>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Everything in Annual</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Best per-month rate available</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Locked-in pricing for 12 months</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>VIP onboarding concierge</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>1st month free to start</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Early cancellation: 2-month fee</li>
+          </ul>
+          <a href="#contact" class="plan-cta">Claim Best Rate</a>
+        </div>
+
+        <!-- Annual Plan -->
+        <div class="plan-card">
+          <div class="plan-name">Annual</div>
+          <div class="plan-tag">12-Month Contract</div>
+          <div class="plan-price">
+            <span class="plan-price-amount">$1,000</span>
+            <span class="plan-price-period">/month</span>
+          </div>
+          <div class="plan-annual-total">$12,000/year</div>
+          <div class="plan-savings">Save $1,200/yr</div>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Everything in Flex</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Priority onboarding support</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Dedicated account manager</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Quarterly business reviews</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>1st month free to start</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Early cancellation: 2-month fee</li>
+          </ul>
+          <a href="#contact" class="plan-cta">Start Annual Plan</a>
+        </div>
+
+      </div>
+      <p class="pricing-footnote">All plans: $1,000/mo base covers up to 10 clients. Additional clients are $70/client/month. A one-time onboarding fee applies. No credit card required to start your free month.</p>
+    </div>
+  </section>
+
+  <!-- NEW: Guarantee Strip -->
+  <section class="guarantee-strip">
+    <div class="guarantee-strip-inner">
+      <div class="guarantee-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        First month free
+      </div>
+      <div class="guarantee-sep"></div>
+      <div class="guarantee-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Pause anytime
+      </div>
+      <div class="guarantee-sep"></div>
+      <div class="guarantee-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Your brand, always
+      </div>
+      <div class="guarantee-sep"></div>
+      <div class="guarantee-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Onboarding support included
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW: Revenue Calculator -->
+  <section class="calculator" id="calculator">
+    <div class="calculator-inner">
+      <div class="calculator-header">
+        <p class="section-tag" style="justify-content:center;">Revenue Calculator</p>
+        <h2 class="section-title">See the <em>math</em>.</h2>
+        <p>Move the sliders to see how much your gym can earn. Your retail price × your members, minus our flat fee = your profit.</p>
+      </div>
+
+      <div class="calculator-layout">
+
+        <!-- Inputs -->
+        <div class="calc-inputs">
+          <div class="calc-field">
+            <div class="calc-field-row">
+              <label>Number of Clients</label>
+              <span class="calc-field-value-sub"><span id="calcClientsLabel">20</span> members</span>
+            </div>
+            <input type="range" class="calc-slider" id="calcClients" min="5" max="100" step="5" value="20" />
+          </div>
+
+          <div class="calc-field">
+            <div class="calc-field-row">
+              <label>Your Retail Price</label>
+              <span class="calc-field-value-sub">$<span id="calcPriceLabel">199</span>/client/mo</span>
+            </div>
+            <input type="range" class="calc-slider" id="calcPrice" min="49" max="499" step="10" value="199" />
+          </div>
+
+          <div class="calc-field">
+            <label>Plan</label>
+            <div class="calc-plan-toggle">
+              <button type="button" class="calc-plan-btn" data-plan="flex" data-rate="1100">Flex<br/>$1,100</button>
+              <button type="button" class="calc-plan-btn" data-plan="annual" data-rate="1000">Annual<br/>$1,000</button>
+              <button type="button" class="calc-plan-btn active" data-plan="prepay" data-rate="900">Prepay<br/>$900</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div class="calc-results">
+          <div class="calc-results-label">Your Monthly Math</div>
+          <div class="calc-result-row">
+            <span class="calc-result-label">Gym gross revenue</span>
+            <span class="calc-result-value" id="calcGross">$3,980</span>
+          </div>
+          <div class="calc-result-row">
+            <span class="calc-result-label">Sol Dietetics fee</span>
+            <span class="calc-result-value" id="calcFee">$1,600</span>
+          </div>
+          <div class="calc-result-row highlight">
+            <span class="calc-result-label">Your net profit</span>
+            <span class="calc-result-value" id="calcNet">$2,380</span>
+          </div>
+          <div class="calc-result-row">
+            <span class="calc-result-label">Annual net profit</span>
+            <span class="calc-result-value" id="calcAnnual">$28,560</span>
+          </div>
+          <div class="calc-cta">
+            <a href="#contact" class="btn-primary">Lock In Your Plan</a>
+          </div>
         </div>
 
       </div>
@@ -2463,13 +3207,13 @@
 
           <!-- Placeholder partner slots -->
           <div class="spotlight-card placeholder">
-            <h3>Your Business Here?</h3>
-            <p>Join our growing network of health-focused partners.</p>
-            <a href="#contact" class="spotlight-cta">Start a Partnership →</a>
+            <h3>Your Gym Here?</h3>
+            <p>Launch your nutrition program with your first month free.</p>
+            <a href="#contact" class="spotlight-cta">Start Free Month →</a>
           </div>
           <div class="spotlight-card placeholder">
-            <h3>Your Business Here?</h3>
-            <p>Zero cost to partner. Revenue from day one.</p>
+            <h3>Your Gym Here?</h3>
+            <p>Flat-rate, white-labeled, fully compliant. Set your own price.</p>
             <a href="#contact" class="spotlight-cta">Get Started →</a>
           </div>
         </div>
@@ -2487,47 +3231,74 @@
       <div class="faq-grid">
         <div class="faq-item">
           <button class="faq-trigger" aria-expanded="false" aria-controls="faq-body-0">
-            <h3>How much does it cost to partner?</h3>
+            <h3>How much does Sol Dietetics cost?</h3>
             <span class="faq-chevron" aria-hidden="true">+</span>
           </button>
           <div class="faq-body" id="faq-body-0">
-            <p>Free. We operate on a revenue-share model — you earn money, never spend it. There are no upfront fees and no hidden costs.</p>
+            <p>Pricing starts at a flat $1,000/month for up to 10 clients, plus $70 per additional client. We offer three plans: Flex ($1,100/mo), Annual ($1,000/mo), and Annual Prepay ($900/mo). Your first month is free on every plan.</p>
           </div>
         </div>
         <div class="faq-item">
           <button class="faq-trigger" aria-expanded="false" aria-controls="faq-body-1">
-            <h3>How long does onboarding take?</h3>
+            <h3>Can I set my own retail price?</h3>
             <span class="faq-chevron" aria-hidden="true">+</span>
           </button>
           <div class="faq-body" id="faq-body-1">
-            <p>Most partners are live within 1–2 weeks. We handle the setup, so your team doesn't need to do anything beyond a quick onboarding call.</p>
+            <p>Yes. You set whatever price you want for your members. Every dollar above our flat subscription is pure margin for your gym — unlimited upside.</p>
           </div>
         </div>
         <div class="faq-item">
           <button class="faq-trigger" aria-expanded="false" aria-controls="faq-body-2">
-            <h3>What technology do your RDs use?</h3>
+            <h3>Is this compliant with insurance laws?</h3>
             <span class="faq-chevron" aria-hidden="true">+</span>
           </button>
           <div class="faq-body" id="faq-body-2">
-            <p>Secure, HIPAA-compliant video consultations. We integrate with your existing client flow — no new software for your team to learn.</p>
+            <p>Yes. Our programs are 100% out-of-pocket (OOP) compliant, overseen by a California-licensed RD and supervising physician. Our platform is HIPAA compliant via Healthie.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false" aria-controls="faq-body-3">
+            <h3>What happens if I cancel early?</h3>
+            <span class="faq-chevron" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-body" id="faq-body-3">
+            <p>Flex plans cancel anytime with 30 days' notice. Annual and Annual Prepay plans carry a 2-month remaining-balance fee for early exit.</p>
           </div>
         </div>
         <div class="faq-item">
           <button class="faq-trigger" aria-expanded="false" aria-controls="faq-body-4">
-            <h3>What qualifications do your dietitians have?</h3>
+            <h3>Can I pause the program?</h3>
             <span class="faq-chevron" aria-hidden="true">+</span>
           </button>
           <div class="faq-body" id="faq-body-4">
-            <p>All providers are Registered Dietitian Nutritionists (RDNs) with advanced degrees and clinical credentials from accredited institutions.</p>
+            <p>Yes. Every plan includes one free pause per year. Additional pauses carry a $250 reactivation fee.</p>
           </div>
         </div>
         <div class="faq-item">
           <button class="faq-trigger" aria-expanded="false" aria-controls="faq-body-5">
-            <h3>How do my clients sign up?</h3>
+            <h3>How does white-labeling work?</h3>
             <span class="faq-chevron" aria-hidden="true">+</span>
           </button>
           <div class="faq-body" id="faq-body-5">
-            <p>We handle everything — intake, scheduling, and onboarding. You just refer your clients and we take it from there.</p>
+            <p>Your clients only see your gym's brand. We power the dietitian, the programs, and the technology (EatLove + Healthie) behind the scenes. You keep the relationship and the identity.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false" aria-controls="faq-body-6">
+            <h3>What platforms do you use?</h3>
+            <span class="faq-chevron" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-body" id="faq-body-6">
+            <p>We use EatLove for client-facing meal planning and Healthie as our HIPAA-compliant EMR. Both are industry-standard platforms trusted by thousands of RDs.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false" aria-controls="faq-body-7">
+            <h3>What states do you operate in?</h3>
+            <span class="faq-chevron" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-body" id="faq-body-7">
+            <p>We're currently licensed in California and expanding. Every program is delivered under a licensed RD and physician oversight. Reach out to discuss your location.</p>
           </div>
         </div>
       </div>
@@ -2541,24 +3312,28 @@
       <!-- Left: warm intro panel -->
       <div class="contact-panel">
         <p class="section-tag">Get In Touch</p>
-        <h2 class="section-title">Start your free<br/><em>partnership.</em></h2>
-        <p class="contact-sub">No cost. Just a conversation about how we can grow together.</p>
+        <h2 class="section-title">Start your <em>first month</em> free.</h2>
+        <p class="contact-sub">No credit card required. We'll build your white-labeled portal and you'll go live within 1–2 weeks.</p>
         <div class="contact-trust">
           <div class="contact-trust-item">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            Zero upfront cost — revenue share only
+            First month free — zero credit card required
           </div>
           <div class="contact-trust-item">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            Live within 1–2 weeks
+            Flat $1,000/mo base · Set your own retail price
           </div>
           <div class="contact-trust-item">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            Board-certified RDNs, fully managed
+            California-licensed RD · Physician oversight
           </div>
           <div class="contact-trust-item">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            HIPAA-compliant sessions
+            100% OOP compliant · HIPAA-compliant platform
+          </div>
+          <div class="contact-trust-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Pause once per year · Cancel with 30-day notice
           </div>
         </div>
       </div>
@@ -2583,48 +3358,49 @@
             <input type="text" name="business_name" placeholder="Your Gym or Company" required />
           </div>
           <div class="form-group full">
-            <label>Business Type</label>
+            <label>Gym Type</label>
             <select name="business_type">
-              <option value="">Select your business type</option>
-              <option>Fitness Gym / Studio</option>
-              <option>Online Health Platform</option>
-              <option>Wellness Studio</option>
-              <option>Corporate Wellness</option>
+              <option value="">Select your gym type</option>
+              <option>CrossFit / Functional Fitness</option>
+              <option>Personal Training Studio</option>
+              <option>Big Box / Health Club</option>
+              <option>Boutique Fitness Studio</option>
+              <option>Semi-Private Training</option>
               <option>Other</option>
             </select>
           </div>
           <div class="form-group full">
-            <label>Approximate Number of Members/Clients</label>
+            <label>Expected Nutrition Clients (Year 1)</label>
             <select name="client_count">
               <option value="">Select range</option>
-              <option>Under 100</option>
-              <option>100–500</option>
-              <option>500–1,000</option>
-              <option>1,000+</option>
+              <option>5–10 clients</option>
+              <option>11–25 clients</option>
+              <option>26–50 clients</option>
+              <option>51–100 clients</option>
+              <option>100+ clients</option>
             </select>
           </div>
           <div class="form-group full">
-            <label>How Did You Hear About Us?</label>
-            <select name="referral_source">
-              <option value="">Select one</option>
-              <option>Google Search</option>
-              <option>Social Media</option>
-              <option>Referral</option>
-              <option>Industry Event</option>
-              <option>Other</option>
+            <label>Plan of Interest</label>
+            <select name="plan_interest">
+              <option value="">Select a plan</option>
+              <option>Flex ($1,100/mo — month-to-month)</option>
+              <option>Annual ($1,000/mo — 12-month)</option>
+              <option>Annual Prepay ($900/mo — best rate)</option>
+              <option>Not sure yet — want to discuss</option>
             </select>
           </div>
-          <input type="hidden" name="_subject" value="New Partnership Inquiry — Sol Dietetics" />
+          <input type="hidden" name="_subject" value="New Gym Inquiry — Sol Dietetics" />
           <div class="form-submit">
-            <button type="submit" class="btn-primary">Send Partnership Inquiry</button>
+            <button type="submit" class="btn-primary">Start My Free Month</button>
           </div>
         </form>
         <div class="success-msg" id="successMsg">
           <p>Thank you for reaching out!</p>
-          <span>We'll be in touch within 1–2 business days to discuss your partnership.</span>
+          <span>We'll be in touch within 1–2 business days to get your free month rolling.</span>
         </div>
         <div class="contact-extras">
-          <p class="contact-soft-cta">Not ready yet? <a href="/partnership-overview.html">Download our Partnership Overview →</a></p>
+          <p class="contact-soft-cta">Want more detail? <a href="/partnership-overview.html">Download our Partnership Overview →</a></p>
           <p class="contact-direct">Prefer to reach out directly? Email us at <a href="mailto:sales@soldietetics.com" style="color:var(--terra); text-decoration:none;">sales@soldietetics.com</a></p>
         </div>
       </div>
@@ -2726,21 +3502,23 @@
         <div class="footer-logo">
           <img src="assets/images/SOL.png" alt="Sol Dietetics" width="40" height="40" loading="lazy" />
         </div>
-        <p class="footer-tagline">Expert nutrition, seamlessly integrated.</p>
+        <p class="footer-tagline">Your gym. Your brand. Your dietitian.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="/how-it-works.html">How It Works</a></li>
+          <li><a href="/pricing.html">Pricing</a></li>
+          <li><a href="/for-gyms.html">For Gyms</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
       </div>
       <div class="footer-links">
         <h4>Company</h4>
         <ul>
-          <li><a href="#how">How It Works</a></li>
-          <li><a href="#whatyouget">What You Get</a></li>
-          <li><a href="#faq">FAQ</a></li>
           <li><a href="/careers.html">Careers</a></li>
-        </ul>
-      </div>
-      <div class="footer-links">
-        <h4>Legal</h4>
-        <ul>
           <li><a href="/privacy.html">Privacy Policy</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
       <div class="footer-contact">
@@ -2795,16 +3573,72 @@
           form.style.display = 'none';
           document.getElementById('successMsg').style.display = 'block';
         } else {
-          btn.textContent = 'Send Partnership Inquiry';
+          btn.textContent = 'Start My Free Month';
           btn.disabled = false;
           alert('Something went wrong. Please try again or email us directly at sales@soldietetics.com.');
         }
       } catch {
-        btn.textContent = 'Send Partnership Inquiry';
+        btn.textContent = 'Start My Free Month';
         btn.disabled = false;
         alert('Something went wrong. Please try again or email us directly at sales@soldietetics.com.');
       }
     }
+
+    // ── REVENUE CALCULATOR ──
+    // Inputs: clients (slider), retail price (slider), plan (toggle buttons)
+    // Logic: Sol fee = $1,000 base + max(0, clients - 10) × $70
+    //        Plan rate overrides the base (Flex $1,100 / Annual $1,000 / Prepay $900)
+    (function initCalculator() {
+      const clientsSlider = document.getElementById('calcClients');
+      const priceSlider = document.getElementById('calcPrice');
+      const planButtons = document.querySelectorAll('.calc-plan-btn');
+      const clientsLabel = document.getElementById('calcClientsLabel');
+      const priceLabel = document.getElementById('calcPriceLabel');
+      const grossEl = document.getElementById('calcGross');
+      const feeEl = document.getElementById('calcFee');
+      const netEl = document.getElementById('calcNet');
+      const annualEl = document.getElementById('calcAnnual');
+
+      if (!clientsSlider) return; // calculator not on page
+
+      let planBase = 900; // default to prepay (featured)
+
+      function fmt(n) {
+        return '$' + Math.round(n).toLocaleString('en-US');
+      }
+
+      function recalc() {
+        const clients = parseInt(clientsSlider.value, 10);
+        const price = parseInt(priceSlider.value, 10);
+
+        // Sol fee: base covers first 10 clients, $70/each above
+        const solFee = planBase + Math.max(0, clients - 10) * 70;
+        const gross = clients * price;
+        const net = gross - solFee;
+        const annual = net * 12;
+
+        clientsLabel.textContent = clients;
+        priceLabel.textContent = price;
+        grossEl.textContent = fmt(gross);
+        feeEl.textContent = fmt(solFee);
+        netEl.textContent = fmt(net);
+        annualEl.textContent = fmt(annual);
+      }
+
+      clientsSlider.addEventListener('input', recalc);
+      priceSlider.addEventListener('input', recalc);
+
+      planButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          planButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          planBase = parseInt(btn.dataset.rate, 10);
+          recalc();
+        });
+      });
+
+      recalc();
+    })();
 
     // ── FAQ ACCORDION (all screen sizes) ──
     // One FAQ item open at a time; tapping trigger toggles expand/collapse
