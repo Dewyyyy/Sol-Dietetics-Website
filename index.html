@@ -1377,32 +1377,98 @@
     }
 
     .calc-plan-toggle {
-      display: flex;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.65rem;
+      margin-top: 0.65rem;
     }
 
     .calc-plan-btn {
-      flex: 1;
-      background: var(--cream);
-      border: 1px solid var(--sand);
-      padding: 0.7rem 0.5rem;
+      position: relative;
+      background: var(--warm-white);
+      border: 1.5px solid var(--sand);
+      border-radius: 8px;
+      padding: 1rem 0.5rem 0.85rem;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 400;
-      letter-spacing: 0.06em;
       color: var(--text);
       cursor: pointer;
-      border-radius: 2px;
-      transition: all 0.2s ease;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+      text-align: center;
+      overflow: visible;
     }
-
-    .calc-plan-btn:hover { border-color: var(--bark); }
-
+    .calc-plan-btn .plan-name {
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--moss);
+      transition: color 0.2s ease;
+    }
+    .calc-plan-btn .plan-rate {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
+      font-weight: 400;
+      line-height: 1;
+      color: var(--bark);
+      font-variant-numeric: lining-nums;
+      font-feature-settings: "lnum" 1;
+      transition: color 0.2s ease;
+    }
+    .calc-plan-btn .plan-rate-cadence {
+      font-size: 0.62rem;
+      font-weight: 400;
+      color: var(--light-text);
+      letter-spacing: 0.04em;
+      transition: color 0.2s ease;
+    }
+    .calc-plan-btn .plan-tagline {
+      margin-top: 0.15rem;
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--light-text);
+      transition: color 0.2s ease;
+    }
+    .calc-plan-btn .plan-badge {
+      position: absolute;
+      top: -0.55rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--sun);
+      color: var(--charcoal);
+      font-size: 0.54rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.22rem 0.55rem;
+      border-radius: 999px;
+      white-space: nowrap;
+      box-shadow: 0 2px 6px rgba(232, 144, 10, 0.3);
+    }
+    .calc-plan-btn:hover {
+      border-color: var(--moss);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.07);
+    }
     .calc-plan-btn.active {
-      background: var(--bark);
+      background: linear-gradient(160deg, #1e5c36 0%, var(--bark) 100%);
       border-color: var(--bark);
-      color: var(--cream);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(27,82,48,0.28);
+    }
+    .calc-plan-btn.active .plan-name { color: var(--sun); }
+    .calc-plan-btn.active .plan-rate { color: var(--cream); }
+    .calc-plan-btn.active .plan-rate-cadence { color: rgba(245, 240, 232, 0.65); }
+    .calc-plan-btn.active .plan-tagline { color: rgba(245, 240, 232, 0.7); }
+    .calc-plan-btn.active .plan-badge {
+      background: var(--cream);
+      color: var(--bark);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.18);
     }
 
     .calc-results {
@@ -3207,9 +3273,25 @@
           <div class="calc-field">
             <label>Plan</label>
             <div class="calc-plan-toggle">
-              <button type="button" class="calc-plan-btn" data-plan="flex" data-rate="1100">Flex<br/>$1,100</button>
-              <button type="button" class="calc-plan-btn" data-plan="annual" data-rate="1000">Annual<br/>$1,000</button>
-              <button type="button" class="calc-plan-btn active" data-plan="prepay" data-rate="900">Prepay<br/>$900</button>
+              <button type="button" class="calc-plan-btn" data-plan="flex" data-rate="1100">
+                <span class="plan-name">Flex</span>
+                <span class="plan-rate">$1,100</span>
+                <span class="plan-rate-cadence">/ month</span>
+                <span class="plan-tagline">No commitment</span>
+              </button>
+              <button type="button" class="calc-plan-btn" data-plan="annual" data-rate="1000">
+                <span class="plan-name">Annual</span>
+                <span class="plan-rate">$1,000</span>
+                <span class="plan-rate-cadence">/ month</span>
+                <span class="plan-tagline">Save $1,200/yr</span>
+              </button>
+              <button type="button" class="calc-plan-btn active" data-plan="prepay" data-rate="900">
+                <span class="plan-badge">Best Value</span>
+                <span class="plan-name">Prepay</span>
+                <span class="plan-rate">$900</span>
+                <span class="plan-rate-cadence">/ month</span>
+                <span class="plan-tagline">Save $2,400/yr</span>
+              </button>
             </div>
           </div>
         </div>
