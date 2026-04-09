@@ -241,6 +241,53 @@
       color: var(--light-text);
     }
 
+    /* Bonus services grid — moss-accented variant */
+    .bonus-services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .bonus-service-item {
+      background: var(--cream);
+      border-radius: 6px;
+      padding: 1.5rem;
+      border-left: 3px solid var(--moss);
+      position: relative;
+    }
+
+    .bonus-service-item .bonus-tag {
+      position: absolute;
+      top: 0.85rem;
+      right: 0.85rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--moss);
+      background: rgba(88, 122, 97, 0.12);
+      padding: 0.25rem 0.5rem;
+      border-radius: 3px;
+    }
+
+    .bonus-service-item h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 0.4rem;
+      padding-right: 4.5rem;
+    }
+
+    .bonus-service-item p {
+      font-size: 0.82rem;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--light-text);
+    }
+
     /* Steps */
     .steps-list {
       display: flex;
@@ -530,6 +577,37 @@
               <h4>Collect the Margin</h4>
               <p>You bill members directly through your existing gym billing system. Sol bills you a flat monthly subscription. Every dollar above our fee is pure margin.</p>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="doc-rule" />
+
+      <!-- Bonus Growth Support -->
+      <div class="doc-section">
+        <p class="doc-eyebrow">More Than a Dietitian</p>
+        <h2 class="doc-heading">Built to help you<br/><em>actually sell it.</em></h2>
+        <p class="doc-body-text">Hiring an RD is one thing. Filling the program with paying members is another. Every Sol plan includes the marketing tools, content, and growth support your gym needs to launch the program, drive signups, and keep members engaged month after month — all done for you.</p>
+        <div class="bonus-services-grid">
+          <div class="bonus-service-item">
+            <span class="bonus-tag">Included</span>
+            <h4>Marketing Materials</h4>
+            <p>Branded flyers, social posts, email templates, signup graphics, and signage — all designed to look like your gym and ready to launch in week one.</p>
+          </div>
+          <div class="bonus-service-item">
+            <span class="bonus-tag">Included</span>
+            <h4>Reviews &amp; Testimonials</h4>
+            <p>We collect member wins and structured testimonials throughout the program — then hand them back to you as marketing-ready social proof for your gym.</p>
+          </div>
+          <div class="bonus-service-item">
+            <span class="bonus-tag">Included</span>
+            <h4>Virtual Dietitian Events</h4>
+            <p>Live webinars, member Q&amp;A sessions, and topic-driven workshops hosted by our RD — a recurring touchpoint that keeps members engaged and recruits new ones.</p>
+          </div>
+          <div class="bonus-service-item">
+            <span class="bonus-tag">Included</span>
+            <h4>Managed Nutrition Newsletter</h4>
+            <p>A monthly nutrition newsletter written by our dietitian, branded for your gym, and sent straight to your member list. You stay top-of-mind without lifting a finger.</p>
           </div>
         </div>
       </div>

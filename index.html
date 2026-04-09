@@ -723,10 +723,17 @@
     }
 
     .bonus-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 1.5rem;
-      margin-top: 3rem;
+      margin: 3rem auto 0;
+      max-width: 900px;
+    }
+
+    .bonus-grid > .bonus-card {
+      flex: 0 0 calc((100% - 1.5rem) / 2);
+      max-width: calc((100% - 1.5rem) / 2);
     }
 
     .bonus-card {
@@ -2917,10 +2924,16 @@
       .bonus-lead { font-size: 0.85rem; line-height: 1.75; }
 
       .bonus-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 0.75rem;
         margin-top: 1.5rem;
+      }
+
+      .bonus-grid > .bonus-card {
+        flex: 0 0 calc((100% - 0.75rem) / 2);
+        max-width: calc((100% - 0.75rem) / 2);
       }
 
       .bonus-card {
@@ -3426,28 +3439,6 @@
           </div>
           <h3>Managed Nutrition Newsletter</h3>
           <p>A monthly nutrition newsletter written by our dietitian, branded for your gym, and sent straight to your member list. You stay top-of-mind without lifting a finger.</p>
-        </div>
-
-        <!-- Launch Playbook -->
-        <div class="bonus-card">
-          <span class="bonus-badge">Included</span>
-          <div class="bonus-icon">
-            <!-- Lucide rocket icon -->
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
-          </div>
-          <h3>Launch Playbook</h3>
-          <p>A proven 30-day rollout plan — pre-launch hype, member announcement scripts, signup incentives, and trainer talking points. We tell you exactly what to do, and when.</p>
-        </div>
-
-        <!-- Quarterly Strategy Reviews -->
-        <div class="bonus-card">
-          <span class="bonus-badge">Included</span>
-          <div class="bonus-icon">
-            <!-- Lucide line-chart icon -->
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
-          </div>
-          <h3>Quarterly Strategy Reviews</h3>
-          <p>Every 90 days we sit down with you to review enrollment, retention, member outcomes, and pricing — then adjust the program so it keeps growing alongside your gym.</p>
         </div>
 
       </div>
