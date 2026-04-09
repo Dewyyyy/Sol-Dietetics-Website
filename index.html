@@ -1501,6 +1501,29 @@
       z-index: 1;
     }
 
+    .calc-section {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .calc-section-secondary {
+      gap: 0.7rem;
+      padding-top: 1.25rem;
+      border-top: 1px dashed rgba(255, 255, 255, 0.18);
+    }
+
+    .calc-results-sublabel {
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(245, 240, 232, 0.55);
+      margin-bottom: 0.15rem;
+    }
+
     .calc-result-row {
       display: flex;
       justify-content: space-between;
@@ -1527,6 +1550,8 @@
       font-size: 1.4rem;
       font-weight: 400;
       color: var(--cream);
+      font-variant-numeric: lining-nums;
+      font-feature-settings: "lnum" 1;
     }
 
     .calc-result-row.highlight .calc-result-value {
@@ -1537,6 +1562,21 @@
     .calc-result-row.highlight .calc-result-label {
       color: var(--cream);
       font-weight: 500;
+    }
+
+    .calc-section-secondary .calc-result-row {
+      padding-bottom: 0.65rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .calc-section-secondary .calc-result-row .calc-result-label {
+      font-size: 0.7rem;
+      color: rgba(245, 240, 232, 0.5);
+    }
+
+    .calc-section-secondary .calc-result-row .calc-result-value {
+      font-size: 1.05rem;
+      color: rgba(245, 240, 232, 0.85);
     }
 
     .calc-cta {
@@ -1555,8 +1595,7 @@
     .calc-cta .btn-primary:hover { background: var(--cream); color: var(--bark); }
 
     /* TALK TO SALES STATE (clients > 300) */
-    .calc-results.is-sales .calc-result-row,
-    .calc-results.is-sales .calc-results-label { display: none; }
+    .calc-results.is-sales .calc-section { display: none; }
     .calc-sales-pane {
       display: none;
       flex-direction: column;
@@ -3298,23 +3337,40 @@
 
         <!-- Results -->
         <div class="calc-results" id="calcResults">
-          <div class="calc-results-label" id="calcResultsLabel">Your Annual Math (Prepaid)</div>
-          <div class="calc-result-row">
-            <span class="calc-result-label" id="calcGrossLabel">Annual gross revenue</span>
-            <span class="calc-result-value" id="calcGross">$47,760</span>
+          <!-- Primary cadence section -->
+          <div class="calc-section calc-section-primary">
+            <div class="calc-results-label" id="calcPrimaryLabel">Your Annual Math (Prepaid)</div>
+            <div class="calc-result-row">
+              <span class="calc-result-label">Gross revenue</span>
+              <span class="calc-result-value" id="calcPrimaryGross">$47,760</span>
+            </div>
+            <div class="calc-result-row">
+              <span class="calc-result-label" id="calcPrimaryFeeLabel">Annual Sol fee (paid upfront)</span>
+              <span class="calc-result-value" id="calcPrimaryFee">$19,200</span>
+            </div>
+            <div class="calc-result-row highlight">
+              <span class="calc-result-label">Your net profit</span>
+              <span class="calc-result-value" id="calcPrimaryNet">$28,560</span>
+            </div>
           </div>
-          <div class="calc-result-row">
-            <span class="calc-result-label" id="calcFeeLabel">Annual Sol fee (paid upfront)</span>
-            <span class="calc-result-value" id="calcFee">$19,200</span>
+
+          <!-- Secondary cadence section -->
+          <div class="calc-section calc-section-secondary">
+            <div class="calc-results-sublabel" id="calcSecondaryLabel">Monthly Breakdown</div>
+            <div class="calc-result-row">
+              <span class="calc-result-label">Gross revenue</span>
+              <span class="calc-result-value" id="calcSecondaryGross">$3,980</span>
+            </div>
+            <div class="calc-result-row">
+              <span class="calc-result-label" id="calcSecondaryFeeLabel">Monthly Sol fee (avg)</span>
+              <span class="calc-result-value" id="calcSecondaryFee">$1,600</span>
+            </div>
+            <div class="calc-result-row">
+              <span class="calc-result-label">Your net profit</span>
+              <span class="calc-result-value" id="calcSecondaryNet">$2,380</span>
+            </div>
           </div>
-          <div class="calc-result-row highlight">
-            <span class="calc-result-label" id="calcNetLabel">Annual net profit</span>
-            <span class="calc-result-value" id="calcNet">$28,560</span>
-          </div>
-          <div class="calc-result-row">
-            <span class="calc-result-label" id="calcSecondaryLabel">Monthly net (avg)</span>
-            <span class="calc-result-value" id="calcSecondary">$2,380</span>
-          </div>
+
           <div class="calc-sales-pane">
             <span class="sales-eyebrow">Enterprise Territory</span>
             <h4>You're bigger than our calculator.<br/><em>Let's talk.</em></h4>
@@ -3753,7 +3809,8 @@
     // Inputs: clients (slider + number input, synced), retail price (slider), plan (toggle buttons)
     // Logic: Sol monthly fee = plan base + max(0, clients - 10) × $70
     //        Flex $1,100/mo, Annual $1,000/mo, Prepay $900/mo
-    // Display: Flex → monthly math. Annual / Prepay → annual math.
+    // Display: Two cadence sections. Flex/Annual emphasize monthly (billed monthly).
+    //          Prepay emphasizes annual (paid upfront). Both show the alternate cadence below.
     //          Clients > 300 → "Talk to Sales" state (custom volume pricing).
     (function initCalculator() {
       const clientsSlider = document.getElementById('calcClients');
@@ -3763,15 +3820,16 @@
       const priceLabel = document.getElementById('calcPriceLabel');
 
       const resultsBox = document.getElementById('calcResults');
-      const resultsLabel = document.getElementById('calcResultsLabel');
-      const grossLabelEl = document.getElementById('calcGrossLabel');
-      const grossEl = document.getElementById('calcGross');
-      const feeLabelEl = document.getElementById('calcFeeLabel');
-      const feeEl = document.getElementById('calcFee');
-      const netLabelEl = document.getElementById('calcNetLabel');
-      const netEl = document.getElementById('calcNet');
+      const primaryLabelEl = document.getElementById('calcPrimaryLabel');
+      const primaryGrossEl = document.getElementById('calcPrimaryGross');
+      const primaryFeeLabelEl = document.getElementById('calcPrimaryFeeLabel');
+      const primaryFeeEl = document.getElementById('calcPrimaryFee');
+      const primaryNetEl = document.getElementById('calcPrimaryNet');
       const secondaryLabelEl = document.getElementById('calcSecondaryLabel');
-      const secondaryEl = document.getElementById('calcSecondary');
+      const secondaryGrossEl = document.getElementById('calcSecondaryGross');
+      const secondaryFeeLabelEl = document.getElementById('calcSecondaryFeeLabel');
+      const secondaryFeeEl = document.getElementById('calcSecondaryFee');
+      const secondaryNetEl = document.getElementById('calcSecondaryNet');
       const ctaBtn = document.getElementById('calcCtaBtn');
 
       if (!clientsSlider) return; // calculator not on page
@@ -3816,34 +3874,43 @@
         ctaBtn.textContent = 'Lock In Your Plan';
         ctaBtn.setAttribute('href', '#contact');
 
-        // Monthly economics
+        // Monthly + annual economics
         const solFeeMonthly = planBase + Math.max(0, clients - 10) * 70;
         const grossMonthly  = clients * price;
         const netMonthly    = grossMonthly - solFeeMonthly;
+        const solFeeAnnual  = solFeeMonthly * 12;
+        const grossAnnual   = grossMonthly * 12;
+        const netAnnual     = netMonthly * 12;
 
-        if (currentPlan === 'flex') {
-          // MONTHLY VIEW — Flex is month-to-month, no commitment
-          resultsLabel.textContent = 'Your Monthly Math';
-          grossLabelEl.textContent = 'Monthly gross revenue';
-          grossEl.textContent = fmt(grossMonthly);
-          feeLabelEl.textContent = 'Monthly Sol fee';
-          feeEl.textContent = fmt(solFeeMonthly);
-          netLabelEl.textContent = 'Monthly net profit';
-          netEl.textContent = fmt(netMonthly);
-          secondaryLabelEl.textContent = 'Annual projection';
-          secondaryEl.textContent = fmt(netMonthly * 12);
+        if (currentPlan === 'prepay') {
+          // PRIMARY = annual (paid upfront)
+          primaryLabelEl.textContent = 'Your Annual Math (Prepaid)';
+          primaryGrossEl.textContent = fmt(grossAnnual);
+          primaryFeeLabelEl.textContent = 'Annual Sol fee (paid upfront)';
+          primaryFeeEl.textContent = fmt(solFeeAnnual);
+          primaryNetEl.textContent = fmt(netAnnual);
+
+          // SECONDARY = monthly equivalent
+          secondaryLabelEl.textContent = 'Monthly Equivalent';
+          secondaryGrossEl.textContent = fmt(grossMonthly);
+          secondaryFeeLabelEl.textContent = 'Sol fee (avg / month)';
+          secondaryFeeEl.textContent = fmt(solFeeMonthly);
+          secondaryNetEl.textContent = fmt(netMonthly);
         } else {
-          // ANNUAL VIEW — Annual and Prepay both commit for 12 months
-          const isPrepay = currentPlan === 'prepay';
-          resultsLabel.textContent = isPrepay ? 'Your Annual Math (Prepaid)' : 'Your Annual Math';
-          grossLabelEl.textContent = 'Annual gross revenue';
-          grossEl.textContent = fmt(grossMonthly * 12);
-          feeLabelEl.textContent = isPrepay ? 'Annual Sol fee (paid upfront)' : 'Annual Sol fee';
-          feeEl.textContent = fmt(solFeeMonthly * 12);
-          netLabelEl.textContent = 'Annual net profit';
-          netEl.textContent = fmt(netMonthly * 12);
-          secondaryLabelEl.textContent = 'Monthly net (avg)';
-          secondaryEl.textContent = fmt(netMonthly);
+          // PRIMARY = monthly (Flex and Annual are both billed monthly)
+          const isAnnual = currentPlan === 'annual';
+          primaryLabelEl.textContent = isAnnual ? 'Your Monthly Math (Annual Plan)' : 'Your Monthly Math';
+          primaryGrossEl.textContent = fmt(grossMonthly);
+          primaryFeeLabelEl.textContent = 'Monthly Sol fee';
+          primaryFeeEl.textContent = fmt(solFeeMonthly);
+          primaryNetEl.textContent = fmt(netMonthly);
+
+          // SECONDARY = annual rollup
+          secondaryLabelEl.textContent = isAnnual ? 'Annual Total (12-Month Commitment)' : 'Annual Projection';
+          secondaryGrossEl.textContent = fmt(grossAnnual);
+          secondaryFeeLabelEl.textContent = 'Annual Sol fee';
+          secondaryFeeEl.textContent = fmt(solFeeAnnual);
+          secondaryNetEl.textContent = fmt(netAnnual);
         }
       }
 
