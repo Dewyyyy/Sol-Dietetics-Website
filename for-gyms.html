@@ -256,6 +256,34 @@
       text-transform: none;
       letter-spacing: 0;
     }
+    .calc-number-input {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--bark);
+      background: var(--warm-white);
+      border: 1px solid var(--sand);
+      border-radius: 3px;
+      padding: 0.2rem 0.55rem;
+      width: 5.25rem;
+      text-align: right;
+      text-transform: none;
+      letter-spacing: 0;
+      font-variant-numeric: lining-nums;
+      font-feature-settings: "lnum" 1;
+      -moz-appearance: textfield;
+      appearance: textfield;
+      transition: border-color 0.2s;
+    }
+    .calc-number-input::-webkit-outer-spin-button,
+    .calc-number-input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    .calc-number-input:focus {
+      outline: none;
+      border-color: var(--bark);
+    }
     .calc-slider input[type="range"] {
       width: 100%;
       -webkit-appearance: none;
@@ -353,6 +381,58 @@
       color: var(--cream);
     }
     .calc-row.highlight .calc-value { color: var(--sun); font-size: 1.6rem; }
+
+    /* Talk to Sales state (clients > 300) */
+    .calc-results.is-sales .calc-row,
+    .calc-results.is-sales > h3 { display: none; }
+    .calc-sales-pane {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+      padding: 0.5rem 0.25rem 0.25rem;
+    }
+    .calc-results.is-sales .calc-sales-pane { display: flex; }
+    .calc-sales-pane .sales-eyebrow {
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sun);
+    }
+    .calc-sales-pane h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--cream);
+    }
+    .calc-sales-pane h4 em { font-style: italic; color: var(--sun); }
+    .calc-sales-pane p {
+      font-size: 0.85rem;
+      font-weight: 300;
+      line-height: 1.6;
+      color: rgba(245, 240, 232, 0.72);
+      max-width: 30ch;
+    }
+    .calc-sales-pane .sales-cta {
+      margin-top: 0.5rem;
+      display: inline-block;
+      background: var(--sun);
+      color: var(--charcoal);
+      padding: 0.85rem 2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.2s ease;
+    }
+    .calc-sales-pane .sales-cta:hover { background: var(--cream); color: var(--bark); }
+
     .calc-note {
       text-align: center;
       font-size: 0.72rem;
@@ -671,8 +751,10 @@
         <div class="calc-controls">
           <h3>Your Gym</h3>
           <div class="calc-slider">
-            <label>Clients enrolled <span id="clients-val">20</span></label>
-            <input type="range" id="clients-slider" min="5" max="100" step="5" value="20" />
+            <label>Clients enrolled
+              <input type="number" class="calc-number-input" id="clients-input" min="1" max="9999" step="1" value="20" inputmode="numeric" aria-label="Clients enrolled" />
+            </label>
+            <input type="range" id="clients-slider" min="5" max="300" step="5" value="20" />
           </div>
           <div class="calc-slider">
             <label>Your price / client <span id="price-val">$199</span></label>
@@ -687,7 +769,7 @@
             </div>
           </div>
         </div>
-        <div class="calc-results">
+        <div class="calc-results" id="calc-results">
           <h3 id="results-heading">Annual Math (Prepaid)</h3>
           <div class="calc-row">
             <span class="calc-label" id="gross-label">Annual gross revenue</span>
@@ -705,9 +787,15 @@
             <span class="calc-label" id="secondary-label">Monthly net (avg)</span>
             <span class="calc-value" id="secondary-val">$2,380</span>
           </div>
+          <div class="calc-sales-pane">
+            <span class="sales-eyebrow">Enterprise Territory</span>
+            <h4>You're bigger than our calculator.<br/><em>Let's talk.</em></h4>
+            <p>For gyms running over 300 clients we build a custom plan with volume pricing, dedicated RD capacity, and white-glove onboarding.</p>
+            <a href="/#contact" class="sales-cta">Talk to Sales</a>
+          </div>
         </div>
       </div>
-      <p class="calc-note">Sol fee = $900&ndash;$1,100 base (plan-dependent) + $70/client above 10. First month free on every plan.</p>
+      <p class="calc-note">Sol fee = $900&ndash;$1,100 base (plan-dependent) + $70/client above 10. First month free on every plan. Over 300 clients? We'll build you a custom plan &mdash; talk to sales.</p>
     </div>
   </section>
 
@@ -856,12 +944,14 @@
 
   <script>
     // ROI CALCULATOR — Flex shows monthly math; Annual/Prepay show annual math.
+    // Clients > 300 drops the results into a "Talk to Sales" state.
     (function initCalculator() {
       const clientsSlider = document.getElementById('clients-slider');
+      const clientsInput = document.getElementById('clients-input');
       const priceSlider = document.getElementById('price-slider');
-      const clientsVal = document.getElementById('clients-val');
       const priceVal = document.getElementById('price-val');
 
+      const resultsBox = document.getElementById('calc-results');
       const resultsHeading = document.getElementById('results-heading');
       const grossLabel = document.getElementById('gross-label');
       const grossVal = document.getElementById('gross-val');
@@ -873,23 +963,40 @@
       const secondaryVal = document.getElementById('secondary-val');
 
       const planButtons = document.querySelectorAll('.plan-toggle button');
+      const SLIDER_MAX = 300;
       let planBase = 900;
       let currentPlan = 'prepay';
+      let clients = parseInt(clientsInput.value, 10) || 20;
 
       function fmt(n) {
         return '$' + Math.round(n).toLocaleString('en-US');
       }
 
+      function setClients(n, source) {
+        if (isNaN(n)) n = 1;
+        if (n < 1) n = 1;
+        if (n > 9999) n = 9999;
+
+        clients = n;
+        const sliderVal = Math.min(n, SLIDER_MAX);
+        if (source !== 'slider') clientsSlider.value = sliderVal;
+        if (source !== 'input')  clientsInput.value = n;
+        recalc();
+      }
+
       function recalc() {
-        const clients = parseInt(clientsSlider.value, 10);
         const price = parseInt(priceSlider.value, 10);
+        priceVal.textContent = '$' + price;
+
+        if (clients > SLIDER_MAX) {
+          resultsBox.classList.add('is-sales');
+          return;
+        }
+        resultsBox.classList.remove('is-sales');
 
         const solFeeMonthly = planBase + Math.max(0, clients - 10) * 70;
         const grossMonthly = clients * price;
         const netMonthly = grossMonthly - solFeeMonthly;
-
-        clientsVal.textContent = clients;
-        priceVal.textContent = '$' + price;
 
         if (currentPlan === 'flex') {
           resultsHeading.textContent = 'Monthly Math';
@@ -915,7 +1022,20 @@
         }
       }
 
-      clientsSlider.addEventListener('input', recalc);
+      clientsSlider.addEventListener('input', () => {
+        setClients(parseInt(clientsSlider.value, 10), 'slider');
+      });
+      clientsInput.addEventListener('input', () => {
+        const raw = clientsInput.value;
+        if (raw === '') { recalc(); return; }
+        setClients(parseInt(raw, 10), 'input');
+      });
+      clientsInput.addEventListener('blur', () => {
+        if (clientsInput.value === '' || parseInt(clientsInput.value, 10) < 1) {
+          setClients(1, 'blur');
+        }
+      });
+
       priceSlider.addEventListener('input', recalc);
       planButtons.forEach(btn => {
         btn.addEventListener('click', () => {

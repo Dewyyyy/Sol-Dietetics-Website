@@ -1308,6 +1308,39 @@
       color: var(--light-text);
     }
 
+    .calc-number-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
+    }
+
+    .calc-number-input {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--bark);
+      background: var(--cream);
+      border: 1px solid var(--sand);
+      border-radius: 3px;
+      padding: 0.2rem 0.55rem;
+      width: 5rem;
+      text-align: right;
+      font-variant-numeric: lining-nums;
+      font-feature-settings: "lnum" 1;
+      -moz-appearance: textfield;
+      appearance: textfield;
+      transition: border-color 0.2s;
+    }
+    .calc-number-input::-webkit-outer-spin-button,
+    .calc-number-input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    .calc-number-input:focus {
+      outline: none;
+      border-color: var(--bark);
+    }
+
     .calc-slider {
       -webkit-appearance: none;
       appearance: none;
@@ -1454,6 +1487,44 @@
     }
 
     .calc-cta .btn-primary:hover { background: var(--cream); color: var(--bark); }
+
+    /* TALK TO SALES STATE (clients > 300) */
+    .calc-results.is-sales .calc-result-row,
+    .calc-results.is-sales .calc-results-label { display: none; }
+    .calc-sales-pane {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+      padding: 0.5rem 0.25rem;
+      position: relative;
+      z-index: 1;
+    }
+    .calc-results.is-sales .calc-sales-pane { display: flex; }
+    .calc-results.is-sales .calc-cta { margin-top: 0.25rem; }
+    .calc-sales-pane .sales-eyebrow {
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sun);
+    }
+    .calc-sales-pane h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--cream);
+    }
+    .calc-sales-pane h4 em { font-style: italic; color: var(--sun); }
+    .calc-sales-pane p {
+      font-size: 0.85rem;
+      font-weight: 300;
+      line-height: 1.6;
+      color: rgba(245, 240, 232, 0.72);
+      max-width: 28ch;
+    }
 
     /* COMPLIANCE STRIP */
     .compliance-strip {
@@ -3117,9 +3188,12 @@
           <div class="calc-field">
             <div class="calc-field-row">
               <label>Number of Clients</label>
-              <span class="calc-field-value-sub"><span id="calcClientsLabel">20</span> members</span>
+              <div class="calc-number-wrap">
+                <input type="number" class="calc-number-input" id="calcClientsInput" min="1" max="9999" step="1" value="20" inputmode="numeric" aria-label="Number of clients" />
+                <span class="calc-field-value-sub">members</span>
+              </div>
             </div>
-            <input type="range" class="calc-slider" id="calcClients" min="5" max="100" step="5" value="20" />
+            <input type="range" class="calc-slider" id="calcClients" min="5" max="300" step="5" value="20" />
           </div>
 
           <div class="calc-field">
@@ -3141,7 +3215,7 @@
         </div>
 
         <!-- Results -->
-        <div class="calc-results">
+        <div class="calc-results" id="calcResults">
           <div class="calc-results-label" id="calcResultsLabel">Your Annual Math (Prepaid)</div>
           <div class="calc-result-row">
             <span class="calc-result-label" id="calcGrossLabel">Annual gross revenue</span>
@@ -3159,8 +3233,13 @@
             <span class="calc-result-label" id="calcSecondaryLabel">Monthly net (avg)</span>
             <span class="calc-result-value" id="calcSecondary">$2,380</span>
           </div>
+          <div class="calc-sales-pane">
+            <span class="sales-eyebrow">Enterprise Territory</span>
+            <h4>You're bigger than our calculator.<br/><em>Let's talk.</em></h4>
+            <p>For gyms running over 300 clients we build a custom plan with volume pricing, dedicated RD capacity, and white-glove onboarding.</p>
+          </div>
           <div class="calc-cta">
-            <a href="#contact" class="btn-primary">Lock In Your Plan</a>
+            <a href="#contact" class="btn-primary" id="calcCtaBtn">Lock In Your Plan</a>
           </div>
         </div>
 
@@ -3589,17 +3668,19 @@
     }
 
     // ── REVENUE CALCULATOR ──
-    // Inputs: clients (slider), retail price (slider), plan (toggle buttons)
+    // Inputs: clients (slider + number input, synced), retail price (slider), plan (toggle buttons)
     // Logic: Sol monthly fee = plan base + max(0, clients - 10) × $70
     //        Flex $1,100/mo, Annual $1,000/mo, Prepay $900/mo
     // Display: Flex → monthly math. Annual / Prepay → annual math.
+    //          Clients > 300 → "Talk to Sales" state (custom volume pricing).
     (function initCalculator() {
       const clientsSlider = document.getElementById('calcClients');
+      const clientsInput  = document.getElementById('calcClientsInput');
       const priceSlider = document.getElementById('calcPrice');
       const planButtons = document.querySelectorAll('.calc-plan-btn');
-      const clientsLabel = document.getElementById('calcClientsLabel');
       const priceLabel = document.getElementById('calcPriceLabel');
 
+      const resultsBox = document.getElementById('calcResults');
       const resultsLabel = document.getElementById('calcResultsLabel');
       const grossLabelEl = document.getElementById('calcGrossLabel');
       const grossEl = document.getElementById('calcGross');
@@ -3609,27 +3690,54 @@
       const netEl = document.getElementById('calcNet');
       const secondaryLabelEl = document.getElementById('calcSecondaryLabel');
       const secondaryEl = document.getElementById('calcSecondary');
+      const ctaBtn = document.getElementById('calcCtaBtn');
 
       if (!clientsSlider) return; // calculator not on page
 
+      const SLIDER_MAX = 300;
       let planBase = 900;        // default to prepay (featured)
       let currentPlan = 'prepay';
+      let clients = parseInt(clientsInput.value, 10) || 20;
 
       function fmt(n) {
         return '$' + Math.round(n).toLocaleString('en-US');
       }
 
+      function setClients(n, source) {
+        if (isNaN(n)) n = 1;
+        if (n < 1) n = 1;
+        if (n > 9999) n = 9999;
+
+        clients = n;
+
+        // Keep slider pinned to max when over the limit
+        const sliderVal = Math.min(n, SLIDER_MAX);
+        if (source !== 'slider') clientsSlider.value = sliderVal;
+        if (source !== 'input')  clientsInput.value = n;
+
+        recalc();
+      }
+
       function recalc() {
-        const clients = parseInt(clientsSlider.value, 10);
         const price = parseInt(priceSlider.value, 10);
+        priceLabel.textContent = price;
+
+        // Over-cap: show Talk to Sales state and bail on math
+        if (clients > SLIDER_MAX) {
+          resultsBox.classList.add('is-sales');
+          ctaBtn.textContent = 'Talk to Sales';
+          ctaBtn.setAttribute('href', '#contact');
+          return;
+        }
+
+        resultsBox.classList.remove('is-sales');
+        ctaBtn.textContent = 'Lock In Your Plan';
+        ctaBtn.setAttribute('href', '#contact');
 
         // Monthly economics
         const solFeeMonthly = planBase + Math.max(0, clients - 10) * 70;
         const grossMonthly  = clients * price;
         const netMonthly    = grossMonthly - solFeeMonthly;
-
-        clientsLabel.textContent = clients;
-        priceLabel.textContent = price;
 
         if (currentPlan === 'flex') {
           // MONTHLY VIEW — Flex is month-to-month, no commitment
@@ -3657,7 +3765,23 @@
         }
       }
 
-      clientsSlider.addEventListener('input', recalc);
+      // Slider drives clients
+      clientsSlider.addEventListener('input', () => {
+        setClients(parseInt(clientsSlider.value, 10), 'slider');
+      });
+
+      // Number input drives clients (allow arbitrary typed values)
+      clientsInput.addEventListener('input', () => {
+        const raw = clientsInput.value;
+        if (raw === '') { recalc(); return; } // let them clear while typing
+        setClients(parseInt(raw, 10), 'input');
+      });
+      clientsInput.addEventListener('blur', () => {
+        if (clientsInput.value === '' || parseInt(clientsInput.value, 10) < 1) {
+          setClients(1, 'blur');
+        }
+      });
+
       priceSlider.addEventListener('input', recalc);
 
       planButtons.forEach(btn => {
