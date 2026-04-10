@@ -696,11 +696,60 @@
       color: var(--light-text);
     }
 
+    /* ── PARTNERS → BONUS BRIDGE ── */
+    .partners {
+      padding-bottom: 4rem;
+    }
+    .section-bridge {
+      position: relative;
+      height: 120px;
+      background: var(--cream);
+      overflow: hidden;
+      margin-top: -1px; /* seal subpixel gap */
+    }
+    .section-bridge svg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .section-bridge-connector {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .bridge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--sand);
+    }
+    .bridge-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--warm-white);
+      border: 2px solid var(--sand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--moss);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+
     /* BONUS GROWTH SUPPORT — value-add services included with every plan */
     .bonus {
-      background: var(--cream);
+      background: linear-gradient(180deg, var(--warm-white) 0%, var(--cream) 40%);
       border-bottom: 1px solid var(--sand);
       position: relative;
+      padding-top: 5rem;
     }
 
     .bonus-inner {
@@ -2377,6 +2426,9 @@
       .hero-right { padding: 2.5rem 1.5rem; }
       /* Reduce section padding on tablet */
       section { padding: 4.5rem 1.5rem; }
+      .section-bridge { height: 90px; }
+      .partners { padding-bottom: 3rem; }
+      .bonus { padding-top: 4rem; }
       /* Stack how-inner columns on tablet */
       .how-inner { text-align: center; }
       /* Stack contact form on tablet */
@@ -2962,7 +3014,12 @@
       /* ───────────────────────────────────────────
          BONUS GROWTH SUPPORT: 2-col grid on mobile
       ─────────────────────────────────────────── */
-      .bonus { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .section-bridge { height: 70px; }
+      .bridge-icon { width: 38px; height: 38px; }
+      .bridge-icon svg { width: 16px; height: 16px; }
+      .bridge-dot { width: 5px; height: 5px; }
+      .partners { padding-bottom: 2rem; }
+      .bonus { padding-left: 1.25rem; padding-right: 1.25rem; padding-top: 3rem; }
 
       .bonus-lead { font-size: 0.85rem; line-height: 1.75; }
 
@@ -3431,6 +3488,21 @@
       </div>
     </div>
   </section>
+
+  <!-- BRIDGE: Partners → Bonus transition -->
+  <div class="section-bridge" aria-hidden="true">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,0 L0,60 Q360,120 720,80 Q1080,40 1440,90 L1440,0 Z" fill="var(--cream)"/>
+      <path d="M0,60 Q360,120 720,80 Q1080,40 1440,90 L1440,120 L0,120 Z" fill="var(--warm-white)"/>
+    </svg>
+    <div class="section-bridge-connector">
+      <span class="bridge-dot"></span>
+      <span class="bridge-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+      </span>
+      <span class="bridge-dot"></span>
+    </div>
+  </div>
 
   <!-- BONUS GROWTH SUPPORT — value-add services included with every plan -->
   <section class="bonus" id="bonus">
