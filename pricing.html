@@ -336,9 +336,11 @@
       position: relative;
     }
 
-    /* ── Column widths ── */
-    .compare-table colgroup .col-feature { width: 28%; }
-    .compare-table colgroup .col-plan    { width: 24%; }
+    /* ── Column widths — set on th directly for table-layout:fixed ── */
+    .compare-table thead th:first-child  { width: 28%; }
+    .compare-table thead th:nth-child(2) { width: 24%; }
+    .compare-table thead th:nth-child(3) { width: 24%; }
+    .compare-table thead th:nth-child(4) { width: 24%; }
 
     /* ── Header cells: styled directly ── */
     .compare-table thead th {
@@ -1083,12 +1085,6 @@
         <p>Every plan includes the full program. The difference is commitment, price, and support level.</p>
       </div>
       <table class="compare-table">
-        <colgroup>
-          <col class="col-feature"/>
-          <col class="col-plan"/>
-          <col class="col-plan"/>
-          <col class="col-plan"/>
-        </colgroup>
         <thead>
           <tr>
             <th>
