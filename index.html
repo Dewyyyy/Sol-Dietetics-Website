@@ -1342,6 +1342,49 @@
       line-height: 1.7;
     }
 
+    /* Compare Plans Button — compelling secondary CTA */
+    .compare-plans-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 2.5rem;
+    }
+
+    .compare-plans-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1.1rem 2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--charcoal);
+      background: var(--sun);
+      border: 2px solid var(--sun);
+      border-radius: 2px;
+      box-shadow: 0 4px 18px rgba(232, 144, 10, 0.25);
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .compare-plans-btn:hover {
+      background: var(--bark);
+      border-color: var(--bark);
+      color: var(--cream);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(62, 39, 20, 0.3);
+    }
+
+    .compare-plans-btn .arrow {
+      display: inline-block;
+      transition: transform 0.25s ease;
+    }
+
+    .compare-plans-btn:hover .arrow { transform: translateX(6px); }
+
     /* REVENUE CALCULATOR */
     .calculator { background: var(--cream); }
 
@@ -3118,7 +3161,7 @@
     </a>
     <ul class="nav-links">
       <li><a href="/how-it-works.html">How It Works</a></li>
-      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="/pricing.html">Pricing</a></li>
       <li><a href="/for-gyms.html">For Gyms</a></li>
       <li><a href="#contact" class="nav-cta">Get Started</a></li>
     </ul>
@@ -3132,7 +3175,7 @@
     <div class="nav-mobile-menu" id="navMobileMenu" aria-hidden="true">
       <ul>
         <li><a href="/how-it-works.html" class="nav-mobile-link">How It Works</a></li>
-        <li><a href="#pricing" class="nav-mobile-link">Pricing</a></li>
+        <li><a href="/pricing.html" class="nav-mobile-link">Pricing</a></li>
         <li><a href="/for-gyms.html" class="nav-mobile-link">For Gyms</a></li>
         <li><a href="#faq" class="nav-mobile-link">FAQ</a></li>
         <li><a href="#contact" class="nav-mobile-link nav-mobile-cta">Get Started</a></li>
@@ -3602,7 +3645,12 @@
 
       </div>
       <p class="pricing-footnote">All plans: $1,000/mo base covers up to 10 clients. Additional clients are $70/client/month. A one-time onboarding fee applies. <strong>Annual and Annual Prepay plans include 1 bonus month free on top of your 12-month commitment (13 months total).</strong> Bonus month not available on Flex (month-to-month).</p>
-      <p class="pricing-footnote" style="margin-top: 1rem;"><a href="/pricing.html#comparison" style="color: var(--sun); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--sun);">See the full plan comparison →</a></p>
+      <div class="compare-plans-wrap">
+        <a href="/pricing.html#comparison" class="compare-plans-btn">
+          Find Your Best-Fit Plan
+          <span class="arrow">→</span>
+        </a>
+      </div>
     </div>
   </section>
 
