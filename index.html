@@ -2562,54 +2562,142 @@
       .nav-logo img { height: 36px; }
 
       /* ───────────────────────────────────────────
-         HERO: clean single-column layout on mobile
+         HERO: immersive dark mobile redesign
       ─────────────────────────────────────────── */
 
-      /* Override min-height:100vh from base; let content dictate height naturally */
+      @keyframes heroGradientShift {
+        0%   { background-position: 0% 50%; }
+        50%  { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+
+      @keyframes heroPulse {
+        0%, 100% { opacity: 0.35; transform: translate(-50%, -50%) scale(1); }
+        50%      { opacity: 0.55; transform: translate(-50%, -50%) scale(1.15); }
+      }
+
       .hero {
         min-height: unset;
         max-height: none;
         overflow: visible;
-        /* Adjust top padding to match mobile nav height (~58px) */
         padding-top: 58px;
+        position: relative;
       }
 
-      /* Hero-left fills screen with comfortable padding */
+      /* Dark cinematic gradient background */
       .hero-left {
-        min-height: calc(85vh - 58px); /* full visual hero height minus nav */
-        padding: 2.5rem 1.5rem 2.5rem;
+        min-height: calc(90vh - 58px);
+        padding: 3rem 1.5rem 2.5rem;
         justify-content: center;
+        background: linear-gradient(160deg, #1e5c36 0%, var(--bark) 40%, #0f2318 100%);
+        background-size: 200% 200%;
+        animation: heroGradientShift 12s ease infinite;
+        position: relative;
+        overflow: hidden;
+        opacity: 1;
+        transform: none;
       }
 
-      /* Hide the dark service panel on mobile — keeps hero clean and focused */
+      /* Radial spotlight glow */
+      .hero-left::before {
+        content: '';
+        position: absolute;
+        top: 25%;
+        left: 50%;
+        width: 120vw;
+        height: 120vw;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(232, 144, 10, 0.12) 0%, transparent 65%);
+        transform: translate(-50%, -50%);
+        animation: heroPulse 6s ease-in-out infinite;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* Ensure all hero content sits above the glow */
+      .hero-left > * { position: relative; z-index: 1; }
+
       .hero-right { display: none; }
 
-      /* Scale down headline on mobile */
-      .hero-headline { font-size: clamp(2rem, 8vw, 2.8rem); margin-bottom: 1rem; }
+      /* Eyebrow — light on dark */
+      .hero-eyebrow {
+        color: var(--sun);
+        font-size: 0.68rem;
+        letter-spacing: 0.25em;
+        margin-bottom: 1.25rem;
+      }
+      .hero-eyebrow::before {
+        background: var(--sun);
+        width: 1.5rem;
+      }
 
-      /* Scale down subtitle font */
-      .hero-sub { font-size: 0.9rem; margin-bottom: 1.75rem; max-width: 100%; }
+      /* Headline — large, white, dramatic */
+      .hero-headline {
+        font-size: clamp(2.4rem, 10vw, 3.4rem);
+        color: #ffffff;
+        margin-bottom: 1.25rem;
+        line-height: 1.02;
+        text-shadow: 0 2px 30px rgba(0,0,0,0.2);
+      }
 
-      /* Stack CTA buttons vertically */
-      .hero-actions { flex-direction: column; gap: 0.75rem; width: 100%; }
+      .hero-headline em {
+        color: var(--sun);
+        font-style: italic;
+      }
 
-      /* Full-width primary CTA, ≥44px tap target */
+      /* Subtitle — translucent white */
+      .hero-sub {
+        font-size: 0.92rem;
+        color: rgba(255,255,255,0.7);
+        margin-bottom: 2rem;
+        max-width: 100%;
+        line-height: 1.8;
+      }
+
+      /* CTAs — stacked, full-width */
+      .hero-actions {
+        flex-direction: column;
+        gap: 0.75rem;
+        width: 100%;
+      }
+
       .hero-actions .btn-primary {
         width: 100%;
         text-align: center;
-        min-height: 44px;
-        padding: 0.9rem 1rem;
+        min-height: 48px;
+        padding: 1rem 1.25rem;
+        font-size: 0.82rem;
+        background: var(--sun);
+        color: var(--bark);
+        font-weight: 600;
+        border-radius: 4px;
+        box-shadow: 0 4px 24px rgba(232, 144, 10, 0.35);
+        letter-spacing: 0.12em;
       }
 
-      /* Full-width secondary CTA, ≥44px tap target */
       .hero-actions .btn-secondary {
         width: 100%;
         justify-content: center;
-        min-height: 44px;
+        min-height: 48px;
         padding: 0.9rem 1rem;
-        background: rgba(27,82,48,0.06);
-        border-radius: 2px;
+        background: transparent;
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 4px;
+        color: rgba(255,255,255,0.85);
+        font-weight: 400;
+        letter-spacing: 0.08em;
       }
+
+      /* Trust line — becomes horizontal chip row */
+      .hero-trust {
+        color: rgba(255,255,255,0.5);
+        font-size: 0.62rem;
+        letter-spacing: 0.06em;
+        margin-top: 1.75rem;
+        line-height: 1.9;
+      }
+
+      /* hero-stat-cards hidden with hero-right — stats-row section shows them instead */
 
       /* ───────────────────────────────────────────
          SERVICE CARDS: horizontal snap carousel
@@ -2982,10 +3070,21 @@
       /* ───────────────────────────────────────────
          STATS ROW: compact horizontal on mobile
       ─────────────────────────────────────────── */
-      .stats-row { padding: 1.5rem 1.25rem; }
-      .stats-row-inner { gap: 1.5rem; }
-      .stats-row .stat-number { font-size: 1.6rem; }
-      .stats-row .stat-label { font-size: 0.58rem; letter-spacing: 0.08em; }
+      /* Stats row — seamless continuation of dark hero */
+      .stats-row {
+        padding: 0 1.5rem 2rem;
+        background: linear-gradient(180deg, #0f2318 0%, var(--bark) 100%);
+      }
+      .stats-row-inner { gap: 0.6rem; }
+      .stats-row .stat-card {
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-top: 2px solid var(--sun);
+        border-radius: 6px;
+        padding: 0.85rem 0.5rem;
+      }
+      .stats-row .stat-number { font-size: 1.4rem; }
+      .stats-row .stat-label { font-size: 0.52rem; letter-spacing: 0.08em; }
 
       /* ───────────────────────────────────────────
          WHAT YOU GET: 2-column grid on mobile
