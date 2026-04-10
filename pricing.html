@@ -583,8 +583,61 @@
       line-height: 1.6;
     }
 
+    /* ── BASE PRICING → CHOOSE YOUR PLAN BRIDGE ── */
+    .section-bridge {
+      position: relative;
+      height: 120px;
+      background: var(--cream);
+      overflow: hidden;
+      margin-top: -1px;
+    }
+    .section-bridge svg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .section-bridge-connector {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .bridge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--sand);
+    }
+    .bridge-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--warm-white);
+      border: 2px solid var(--sand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--terra);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+
     /* BASE PRICING EXPLAINER */
-    .base-pricing { background: var(--cream); }
+    .base-pricing {
+      background: var(--cream);
+      padding-bottom: 4rem;
+    }
+
+    .choose-plan {
+      background: linear-gradient(180deg, var(--warm-white) 0%, var(--cream) 40%);
+      padding-top: 5rem;
+    }
     .base-pricing-inner {
       max-width: 900px;
       margin: 0 auto;
@@ -807,6 +860,12 @@
       nav { padding: 1rem 1.5rem; }
       .nav-links { gap: 1.5rem; }
       section { padding: 4rem 1.5rem; }
+      .section-bridge { height: 70px; }
+      .bridge-icon { width: 38px; height: 38px; }
+      .bridge-icon svg { width: 16px; height: 16px; }
+      .bridge-dot { width: 5px; height: 5px; }
+      .base-pricing { padding-bottom: 2rem; }
+      .choose-plan { padding-top: 3rem; }
       .page-hero { padding: 4.5rem 1.5rem 4rem; }
       .pricing-grid { grid-template-columns: 1fr; gap: 1.25rem; }
       .plan-card.featured { transform: none; }
@@ -914,8 +973,23 @@
     </div>
   </section>
 
+  <!-- BRIDGE: Base Pricing → Choose Your Plan -->
+  <div class="section-bridge" aria-hidden="true">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,0 L0,60 Q360,120 720,80 Q1080,40 1440,90 L1440,0 Z" fill="var(--cream)"/>
+      <path d="M0,60 Q360,120 720,80 Q1080,40 1440,90 L1440,120 L0,120 Z" fill="var(--warm-white)"/>
+    </svg>
+    <div class="section-bridge-connector">
+      <span class="bridge-dot"></span>
+      <span class="bridge-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </span>
+      <span class="bridge-dot"></span>
+    </div>
+  </div>
+
   <!-- PRICING CARDS -->
-  <section style="padding-top: 7rem;">
+  <section class="choose-plan">
     <div class="pricing-inner">
       <p class="section-tag">Choose Your Plan</p>
       <h2 class="section-title">Three plans.<br/>One <em>clear winner.</em></h2>
