@@ -1025,7 +1025,9 @@
             <input type="range" id="clients-slider" min="5" max="300" step="5" value="20" />
           </div>
           <div class="calc-slider">
-            <label>Your price / client <span id="price-val">$199</span></label>
+            <label>Your price / client
+              $<input type="number" class="calc-number-input" id="price-input" min="1" max="9999" step="1" value="199" inputmode="numeric" aria-label="Price per client" />
+            </label>
             <input type="range" id="price-slider" min="49" max="499" step="10" value="199" />
           </div>
           <div class="calc-slider">
@@ -1304,7 +1306,7 @@
       const clientsSlider = document.getElementById('clients-slider');
       const clientsInput = document.getElementById('clients-input');
       const priceSlider = document.getElementById('price-slider');
-      const priceVal = document.getElementById('price-val');
+      const priceInput = document.getElementById('price-input');
 
       const resultsBox = document.getElementById('calc-results');
       const primaryHeading = document.getElementById('primary-heading');
@@ -1343,9 +1345,18 @@
         recalc();
       }
 
+      function setPrice(n, source) {
+        if (isNaN(n)) n = 1;
+        if (n < 1) n = 1;
+        if (n > 9999) n = 9999;
+        const sliderVal = Math.max(49, Math.min(n, 499));
+        if (source !== 'slider') priceSlider.value = sliderVal;
+        if (source !== 'input')  priceInput.value = n;
+        recalc();
+      }
+
       function recalc() {
-        const price = parseInt(priceSlider.value, 10);
-        priceVal.textContent = '$' + price;
+        const price = parseInt(priceInput.value, 10) || 1;
 
         if (clients > SLIDER_MAX) {
           resultsBox.classList.add('is-sales');
@@ -1406,7 +1417,19 @@
         }
       });
 
-      priceSlider.addEventListener('input', recalc);
+      priceSlider.addEventListener('input', () => {
+        setPrice(parseInt(priceSlider.value, 10), 'slider');
+      });
+      priceInput.addEventListener('input', () => {
+        const raw = priceInput.value;
+        if (raw === '') { recalc(); return; }
+        setPrice(parseInt(raw, 10), 'input');
+      });
+      priceInput.addEventListener('blur', () => {
+        if (priceInput.value === '' || parseInt(priceInput.value, 10) < 1) {
+          setPrice(1, 'blur');
+        }
+      });
       planButtons.forEach(btn => {
         btn.addEventListener('click', () => {
           planButtons.forEach(b => b.classList.remove('active'));

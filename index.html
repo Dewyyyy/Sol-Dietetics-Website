@@ -3864,7 +3864,11 @@
           <div class="calc-field">
             <div class="calc-field-row">
               <label><span class="calc-step-badge">3</span>Your Price per Client</label>
-              <span class="calc-field-value-sub">$<span id="calcPriceLabel">199</span>/client/mo</span>
+              <div class="calc-number-wrap">
+                <span class="calc-field-value-sub">$</span>
+                <input type="number" class="calc-number-input" id="calcPriceInput" min="1" max="9999" step="1" value="199" inputmode="numeric" aria-label="Price per client" />
+                <span class="calc-field-value-sub">/client/mo</span>
+              </div>
             </div>
             <input type="range" class="calc-slider" id="calcPrice" min="49" max="499" step="10" value="199" />
           </div>
@@ -4367,8 +4371,8 @@
       const clientsSlider = document.getElementById('calcClients');
       const clientsInput  = document.getElementById('calcClientsInput');
       const priceSlider = document.getElementById('calcPrice');
+      const priceInput  = document.getElementById('calcPriceInput');
       const planButtons = document.querySelectorAll('.calc-plan-btn');
-      const priceLabel = document.getElementById('calcPriceLabel');
 
       const resultsBox = document.getElementById('calcResults');
       const primaryLabelEl = document.getElementById('calcPrimaryLabel');
@@ -4410,9 +4414,18 @@
         recalc();
       }
 
+      function setPrice(n, source) {
+        if (isNaN(n)) n = 1;
+        if (n < 1) n = 1;
+        if (n > 9999) n = 9999;
+        const sliderVal = Math.max(49, Math.min(n, 499));
+        if (source !== 'slider') priceSlider.value = sliderVal;
+        if (source !== 'input')  priceInput.value = n;
+        recalc();
+      }
+
       function recalc() {
-        const price = parseInt(priceSlider.value, 10);
-        priceLabel.textContent = price;
+        const price = parseInt(priceInput.value, 10) || 1;
 
         // Over-cap: show Talk to Sales state and bail on math
         if (clients > SLIDER_MAX) {
@@ -4485,7 +4498,19 @@
         }
       });
 
-      priceSlider.addEventListener('input', recalc);
+      priceSlider.addEventListener('input', () => {
+        setPrice(parseInt(priceSlider.value, 10), 'slider');
+      });
+      priceInput.addEventListener('input', () => {
+        const raw = priceInput.value;
+        if (raw === '') { recalc(); return; }
+        setPrice(parseInt(raw, 10), 'input');
+      });
+      priceInput.addEventListener('blur', () => {
+        if (priceInput.value === '' || parseInt(priceInput.value, 10) < 1) {
+          setPrice(1, 'blur');
+        }
+      });
 
       planButtons.forEach(btn => {
         btn.addEventListener('click', () => {
