@@ -264,7 +264,7 @@
     .calc-slider label {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
+      align-items: center;
       font-size: 0.78rem;
       font-weight: 500;
       letter-spacing: 0.08em;
@@ -272,13 +272,31 @@
       color: var(--moss);
       margin-bottom: 0.75rem;
     }
-    .calc-slider label span {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem;
-      font-weight: 400;
+    .calc-step-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--sun);
       color: var(--bark);
-      text-transform: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
       letter-spacing: 0;
+      margin-right: 0.6rem;
+      flex-shrink: 0;
+      text-transform: none;
+    }
+    .calc-label-text {
+      display: inline-flex;
+      align-items: center;
+    }
+    .calc-price-input-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
     }
     .calc-number-input {
       font-family: 'Cormorant Garamond', serif;
@@ -1050,20 +1068,7 @@
         <div class="calc-controls">
           <h3>Your Gym</h3>
           <div class="calc-slider">
-            <label>Clients enrolled
-              <input type="number" class="calc-number-input" id="clients-input" min="1" max="9999" step="1" value="20" inputmode="numeric" aria-label="Clients enrolled" />
-            </label>
-            <input type="range" id="clients-slider" min="5" max="300" step="5" value="20" />
-          </div>
-          <div class="calc-slider">
-            <label>Your price / client
-              $<input type="number" class="calc-number-input" id="price-input" min="1" max="9999" step="1" value="199" inputmode="numeric" aria-label="Price per client" />
-            </label>
-            <input type="range" id="price-slider" min="49" max="499" step="10" value="199" />
-            <p class="calc-field-hint">Most gyms charge between <strong>$179–$249/mo</strong></p>
-          </div>
-          <div class="calc-slider">
-            <label style="text-transform: uppercase;">Plan</label>
+            <label><span class="calc-step-badge">1</span>Choose Your Plan</label>
             <div class="plan-toggle">
               <button type="button" data-rate="1100" data-plan="flex">
                 <span class="plan-name">Flex</span>
@@ -1085,6 +1090,15 @@
                 <span class="plan-tagline">Save $2,400/yr</span>
               </button>
             </div>
+          </div>
+          <div class="calc-slider">
+            <label><span class="calc-label-text"><span class="calc-step-badge">2</span>Clients enrolled</span><input type="number" class="calc-number-input" id="clients-input" min="1" max="9999" step="1" value="20" inputmode="numeric" aria-label="Clients enrolled" /></label>
+            <input type="range" id="clients-slider" min="5" max="300" step="5" value="20" />
+          </div>
+          <div class="calc-slider">
+            <label><span class="calc-label-text"><span class="calc-step-badge">3</span>Your price / client</span><span class="calc-price-input-wrap">$<input type="number" class="calc-number-input" id="price-input" min="1" max="9999" step="1" value="199" inputmode="numeric" aria-label="Price per client" /></span></label>
+            <input type="range" id="price-slider" min="49" max="499" step="10" value="199" />
+            <p class="calc-field-hint">Most gyms charge between <strong>$179–$249/mo</strong></p>
           </div>
         </div>
         <div class="calc-results" id="calc-results">
