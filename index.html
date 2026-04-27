@@ -1521,6 +1521,27 @@
       color: var(--light-text);
     }
 
+    .calc-field-hint {
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--moss);
+      margin-top: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .calc-field-hint::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--sun);
+      flex-shrink: 0;
+    }
+    .calc-field-hint strong { color: var(--bark); font-weight: 500; }
+
     .calc-number-wrap {
       display: flex;
       align-items: baseline;
@@ -3871,6 +3892,7 @@
               </div>
             </div>
             <input type="range" class="calc-slider" id="calcPrice" min="49" max="499" step="10" value="199" />
+            <p class="calc-field-hint">Most gyms charge between <strong>$179–$249/mo</strong></p>
           </div>
         </div>
 
