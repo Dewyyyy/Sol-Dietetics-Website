@@ -1092,7 +1092,7 @@
               <span class="calc-value" id="primary-fee">&minus;$19,200</span>
             </div>
             <div class="calc-row highlight">
-              <span class="calc-label">Your net profit</span>
+              <span class="calc-label" id="primary-net-label">Your net profit</span>
               <span class="calc-value" id="primary-net">$28,560</span>
             </div>
           </div>
@@ -1109,7 +1109,7 @@
               <span class="calc-value" id="secondary-fee">&minus;$1,600</span>
             </div>
             <div class="calc-row">
-              <span class="calc-label">Your net profit</span>
+              <span class="calc-label" id="secondary-net-label">Your net profit</span>
               <span class="calc-value" id="secondary-net">$2,380</span>
             </div>
           </div>
@@ -1337,11 +1337,13 @@
       const primaryGross = document.getElementById('primary-gross');
       const primaryFeeLabel = document.getElementById('primary-fee-label');
       const primaryFee = document.getElementById('primary-fee');
+      const primaryNetLabel = document.getElementById('primary-net-label');
       const primaryNet = document.getElementById('primary-net');
       const secondaryHeading = document.getElementById('secondary-heading');
       const secondaryGross = document.getElementById('secondary-gross');
       const secondaryFeeLabel = document.getElementById('secondary-fee-label');
       const secondaryFee = document.getElementById('secondary-fee');
+      const secondaryNetLabel = document.getElementById('secondary-net-label');
       const secondaryNet = document.getElementById('secondary-net');
 
       const planButtons = document.querySelectorAll('.plan-toggle button');
@@ -1401,6 +1403,7 @@
           primaryGross.textContent = fmt(grossAnnual);
           primaryFeeLabel.textContent = 'Annual Sol fee (paid upfront)';
           primaryFee.textContent = fmtNeg(solFeeAnnual);
+          primaryNetLabel.textContent = 'Your annual net profit';
           primaryNet.textContent = fmt(netAnnual);
 
           // SECONDARY = monthly equivalent
@@ -1408,6 +1411,7 @@
           secondaryGross.textContent = fmt(grossMonthly);
           secondaryFeeLabel.textContent = 'Sol fee (avg / month)';
           secondaryFee.textContent = fmtNeg(solFeeMonthly);
+          secondaryNetLabel.textContent = 'Your monthly net profit';
           secondaryNet.textContent = fmt(netMonthly);
         } else {
           // PRIMARY = monthly (Flex and Annual are both billed monthly)
@@ -1416,6 +1420,7 @@
           primaryGross.textContent = fmt(grossMonthly);
           primaryFeeLabel.textContent = 'Monthly Sol fee';
           primaryFee.textContent = fmtNeg(solFeeMonthly);
+          primaryNetLabel.textContent = 'Your monthly net profit';
           primaryNet.textContent = fmt(netMonthly);
 
           // SECONDARY = annual rollup
@@ -1423,6 +1428,7 @@
           secondaryGross.textContent = fmt(grossAnnual);
           secondaryFeeLabel.textContent = 'Annual Sol fee';
           secondaryFee.textContent = fmtNeg(solFeeAnnual);
+          secondaryNetLabel.textContent = 'Your annual net profit';
           secondaryNet.textContent = fmt(netAnnual);
         }
       }

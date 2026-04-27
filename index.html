@@ -3927,7 +3927,7 @@
               <span class="calc-result-value" id="calcSecondaryFee">$1,600</span>
             </div>
             <div class="calc-result-row">
-              <span class="calc-result-label">Your net profit</span>
+              <span class="calc-result-label" id="calcSecondaryNetLabel">Your net profit</span>
               <span class="calc-result-value" id="calcSecondaryNet">$2,380</span>
             </div>
           </div>
@@ -4407,6 +4407,7 @@
       const secondaryGrossEl = document.getElementById('calcSecondaryGross');
       const secondaryFeeLabelEl = document.getElementById('calcSecondaryFeeLabel');
       const secondaryFeeEl = document.getElementById('calcSecondaryFee');
+      const secondaryNetLabelEl = document.getElementById('calcSecondaryNetLabel');
       const secondaryNetEl = document.getElementById('calcSecondaryNet');
       const ctaBtn = document.getElementById('calcCtaBtn');
 
@@ -4475,7 +4476,7 @@
           primaryGrossEl.textContent = fmt(grossAnnual);
           primaryFeeLabelEl.textContent = 'Annual Sol fee (paid upfront)';
           primaryFeeEl.textContent = fmt(solFeeAnnual);
-          primaryNetLabelEl.textContent = 'Your net profit';
+          primaryNetLabelEl.textContent = 'Your annual net profit';
           primaryNetEl.textContent = fmt(netAnnual);
 
           // SECONDARY = monthly equivalent
@@ -4483,6 +4484,7 @@
           secondaryGrossEl.textContent = fmt(grossMonthly);
           secondaryFeeLabelEl.textContent = 'Sol fee (avg / month)';
           secondaryFeeEl.textContent = fmt(solFeeMonthly);
+          secondaryNetLabelEl.textContent = 'Your monthly net profit';
           secondaryNetEl.textContent = fmt(netMonthly);
         } else {
           // PRIMARY = monthly (Flex and Annual are both billed monthly)
@@ -4499,6 +4501,7 @@
           secondaryGrossEl.textContent = fmt(grossAnnual);
           secondaryFeeLabelEl.textContent = 'Annual Sol fee';
           secondaryFeeEl.textContent = fmt(solFeeAnnual);
+          secondaryNetLabelEl.textContent = 'Your annual net profit';
           secondaryNetEl.textContent = fmt(netAnnual);
         }
       }
