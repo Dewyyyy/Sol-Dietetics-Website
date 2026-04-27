@@ -413,25 +413,6 @@
       color: rgba(248, 244, 238, 0.5);
     }
 
-    /* ── ACCORDION BASE STYLES (desktop: always expanded, buttons invisible) ── */
-
-    /* Reset step-trigger button — invisible on desktop, interactive on mobile */
-    .step-trigger {
-      background: none;
-      border: none;
-      padding: 0;
-      width: 100%;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      cursor: default;
-      font: inherit;
-      text-align: left;
-    }
-
-    /* Chevron hidden on desktop */
-    .step-chevron { display: none; }
-
     /* Social tabs nav hidden on desktop — shown only on mobile */
     .social-tabs { display: none; }
 
@@ -482,106 +463,6 @@
       height: 1px;
       background: var(--clay);
       margin: 2rem 0;
-    }
-
-    /* HOW IT WORKS — horizontal timeline (desktop) */
-    .how { background: var(--warm-white); border-top: 1px solid var(--sand); border-bottom: 1px solid var(--sand); }
-
-    .how-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .how-intro { margin-bottom: 3.5rem; }
-    .how-swipe-hint { display: none; } /* desktop: hidden */
-
-    .how-steps {
-      display: flex;
-      flex-direction: row;
-      position: relative;
-      gap: 0;
-      margin-top: 0;
-    }
-
-    /* Connecting line behind the step circles */
-    .how-steps::before {
-      content: '';
-      position: absolute;
-      top: 24px;
-      left: 10%;
-      right: 10%;
-      height: 2px;
-      background: var(--sand);
-      z-index: 0;
-    }
-
-    .step {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 0 1rem;
-      border-bottom: none;
-      position: relative;
-      z-index: 1;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .step.visible { opacity: 1; transform: translateY(0); }
-    .step:last-child { border-bottom: none; }
-
-    .step .step-num, .step > .step-num {
-      display: none; /* hide the old step-num span */
-    }
-
-    /* The step-trigger becomes the circle node + title */
-    .step-trigger {
-      flex-direction: column;
-      align-items: center;
-      gap: 0.75rem;
-      cursor: default;
-    }
-
-    .step-trigger::before {
-      content: attr(data-num);
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: var(--bark);
-      color: var(--cream);
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
-      font-weight: 400;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .step-content h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      font-weight: 400;
-      color: var(--charcoal);
-      margin-bottom: 0.5rem;
-    }
-
-    .step-chevron { display: none; } /* hidden on desktop */
-
-    /* Step body always visible on desktop */
-    .step-body { max-height: none; overflow: visible; }
-
-    .step-content p {
-      font-size: 0.82rem;
-      font-weight: 300;
-      line-height: 1.65;
-      max-width: 200px;
-      margin: 0 auto;
-      color: var(--light-text);
     }
 
     /* WHO WE SERVE */
@@ -2472,8 +2353,6 @@
       .section-bridge { height: 90px; }
       .partners { padding-bottom: 3rem; }
       .bonus { padding-top: 4rem; }
-      /* Stack how-inner columns on tablet */
-      .how-inner { text-align: center; }
       /* Stack contact form on tablet */
       .contact-form { grid-template-columns: 1fr; }
       /* Stack footer on tablet */
@@ -2779,142 +2658,6 @@
       /* Reduce stat label font */
       .stat-label { font-size: 0.52rem; letter-spacing: 0.05em; }
 
-      /* ───────────────────────────────────────────
-         HOW IT WORKS: horizontal swipe carousel on mobile
-      ─────────────────────────────────────────── */
-
-      .how { padding: 3rem 0; }
-      .how-inner { padding: 0 1.25rem; }
-      .how-intro { padding: 0; margin-bottom: 1.5rem; }
-
-      /* Carousel track — bleeds to screen edges for natural swipe feel */
-      .how-steps {
-        /* Force horizontal layout — override desktop position:relative */
-        display: flex !important;
-        flex-direction: row !important;
-        flex-wrap: nowrap !important;
-        position: static !important;
-        /* Horizontal scroll */
-        overflow-x: scroll;
-        overflow-y: hidden;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        /* Cards are 78vw; side padding = (100vw - 78vw) / 2 = 11vw
-           so first and last cards can scroll to true center */
-        gap: 1rem;
-        padding: 0.75rem 11vw 1.5rem;
-        margin-left: -1.25rem;
-        margin-right: -1.25rem;
-        align-items: stretch;
-      }
-
-      .how-steps::-webkit-scrollbar { display: none; }
-
-      /* No connecting timeline line on mobile */
-      .how-steps::before { display: none; }
-
-      /* Each step = a dark luxury swipe card.
-         flex: 0 0 78vw fully resets all three flex properties,
-         overriding the desktop's flex:1 (flex: 1 1 0%) shorthand.
-         scroll-snap-align: center keeps the active card centered. */
-      .step {
-        flex: 0 0 78vw !important;
-        width: 78vw;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        justify-content: flex-start;
-        background: linear-gradient(145deg, #1e5c36 0%, var(--bark) 100%);
-        border-radius: 14px;
-        padding: 2rem 1.5rem;
-        scroll-snap-align: center;
-        opacity: 1 !important;
-        transform: none !important;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-        border: 1px solid rgba(255,255,255,0.07);
-        cursor: default;
-        align-self: auto;
-      }
-
-      /* Large gold step number — always visible */
-      .step > .step-num {
-        display: block;
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 2.6rem;
-        font-weight: 300;
-        color: var(--sun);
-        line-height: 1;
-        margin-bottom: 1.25rem;
-        opacity: 0.9;
-      }
-
-      /* Trigger is non-interactive — just displays the title */
-      .step-trigger {
-        cursor: default;
-        pointer-events: none;
-        flex-direction: column;
-        align-items: center;
-        padding: 0;
-        gap: 0.6rem;
-        border: none;
-        background: none;
-        width: 100%;
-      }
-
-      /* Hide the ::before pseudo circle (desktop timeline node) */
-      .step-trigger::before { display: none; }
-
-      /* White title */
-      .step-content h3 {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 1.4rem;
-        font-weight: 400;
-        color: #ffffff;
-        line-height: 1.2;
-      }
-
-      /* No chevron on carousel */
-      .step-chevron { display: none; }
-
-      /* Description always visible — no collapse */
-      .step-body {
-        max-height: none !important;
-        overflow: visible;
-        margin-top: 0.75rem;
-      }
-
-      .step-body p {
-        padding: 0;
-        font-size: 0.84rem;
-        font-weight: 300;
-        text-align: center;
-        color: rgba(255,255,255,0.65);
-        line-height: 1.75;
-      }
-
-      /* Swipe hint label below carousel */
-      .how-swipe-hint {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 0.68rem;
-        font-weight: 400;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--light-text);
-        padding: 0 1.25rem;
-        margin-top: 0.5rem;
-      }
-
-      .how-swipe-hint::before {
-        content: '';
-        display: inline-block;
-        width: 20px;
-        height: 1px;
-        background: var(--clay);
-      }
 
       /* ───────────────────────────────────────────
          WHO WE SERVE: single-column stack on mobile
@@ -3194,12 +2937,6 @@
         font-size: 0.5rem;
         padding: 0.25rem 0.45rem;
       }
-
-      /* ───────────────────────────────────────────
-         HOW IT WORKS: fix mobile timeline override
-      ─────────────────────────────────────────── */
-      .how-steps { flex-direction: column; gap: 0; }
-      .how-steps::before { display: none; }
 
       /* ───────────────────────────────────────────
          MID-PAGE CTA: compact on mobile
@@ -4357,7 +4094,7 @@
       });
     }, { threshold: 0.12 });
 
-    document.querySelectorAll('.step, .partner-card, .whatyouget-card, .bonus-card, .spotlight-card, .faq-item').forEach(el => observer.observe(el));
+    document.querySelectorAll('.partner-card, .whatyouget-card, .bonus-card, .spotlight-card, .faq-item').forEach(el => observer.observe(el));
 
     // ── FORM SUBMIT ──
     // Sends form data to Formspree and shows success message on response
@@ -4609,31 +4346,6 @@
           });
         });
       }
-
-      // ── STEP ACCORDION (desktop only — mobile uses swipe carousel) ──
-      const stepTriggers = document.querySelectorAll('.step-trigger');
-
-      stepTriggers.forEach(trigger => {
-        trigger.addEventListener('click', () => {
-          if (window.innerWidth <= 768) return; // carousel on mobile, no accordion
-          const bodyId = trigger.getAttribute('aria-controls');
-          const body = document.getElementById(bodyId);
-          const isOpen = trigger.getAttribute('aria-expanded') === 'true';
-
-          // Close all steps first (one open at a time)
-          stepTriggers.forEach(t => {
-            t.setAttribute('aria-expanded', 'false');
-            const b = document.getElementById(t.getAttribute('aria-controls'));
-            if (b) b.classList.remove('open');
-          });
-
-          // If it was closed, open it
-          if (!isOpen && body) {
-            trigger.setAttribute('aria-expanded', 'true');
-            body.classList.add('open');
-          }
-        });
-      });
 
       // ── SOCIAL TABS ──
       // Shows one social card at a time based on active tab
