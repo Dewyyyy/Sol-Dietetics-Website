@@ -489,6 +489,10 @@
       color: rgba(245, 240, 232, 0.85);
     }
 
+    /* Profit numbers always orange */
+    #primary-net,
+    #secondary-net { color: var(--sun); }
+
     /* Talk to Sales state (clients > 300) */
     .calc-results.is-sales .calc-section { display: none; }
     .calc-sales-pane {
@@ -631,10 +635,9 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 2.2rem;
       font-weight: 400;
-      color: var(--bark);
+      color: var(--sun);
       line-height: 1.1;
     }
-    .scenario-card.featured .scenario-profit .amount { color: var(--sun); }
     .scenario-profit .per {
       font-size: 0.7rem;
       font-weight: 300;
