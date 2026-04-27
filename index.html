@@ -1473,13 +1473,31 @@
     }
 
     .calc-field label {
-      display: block;
+      display: inline-flex;
+      align-items: center;
       font-size: 0.7rem;
       font-weight: 500;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--light-text);
       margin-bottom: 1rem;
+    }
+
+    .calc-step-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--sun);
+      color: var(--bark);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0;
+      margin-right: 0.6rem;
+      flex-shrink: 0;
     }
 
     .calc-field-row {
@@ -3804,26 +3822,7 @@
         <!-- Inputs -->
         <div class="calc-inputs">
           <div class="calc-field">
-            <div class="calc-field-row">
-              <label>Number of Clients</label>
-              <div class="calc-number-wrap">
-                <input type="number" class="calc-number-input" id="calcClientsInput" min="1" max="9999" step="1" value="20" inputmode="numeric" aria-label="Number of clients" />
-                <span class="calc-field-value-sub">members</span>
-              </div>
-            </div>
-            <input type="range" class="calc-slider" id="calcClients" min="5" max="300" step="5" value="20" />
-          </div>
-
-          <div class="calc-field">
-            <div class="calc-field-row">
-              <label>Your Retail Price</label>
-              <span class="calc-field-value-sub">$<span id="calcPriceLabel">199</span>/client/mo</span>
-            </div>
-            <input type="range" class="calc-slider" id="calcPrice" min="49" max="499" step="10" value="199" />
-          </div>
-
-          <div class="calc-field">
-            <label>Plan</label>
+            <label><span class="calc-step-badge">1</span>Choose Your Plan</label>
             <div class="calc-plan-toggle">
               <button type="button" class="calc-plan-btn" data-plan="flex" data-rate="1100">
                 <span class="plan-name">Flex</span>
@@ -3845,6 +3844,25 @@
                 <span class="plan-tagline">Save $2,400/yr</span>
               </button>
             </div>
+          </div>
+
+          <div class="calc-field">
+            <div class="calc-field-row">
+              <label><span class="calc-step-badge">2</span>Estimated Clients Enrolled</label>
+              <div class="calc-number-wrap">
+                <input type="number" class="calc-number-input" id="calcClientsInput" min="1" max="9999" step="1" value="20" inputmode="numeric" aria-label="Number of clients" />
+                <span class="calc-field-value-sub">members</span>
+              </div>
+            </div>
+            <input type="range" class="calc-slider" id="calcClients" min="5" max="300" step="5" value="20" />
+          </div>
+
+          <div class="calc-field">
+            <div class="calc-field-row">
+              <label><span class="calc-step-badge">3</span>Your Price per Client</label>
+              <span class="calc-field-value-sub">$<span id="calcPriceLabel">199</span>/client/mo</span>
+            </div>
+            <input type="range" class="calc-slider" id="calcPrice" min="49" max="499" step="10" value="199" />
           </div>
         </div>
 
